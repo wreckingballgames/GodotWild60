@@ -1,43 +1,74 @@
-[gd_scene load_steps=4 format=3 uid="uid://ljxjvb1f4waw"]
+[gd_scene load_steps=9 format=3 uid="uid://ljxjvb1f4waw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_avqd1"]
 [ext_resource type="Texture2D" uid="uid://coxxrohed20hd" path="res://assets/art/player_sprite.png" id="2_0y776"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdawd"]
-radius = 28.0
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vmcxe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2nr04"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_clfyb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yv05u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mdsib"]
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 6
 script = ExtResource("1_avqd1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="RocketExhaustSprite" type="Sprite2D" parent="."]
 
 [node name="HandSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_0y776")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="RocketExhaustSprite" type="Sprite2D" parent="."]
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="HeartCollision" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-13, -3)
-scale = Vector2(0.25, 0.25)
 shape = SubResource("CircleShape2D_rdawd")
 
-[node name="ThumbSprite" type="Sprite2D" parent="."]
+[node name="FingerSprites" type="Node" parent="."]
 
-[node name="ThumbCollision" type="CollisionShape2D" parent="."]
+[node name="PinkyFingerSprite" type="Sprite2D" parent="FingerSprites"]
 
-[node name="IndexFingerSprite" type="Sprite2D" parent="."]
+[node name="RingFingerSprite" type="Sprite2D" parent="FingerSprites"]
 
-[node name="IndexFingerCollision" type="CollisionShape2D" parent="."]
+[node name="MiddleFingerSprite" type="Sprite2D" parent="FingerSprites"]
 
-[node name="MiddleFingerSprite" type="Sprite2D" parent="."]
+[node name="IndexFingerSprite" type="Sprite2D" parent="FingerSprites"]
 
-[node name="MiddleFingerCollision" type="CollisionShape2D" parent="."]
-
-[node name="RingFingerSprite" type="Sprite2D" parent="."]
-
-[node name="RingFingerCollision" type="CollisionShape2D" parent="."]
-
-[node name="PinkyFingerSprite" type="Sprite2D" parent="."]
+[node name="ThumbSprite" type="Sprite2D" parent="FingerSprites"]
 
 [node name="PinkyFingerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(10, 42)
+shape = SubResource("CircleShape2D_vmcxe")
+disabled = true
+
+[node name="RingFingerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(48, 28)
+shape = SubResource("CircleShape2D_2nr04")
+disabled = true
+
+[node name="MiddleFingerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(63, 1)
+shape = SubResource("CircleShape2D_clfyb")
+disabled = true
+
+[node name="IndexFingerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(49, -28)
+shape = SubResource("CircleShape2D_yv05u")
+disabled = true
+
+[node name="ThumbCollision" type="CollisionShape2D" parent="."]
+position = Vector2(3, -41)
+shape = SubResource("CircleShape2D_mdsib")
+disabled = true
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
