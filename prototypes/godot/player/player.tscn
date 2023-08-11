@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://ljxjvb1f4waw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1fgf"]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_e1fgf")
+
+[node name="ThumbSprite" type="Sprite2D" parent="."]
+
+[node name="ThumbCollision" type="CollisionShape2D" parent="."]
+
+[node name="IndexFingerSprite" type="Sprite2D" parent="."]
+
+[node name="IndexFingerCollision" type="CollisionShape2D" parent="."]
+
+[node name="MiddleFingerSprite" type="Sprite2D" parent="."]
+
+[node name="MiddleFingerCollision" type="CollisionShape2D" parent="."]
+
+[node name="RingFingerSprite" type="Sprite2D" parent="."]
+
+[node name="RingFingerCollision" type="CollisionShape2D" parent="."]
+
+[node name="PinkyFingerSprite" type="Sprite2D" parent="."]
+
+[node name="PinkyFingerCollision" type="CollisionShape2D" parent="."]
