@@ -4,16 +4,16 @@ extends CharacterBody2D
 @export var speed: float = 250
 @export var health: int = 3
 @export var lives: int = 3
-@export var flick_force: float = 10
+@export var flick_force: float = 1000
 
 @onready var starting_position: Vector2 = global_position
 
 # Finger collision references
-@onready var pinky_finger_collision: CollisionShape2D = $FingerArea/PinkyFinger/PinkyFingerCollision
-@onready var ring_finger_collision: CollisionShape2D = $FingerArea/RingFinger/RingFingerCollision
-@onready var middle_finger_collision: CollisionShape2D = $FingerArea/MiddleFinger/MiddleFingerCollision
-@onready var index_finger_collision: CollisionShape2D = $FingerArea/IndexFinger/IndexFingerCollision
-@onready var thumb_collision: CollisionShape2D = $FingerArea/Thumb/ThumbCollision
+@onready var pinky_finger_collision: CollisionShape2D = $FingerArea/PinkyFingerCollision
+@onready var ring_finger_collision: CollisionShape2D = $FingerArea/RingFingerCollision
+@onready var middle_finger_collision: CollisionShape2D = $FingerArea/MiddleFingerCollision
+@onready var index_finger_collision: CollisionShape2D = $FingerArea/IndexFingerCollision
+@onready var thumb_collision: CollisionShape2D = $FingerArea/ThumbCollision
 
 # Finger sprite references
 @onready var pinky_finger_sprite: Sprite2D = $FingerSprites/PinkyFingerSprite
@@ -76,7 +76,7 @@ func handle_flick_input() -> void:
 		# Animate thumb sprite in reverse, set at first frame
 
 
-func _on_hurtbox_area_entered(area: Area2D) -> void:
+func _on_hurtbox_body_entered(body: Node2D) -> void:
 	take_damage()
 
 
@@ -88,6 +88,9 @@ func take_damage() -> void:
 
 func die() -> void:
 	lives -= 1
+	if lives <= 0:
+		queue_free()
+		return
 	global_position = starting_position
 
 
@@ -99,3 +102,4 @@ func flick(body: Node2D) -> void:
 	# Use RigidBody2Ds for enemies and obstacles
 	var flick_vector: Vector2 = global_position.direction_to(body.global_position) * flick_force
 	body.apply_impulse(flick_vector)
+
