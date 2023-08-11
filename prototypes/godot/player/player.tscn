@@ -1,12 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://ljxjvb1f4waw"]
+[gd_scene load_steps=3 format=3 uid="uid://ljxjvb1f4waw"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_avqd1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1fgf"]
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_avqd1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="RocketExhaustSprite" type="Sprite2D" parent="."]
+
+[node name="HandSprite" type="Sprite2D" parent="."]
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
 scale = Vector2(0.25, 0.25)
 shape = SubResource("RectangleShape2D_e1fgf")
 
