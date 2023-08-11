@@ -26,13 +26,38 @@ script = ExtResource("1_avqd1")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_0y776")
 
-[node name="RocketExhaustSprite" type="Sprite2D" parent="."]
-
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="HeartCollision" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-13, -3)
 shape = SubResource("CircleShape2D_rdawd")
+
+[node name="FingerArea" type="Area2D" parent="."]
+
+[node name="PinkyFingerCollision" type="CollisionShape2D" parent="FingerArea"]
+position = Vector2(10, 42)
+shape = SubResource("CircleShape2D_vmcxe")
+disabled = true
+
+[node name="RingFingerCollision" type="CollisionShape2D" parent="FingerArea"]
+position = Vector2(48, 28)
+shape = SubResource("CircleShape2D_2nr04")
+disabled = true
+
+[node name="MiddleFingerCollision" type="CollisionShape2D" parent="FingerArea"]
+position = Vector2(63, 1)
+shape = SubResource("CircleShape2D_clfyb")
+disabled = true
+
+[node name="IndexFingerCollision" type="CollisionShape2D" parent="FingerArea"]
+position = Vector2(49, -28)
+shape = SubResource("CircleShape2D_yv05u")
+disabled = true
+
+[node name="ThumbCollision" type="CollisionShape2D" parent="FingerArea"]
+position = Vector2(3, -41)
+shape = SubResource("CircleShape2D_mdsib")
+disabled = true
 
 [node name="FingerSprites" type="Node" parent="."]
 
@@ -46,29 +71,5 @@ shape = SubResource("CircleShape2D_rdawd")
 
 [node name="ThumbSprite" type="Sprite2D" parent="FingerSprites"]
 
-[node name="PinkyFingerCollision" type="CollisionShape2D" parent="."]
-position = Vector2(10, 42)
-shape = SubResource("CircleShape2D_vmcxe")
-disabled = true
-
-[node name="RingFingerCollision" type="CollisionShape2D" parent="."]
-position = Vector2(48, 28)
-shape = SubResource("CircleShape2D_2nr04")
-disabled = true
-
-[node name="MiddleFingerCollision" type="CollisionShape2D" parent="."]
-position = Vector2(63, 1)
-shape = SubResource("CircleShape2D_clfyb")
-disabled = true
-
-[node name="IndexFingerCollision" type="CollisionShape2D" parent="."]
-position = Vector2(49, -28)
-shape = SubResource("CircleShape2D_yv05u")
-disabled = true
-
-[node name="ThumbCollision" type="CollisionShape2D" parent="."]
-position = Vector2(3, -41)
-shape = SubResource("CircleShape2D_mdsib")
-disabled = true
-
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="FingerArea" to="." method="_on_finger_area_body_entered"]

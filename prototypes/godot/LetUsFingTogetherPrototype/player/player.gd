@@ -4,33 +4,44 @@ extends CharacterBody2D
 @export var speed: float = 250
 @export var health: int = 3
 @export var lives: int = 3
+@export var flick_force: float = 10
 
-@onready var pinky_finger_collision: CollisionShape2D = $PinkyFingerCollision
-@onready var ring_finger_collision: CollisionShape2D = $RingFingerCollision
-@onready var middle_finger_collision: CollisionShape2D = $MiddleFingerCollision
-@onready var index_finger_collision: CollisionShape2D = $IndexFingerCollision
-@onready var thumb_collision: CollisionShape2D = $ThumbCollision
+@onready var starting_position: Vector2 = global_position
 
+# Finger collision references
+@onready var pinky_finger_collision: CollisionShape2D = $FingerArea/PinkyFinger/PinkyFingerCollision
+@onready var ring_finger_collision: CollisionShape2D = $FingerArea/RingFinger/RingFingerCollision
+@onready var middle_finger_collision: CollisionShape2D = $FingerArea/MiddleFinger/MiddleFingerCollision
+@onready var index_finger_collision: CollisionShape2D = $FingerArea/IndexFinger/IndexFingerCollision
+@onready var thumb_collision: CollisionShape2D = $FingerArea/Thumb/ThumbCollision
+
+# Finger sprite references
+@onready var pinky_finger_sprite: Sprite2D = $FingerSprites/PinkyFingerSprite
+@onready var ring_finger_sprite: Sprite2D = $FingerSprites/RingFingerSprite
+@onready var middle_finger_sprite: Sprite2D = $FingerSprites/MiddleFingerSprite
+@onready var index_finger_sprite: Sprite2D = $FingerSprites/IndexFingerSprite
+@onready var thumb_sprite: Sprite2D = $FingerSprites/ThumbSprite
 
 
 func _ready() -> void:
 	pass
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	var movement_axis := get_movement_input()
 	velocity.y = movement_axis * speed
 	
 	move_and_slide()
 	
-	handle_flicking()
+	handle_flick_input()
 
 
 func get_movement_input() -> float:
 	return Input.get_axis("move_up", "move_down")
 
 
-func handle_flicking() -> void:
+func handle_flick_input() -> void:
+	# Flick
 	if Input.is_action_just_pressed("flick_pinky_finger"):
 		pinky_finger_collision.set_deferred("disabled", false)
 		# Animate pinky finger sprite, set at final frame
@@ -46,7 +57,8 @@ func handle_flicking() -> void:
 	if Input.is_action_just_pressed("flick_thumb"):
 		thumb_collision.set_deferred("disabled", false)
 		# Animate thumb sprite, set at final frame
-		
+	
+	# Release
 	if Input.is_action_just_released("flick_pinky_finger"):
 		pinky_finger_collision.set_deferred("disabled", true)
 		# Animate pinky finger sprite in reverse, set at first frame
@@ -55,13 +67,13 @@ func handle_flicking() -> void:
 		# Animate ring finger sprite in reverse, set at first frame
 	if Input.is_action_just_released("flick_middle_finger"):
 		middle_finger_collision.set_deferred("disabled", true)
-		# Animate pinky finger sprite in reverse, set at final frame
+		# Animate pinky finger sprite in reverse, set at first frame
 	if Input.is_action_just_released("flick_index_finger"):
 		index_finger_collision.set_deferred("disabled", true)
-		# Animate index finger sprite in reverse, set at final frame
+		# Animate index finger sprite in reverse, set at first frame
 	if Input.is_action_just_released("flick_thumb"):
 		thumb_collision.set_deferred("disabled", true)
-		# Animate thumb sprite in reverse, set at final frame
+		# Animate thumb sprite in reverse, set at first frame
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
@@ -75,4 +87,15 @@ func take_damage() -> void:
 
 
 func die() -> void:
-	queue_free()
+	lives -= 1
+	global_position = starting_position
+
+
+func _on_finger_area_body_entered(body: Node2D) -> void:
+	flick(body)
+
+
+func flick(body: Node2D) -> void:
+	# Use RigidBody2Ds for enemies and obstacles
+	var flick_vector: Vector2 = global_position.direction_to(body.global_position) * flick_force
+	body.apply_impulse(flick_vector)
