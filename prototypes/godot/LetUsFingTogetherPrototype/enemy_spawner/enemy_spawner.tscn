@@ -6,7 +6,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hoj5j"]
 size = Vector2(156, 74.5)
 
-[node name="EnemySpawner" type="RigidBody2D" groups=["Enemy"]]
+[node name="EnemySpawner" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 3
+mass = 4.0
+max_contacts_reported = 4
+contact_monitor = true
+can_sleep = false
 script = ExtResource("1_yrmfv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,3 +21,11 @@ texture = ExtResource("2_g3h8e")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-6, 0)
 shape = SubResource("RectangleShape2D_hoj5j")
+
+[node name="EnemyContainer" type="Node" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

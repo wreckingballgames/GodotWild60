@@ -20,11 +20,6 @@ radius = 12.0
 collision_mask = 6
 script = ExtResource("1_avqd1")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(450, 0)
-limit_top = 0
-limit_bottom = 0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="HandSprite" type="Sprite2D" parent="." groups=["Player"]]

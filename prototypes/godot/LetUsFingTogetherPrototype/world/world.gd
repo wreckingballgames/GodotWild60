@@ -1,11 +1,15 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var parallax_scroll: float = 0
+@export var parallax_scroll_speed: float = 200
+
+@onready var parallax_layer_1 := $ParallaxBackground/ParallaxLayer
+@onready var parallax_layer_2 := $ParallaxBackground/ParallaxLayer2
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	# Scroll background
+	parallax_scroll -= parallax_scroll_speed * delta
+	parallax_layer_1.motion_offset.x = parallax_scroll
+	parallax_layer_2.motion_offset.x = parallax_scroll / 2

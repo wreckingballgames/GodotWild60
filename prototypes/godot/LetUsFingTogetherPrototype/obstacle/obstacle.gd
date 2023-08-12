@@ -3,7 +3,9 @@ extends RigidBody2D
 
 @export var starting_rotation: float = 0
 @export var rotate_speed: float = .01
+@export var scroll_speed: float = 5000
 
+@onready var scroll_vector: Vector2 = Vector2.LEFT * scroll_speed
 @onready var rng := RandomNumberGenerator.new()
 
 
@@ -16,8 +18,5 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	rotate(rotate_speed)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	
+	apply_force(scroll_vector * delta)

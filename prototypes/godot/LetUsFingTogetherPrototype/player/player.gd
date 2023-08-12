@@ -2,10 +2,8 @@ extends CharacterBody2D
 
 
 @export var speed: float = 60
-@export var health: int = 3
 @export var lives: int = 3
 @export var flick_force: float = 2500
-@export var scroll_speed: float = 1
 
 @onready var starting_position: Vector2 = global_position
 
@@ -30,7 +28,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:	
 	var movement_axis := get_movement_input()
-	velocity.x += scroll_speed
 	velocity.y = movement_axis * speed
 	
 	move_and_slide()
@@ -86,13 +83,7 @@ func handle_flick_input() -> void:
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	take_damage()
-
-
-func take_damage() -> void:
-	health -= 1
-	if health <= 0:
-		die()
+	die()
 
 
 func die() -> void:

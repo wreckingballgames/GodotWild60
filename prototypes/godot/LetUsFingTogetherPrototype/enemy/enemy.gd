@@ -31,6 +31,10 @@ func _process(delta: float) -> void:
 	# Ensure player is still in the scene
 	player = get_tree().get_nodes_in_group("Player")
 	
+#	bounds_checking()
+
+
+func bounds_checking() -> void:
 	# Check if out of bounds, tell die() to free enemy if so
 	var screen_position: Vector2 = get_viewport_rect().position
 	var screen_end: Vector2 = get_viewport_rect().end
