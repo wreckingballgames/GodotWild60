@@ -33,6 +33,9 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	var screen_size := get_viewport_rect().size
+	global_position = global_position.clamp(Vector2.ZERO, screen_size)
+	
 	handle_flick_input()
 
 
