@@ -1,12 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7lusx0xg7573"]
+[gd_scene load_steps=7 format=3 uid="uid://c7lusx0xg7573"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_23lea"]
 [ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="2_0px4g"]
+[ext_resource type="Texture2D" uid="uid://cs86jj0hqi8o6" path="res://assets/art/background.png" id="2_d8x6u"]
+[ext_resource type="Texture2D" uid="uid://00fhutuc8t84" path="res://assets/art/stars.png" id="3_oi24y"]
 [ext_resource type="PackedScene" uid="uid://b56o5lpqe5sl8" path="res://enemy/enemy.tscn" id="3_rafy1"]
 [ext_resource type="PackedScene" uid="uid://5qifcmll0aw" path="res://obstacle/obstacle.tscn" id="4_ibow5"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_23lea")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(669, 250)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_d8x6u")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(691, 257)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_oi24y")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
