@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7lusx0xg7573"]
+[gd_scene load_steps=5 format=3 uid="uid://c7lusx0xg7573"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_23lea"]
 [ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="2_0px4g"]
 [ext_resource type="PackedScene" uid="uid://b56o5lpqe5sl8" path="res://enemy/enemy.tscn" id="3_rafy1"]
+[ext_resource type="PackedScene" uid="uid://5qifcmll0aw" path="res://obstacle/obstacle.tscn" id="4_ibow5"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_23lea")
@@ -10,16 +11,26 @@ script = ExtResource("1_23lea")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_0px4g")]
-position = Vector2(118, 82)
+position = Vector2(189, 348)
 
-[node name="Enemy" parent="." instance=ExtResource("3_rafy1")]
-position = Vector2(651, 106)
+[node name="EnemyContainer" type="Node" parent="."]
 
-[node name="Enemy2" parent="." instance=ExtResource("3_rafy1")]
-position = Vector2(732, 223)
+[node name="Enemy" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
+position = Vector2(742, 125)
 
-[node name="Enemy3" parent="." instance=ExtResource("3_rafy1")]
-position = Vector2(732, 337)
+[node name="Enemy2" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
+position = Vector2(823, 242)
 
-[node name="Enemy4" parent="." instance=ExtResource("3_rafy1")]
-position = Vector2(636, 442)
+[node name="Enemy3" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
+position = Vector2(815, 518)
+
+[node name="Enemy4" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
+position = Vector2(719, 623)
+
+[node name="ObstacleContainer" type="Node" parent="."]
+
+[node name="Obstacle" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(534, 157)
+
+[node name="Obstacle2" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(1302, 386)

@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 
-@export var speed: float = 250
+@export var speed: float = 80
 @export var health: int = 3
 @export var lives: int = 3
-@export var flick_force: float = 1000
+@export var flick_force: float = 2500
+@export var scroll_speed: float = 1
 
 @onready var starting_position: Vector2 = global_position
 
@@ -29,12 +30,17 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:	
 	var movement_axis := get_movement_input()
+	velocity.x += scroll_speed
 	velocity.y = movement_axis * speed
 	
 	move_and_slide()
 	
+	# Screen bounds checking
 	var screen_size := get_viewport_rect().size
-	global_position = global_position.clamp(Vector2.ZERO, screen_size)
+	if global_position.y < 0:
+		global_position.y = 0
+	elif global_position.y > screen_size.y:
+		global_position.y = screen_size.y
 	
 	handle_flick_input()
 
@@ -94,7 +100,7 @@ func die() -> void:
 	if lives <= 0:
 		queue_free()
 		return
-	global_position = starting_position
+	global_position.y = starting_position.y
 
 
 func _on_finger_area_body_entered(body: Node2D) -> void:

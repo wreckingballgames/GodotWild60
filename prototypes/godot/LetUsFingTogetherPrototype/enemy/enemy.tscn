@@ -7,7 +7,10 @@
 size = Vector2(23, 37)
 
 [node name="Enemy" type="RigidBody2D" groups=["Enemy"]]
-gravity_scale = 0.0
+collision_layer = 4
+collision_mask = 7
+max_contacts_reported = 4
+contact_monitor = true
 script = ExtResource("1_no21e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -17,3 +20,5 @@ texture = ExtResource("2_x03dw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5.5, 0.5)
 shape = SubResource("RectangleShape2D_18sy1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
