@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ljxjvb1f4waw"]
+[gd_scene load_steps=10 format=3 uid="uid://ljxjvb1f4waw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_avqd1"]
 [ext_resource type="Texture2D" uid="uid://coxxrohed20hd" path="res://assets/art/player_sprite.png" id="2_0y776"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upy30"]
+size = Vector2(41, 44)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdawd"]
 radius = 12.0
@@ -25,6 +28,12 @@ script = ExtResource("1_avqd1")
 [node name="HandSprite" type="Sprite2D" parent="." groups=["Player"]]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_0y776")
+
+[node name="GrabArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+position = Vector2(-10.5, -4)
+shape = SubResource("RectangleShape2D_upy30")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_mask = 6
