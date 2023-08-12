@@ -37,6 +37,7 @@ collision_mask = 6
 [node name="HeartCollision" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-13, -3)
 shape = SubResource("CircleShape2D_rdawd")
+debug_color = Color(0.85098, 0, 0.0156863, 0.419608)
 
 [node name="FingerArea" type="Area2D" parent="."]
 collision_mask = 6
