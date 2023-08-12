@@ -1,9 +1,11 @@
 extends RigidBody2D
 
 
+var is_dead: bool = false
+
 @export var starting_rotation: float = 0
 @export var rotate_speed: float = .01
-@export var scroll_speed: float = 2000
+@export var scroll_speed: float = 4000
 
 @onready var scroll_vector: Vector2 = Vector2.LEFT * scroll_speed
 @onready var rng := RandomNumberGenerator.new()
@@ -18,5 +20,4 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	rotate(rotate_speed)
-	
 	apply_force(scroll_vector * delta)

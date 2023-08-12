@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7lusx0xg7573"]
+[gd_scene load_steps=11 format=3 uid="uid://c7lusx0xg7573"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_23lea"]
 [ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="2_0px4g"]
@@ -7,6 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://b56o5lpqe5sl8" path="res://enemy/enemy.tscn" id="3_rafy1"]
 [ext_resource type="PackedScene" uid="uid://5qifcmll0aw" path="res://obstacle/obstacle.tscn" id="4_ibow5"]
 [ext_resource type="PackedScene" uid="uid://xwjrlqdyt8gi" path="res://enemy_spawner/enemy_spawner.tscn" id="5_4lyyw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5sfpm"]
+size = Vector2(85, 1162)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqac3"]
+size = Vector2(2673, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqdw6"]
+size = Vector2(2673, 38.5)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_23lea")
@@ -34,16 +43,22 @@ texture = ExtResource("3_oi24y")
 [node name="Player" parent="." instance=ExtResource("2_0px4g")]
 position = Vector2(189, 348)
 
-[node name="EnemySpawnerContainer" type="Node" parent="."]
+[node name="DeathZone" type="Area2D" parent="."]
+position = Vector2(-331, 390)
+collision_layer = 8
+collision_mask = 6
 
-[node name="EnemySpawner" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
-position = Vector2(969, 363)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(-344, -47)
+shape = SubResource("RectangleShape2D_5sfpm")
 
-[node name="EnemySpawner2" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
-position = Vector2(1689, 128)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(1042.5, -601)
+shape = SubResource("RectangleShape2D_kqac3")
 
-[node name="EnemySpawner3" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
-position = Vector2(1703, 563)
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(1042.5, 507.75)
+shape = SubResource("RectangleShape2D_kqdw6")
 
 [node name="EnemyContainer" type="Node" parent="."]
 
@@ -62,7 +77,29 @@ position = Vector2(719, 623)
 [node name="ObstacleContainer" type="Node" parent="."]
 
 [node name="Obstacle" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
-position = Vector2(534, 157)
+position = Vector2(563, 86)
 
 [node name="Obstacle2" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
-position = Vector2(1302, 386)
+position = Vector2(1288, 507)
+
+[node name="Obstacle3" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(2065, 158)
+
+[node name="Obstacle4" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(1766, 350)
+
+[node name="EnemySpawnerContainer" type="Node" parent="."]
+
+[node name="EnemySpawner" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(969, 363)
+
+[node name="EnemySpawner2" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(1689, 128)
+
+[node name="EnemySpawner3" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(1703, 563)
+
+[node name="EnemySpawner4" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(2109, 363)
+
+[connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
