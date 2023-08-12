@@ -3,7 +3,7 @@ extends RigidBody2D
 
 @export var starting_rotation: float = 0
 @export var rotate_speed: float = .01
-@export var scroll_speed: float = 5000
+@export var scroll_speed: float = 2000
 
 @onready var scroll_vector: Vector2 = Vector2.LEFT * scroll_speed
 @onready var rng := RandomNumberGenerator.new()
