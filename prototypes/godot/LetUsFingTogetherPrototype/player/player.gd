@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var speed: float = 80
+@export var speed: float = 60
 @export var health: int = 3
 @export var lives: int = 3
 @export var flick_force: float = 2500
