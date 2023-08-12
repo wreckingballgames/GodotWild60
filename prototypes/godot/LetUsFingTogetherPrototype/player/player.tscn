@@ -20,7 +20,8 @@ radius = 12.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_vmcxe"]
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 6
+collision_mask = 22
+motion_mode = 1
 script = ExtResource("1_avqd1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -30,6 +31,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_0y776")
 
 [node name="GrabArea" type="Area2D" parent="."]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
 position = Vector2(-10.5, -4)
@@ -83,5 +85,6 @@ disabled = true
 
 [node name="PinkyFingerSprite" type="Sprite2D" parent="FingerSprites"]
 
+[connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_entered" from="FingerArea" to="." method="_on_finger_area_body_entered"]

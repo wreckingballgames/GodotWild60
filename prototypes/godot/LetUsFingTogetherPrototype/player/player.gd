@@ -2,13 +2,14 @@ extends CharacterBody2D
 
 
 var is_grabbed: bool = false
-
+var grabbed_meter: float = 0
 
 @export var speed: float = 60
 @export var lives: int = 3
 @export var flick_force: float = 2500
 
 @onready var starting_position: Vector2 = global_position
+@onready var enemies := get_tree().get_nodes_in_group("Enemy")
 
 # Finger collision references
 @onready var pinky_finger_collision: CollisionShape2D = $FingerArea/PinkyFingerCollision
@@ -41,6 +42,11 @@ func _physics_process(delta: float) -> void:
 	handle_flick_input()
 
 
+func _process(delta: float) -> void:
+	enemies = get_tree().get_nodes_in_group("Enemy")
+	get_grabbed()
+
+
 func get_movement_input() -> float:
 	return Input.get_axis("move_up", "move_down")
 
@@ -66,18 +72,23 @@ func handle_flick_input() -> void:
 	# Release
 	if Input.is_action_just_released("flick_pinky_finger"):
 		pinky_finger_collision.set_deferred("disabled", true)
+		shake_off()
 		# Animate pinky finger sprite in reverse, set at first frame
 	if Input.is_action_just_released("flick_ring_finger"):
 		ring_finger_collision.set_deferred("disabled", true)
+		shake_off()
 		# Animate ring finger sprite in reverse, set at first frame
 	if Input.is_action_just_released("flick_middle_finger"):
 		middle_finger_collision.set_deferred("disabled", true)
+		shake_off()
 		# Animate pinky finger sprite in reverse, set at first frame
 	if Input.is_action_just_released("flick_index_finger"):
 		index_finger_collision.set_deferred("disabled", true)
+		shake_off()
 		# Animate index finger sprite in reverse, set at first frame
 	if Input.is_action_just_released("flick_thumb"):
 		thumb_collision.set_deferred("disabled", true)
+		shake_off()
 		# Animate thumb sprite in reverse, set at first frame
 
 
@@ -104,12 +115,20 @@ func flick(body: Node2D) -> void:
 
 
 func shake_off() -> void:
-	pass
-	# Pseudocode
-	# If a body enters the GrabArea (check with a signal)
-	# 	If the body is an Enemy (check with collision layer)
-	# 		Toggle a flag to track if the Player is being grabbed
-	# Every frame, if the player is being grabbed
-	# 	Increase shake_off_meter slowly
-	# 	If the shake_off_meter is not 0, reduce it after every flick release
-	# 	If the shake_off_meter fills, kill the player and reset the shake_off_meter
+	if is_grabbed and grabbed_meter != 0:
+		grabbed_meter -= 0.1
+	elif grabbed_meter == 0:
+		is_grabbed = false
+
+
+func get_grabbed() -> void:
+	if grabbed_meter >= 1:
+		die()
+		return
+	if is_grabbed:
+		grabbed_meter += 0.01
+
+
+func _on_grab_area_body_entered(body: Node2D) -> void:
+	print("grabbed")
+	is_grabbed = true

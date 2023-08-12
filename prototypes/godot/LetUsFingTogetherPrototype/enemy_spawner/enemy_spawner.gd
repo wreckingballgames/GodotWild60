@@ -22,7 +22,7 @@ func _on_spawn_timer_timeout() -> void:
 	# Check if in bounds and spawn enemy if so
 	var screen_position: Vector2 = get_viewport_rect().position
 	var screen_end: Vector2 = get_viewport_rect().end
-	if player:
+	if player != null:
 		if (global_position.x > screen_position.x or global_position.x < screen_end.x) and global_position.x >= player.global_position.x:
 			var enemy_instance := enemy.instantiate()
 			enemy_instance.global_position = global_position

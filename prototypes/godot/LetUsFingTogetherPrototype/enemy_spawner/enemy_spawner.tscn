@@ -7,7 +7,7 @@
 size = Vector2(156, 74.5)
 
 [node name="EnemySpawner" type="RigidBody2D"]
-collision_layer = 4
+collision_layer = 16
 collision_mask = 11
 mass = 4.0
 max_contacts_reported = 4
