@@ -3,7 +3,6 @@ extends RigidBody2D
 
 var is_dead: bool = false
 
-@export var starting_rotation: float = 0
 @export var rotate_speed: float = .01
 @export var scroll_speed: float = 2000
 
@@ -15,8 +14,7 @@ var is_dead: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rng.randomize()
-	starting_rotation = rng.randf_range(0, 7)
-	sprite_2d.global_rotation = starting_rotation
+	sprite_2d.global_rotation = rng.randf_range(0, TAU)
 
 
 func _physics_process(delta: float) -> void:
