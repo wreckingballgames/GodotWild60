@@ -19,8 +19,8 @@ func _process(delta: float) -> void:
 func parallax_scrolling(delta: float) -> void:
 	# Scroll background
 	parallax_scroll += parallax_scroll_speed * delta
-	parallax_layer_1.motion_offset.y = parallax_scroll
-	parallax_layer_2.motion_offset.y = parallax_scroll / 2
+	parallax_layer_1.motion_offset.y = parallax_scroll / 2
+	parallax_layer_2.motion_offset.y = parallax_scroll
 
 
 func _on_death_zone_body_entered(body: Node2D) -> void:
