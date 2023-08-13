@@ -4,9 +4,6 @@ extends CenterContainer
 @export var level_path: String
 
 @onready var start_button: Button = %StartButton
-@onready var credits_button: Button = %CreditsButton
-@onready var settings_button: Button = %SettingsButton
-@onready var quit_button: Button = %QuitButton
 
 
 func _ready() -> void:
