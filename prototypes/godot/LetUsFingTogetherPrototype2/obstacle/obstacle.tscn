@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://5qifcmll0aw"]
+
+[ext_resource type="Texture2D" uid="uid://be5ctxovipvpw" path="res://assets/art/asteroid_sprite.png" id="1_613vy"]
+[ext_resource type="Script" path="res://obstacle/obstacle.gd" id="1_gd7hb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r4av1"]
+radius = 71.007
+
+[node name="Obstacle" type="RigidBody2D" groups=["Obstacle"]]
+collision_layer = 2
+collision_mask = 15
+mass = 6.0
+max_contacts_reported = 4
+contact_monitor = true
+script = ExtResource("1_gd7hb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_613vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 1)
+shape = SubResource("CircleShape2D_r4av1")

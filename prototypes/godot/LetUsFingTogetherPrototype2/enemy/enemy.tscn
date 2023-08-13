@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://b56o5lpqe5sl8"]
+
+[ext_resource type="Script" path="res://enemy/enemy.gd" id="1_no21e"]
+[ext_resource type="Texture2D" uid="uid://cc6jbt0qrfyef" path="res://assets/art/enemy_sprite.png" id="2_x03dw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18sy1"]
+size = Vector2(23, 37)
+
+[node name="Enemy" type="RigidBody2D" groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 15
+max_contacts_reported = 4
+contact_monitor = true
+script = ExtResource("1_no21e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_x03dw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, 0.5)
+shape = SubResource("RectangleShape2D_18sy1")
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+position = Vector2(5.5, 0.5)
+shape = SubResource("RectangleShape2D_18sy1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]

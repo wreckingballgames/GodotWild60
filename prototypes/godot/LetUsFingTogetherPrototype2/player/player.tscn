@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://ljxjvb1f4waw"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_avqd1"]
+[ext_resource type="Texture2D" uid="uid://coxxrohed20hd" path="res://assets/art/player_sprite.png" id="2_0y776"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upy30"]
+size = Vector2(41, 44)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rdawd"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mdsib"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yv05u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_clfyb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2nr04"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vmcxe"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 22
+motion_mode = 1
+script = ExtResource("1_avqd1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HandSprite" type="Sprite2D" parent="." groups=["Player"]]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0y776")
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="GrabCollision" type="CollisionShape2D" parent="GrabArea"]
+position = Vector2(-10.5, -4)
+shape = SubResource("RectangleShape2D_upy30")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 6
+
+[node name="HeartCollision" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-13, -3)
+shape = SubResource("CircleShape2D_rdawd")
+debug_color = Color(0.85098, 0, 0.0156863, 0.419608)
+
+[node name="FingerArea" type="Area2D" parent="."]
+collision_mask = 22
+
+[node name="ThumbCollision" type="CollisionShape2D" parent="FingerArea"]
+position = Vector2(3, -41)
+shape = SubResource("CircleShape2D_mdsib")
+disabled = true
+
+[node name="IndexFingerCollision" type="CollisionShape2D" parent="FingerArea"]
+position = Vector2(49, -28)
+shape = SubResource("CircleShape2D_yv05u")
+disabled = true
+
+[node name="MiddleFingerCollision" type="CollisionShape2D" parent="FingerArea"]
+position = Vector2(63, 1)
+shape = SubResource("CircleShape2D_clfyb")
+disabled = true
+
+[node name="RingFingerCollision" type="CollisionShape2D" parent="FingerArea"]
+position = Vector2(48, 28)
+shape = SubResource("CircleShape2D_2nr04")
+disabled = true
+
+[node name="PinkyFingerCollision" type="CollisionShape2D" parent="FingerArea"]
+position = Vector2(10, 42)
+shape = SubResource("CircleShape2D_vmcxe")
+disabled = true
+
+[node name="FingerSprites" type="Node" parent="."]
+
+[node name="ThumbSprite" type="Sprite2D" parent="FingerSprites"]
+
+[node name="IndexFingerSprite" type="Sprite2D" parent="FingerSprites"]
+
+[node name="MiddleFingerSprite" type="Sprite2D" parent="FingerSprites"]
+
+[node name="RingFingerSprite" type="Sprite2D" parent="FingerSprites"]
+
+[node name="PinkyFingerSprite" type="Sprite2D" parent="FingerSprites"]
+
+[connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="FingerArea" to="." method="_on_finger_area_body_entered"]
