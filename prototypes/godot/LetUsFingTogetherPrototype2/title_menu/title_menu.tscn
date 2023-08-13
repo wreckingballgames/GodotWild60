@@ -12,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_tjhix")
 level_path = "res://world/world.tscn"
 credits_path = "res://credits_screen/credits_screen.tscn"
+settings_path = "res://settings_menu/settings_menu.tscn"
 
 [node name="Background" type="Sprite2D" parent="."]
 visible = false
