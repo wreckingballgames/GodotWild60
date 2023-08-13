@@ -31,16 +31,16 @@ var grabbing_enemies := Array()
 
 func _physics_process(delta: float) -> void:	
 	var movement_axis := get_movement_input()
-	velocity.y = movement_axis * speed
+	velocity.x = movement_axis * speed
 	
 	move_and_slide()
 	
 	# Screen bounds checking
 	var screen_size := get_viewport_rect().size
-	if global_position.y < 0:
-		global_position.y = 0
-	elif global_position.y > screen_size.y:
-		global_position.y = screen_size.y
+	if global_position.x < 0:
+		global_position.x = 0
+	elif global_position.x > screen_size.x:
+		global_position.x = screen_size.x
 	
 	handle_flick_input()
 
@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 
 
 func get_movement_input() -> float:
-	return Input.get_axis("move_up", "move_down")
+	return Input.get_axis("move_left", "move_right")
 
 
 func handle_flick_input() -> void:

@@ -1,21 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7lusx0xg7573"]
+[gd_scene load_steps=8 format=3 uid="uid://c7lusx0xg7573"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_23lea"]
 [ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="2_0px4g"]
 [ext_resource type="Texture2D" uid="uid://cs86jj0hqi8o6" path="res://assets/art/background.png" id="2_d8x6u"]
 [ext_resource type="Texture2D" uid="uid://00fhutuc8t84" path="res://assets/art/stars.png" id="3_oi24y"]
-[ext_resource type="PackedScene" uid="uid://b56o5lpqe5sl8" path="res://enemy/enemy.tscn" id="3_rafy1"]
-[ext_resource type="PackedScene" uid="uid://5qifcmll0aw" path="res://obstacle/obstacle.tscn" id="4_ibow5"]
-[ext_resource type="PackedScene" uid="uid://xwjrlqdyt8gi" path="res://enemy_spawner/enemy_spawner.tscn" id="5_4lyyw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sfpm"]
-size = Vector2(85, 1162)
+size = Vector2(674.875, 61.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqac3"]
-size = Vector2(2673, 60)
+size = Vector2(66.625, 1426.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqdw6"]
-size = Vector2(2673, 38.5)
+size = Vector2(83.125, 1409)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_23lea")
@@ -23,23 +20,28 @@ script = ExtResource("1_23lea")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1280, 720)
+z_index = -100
+motion_mirroring = Vector2(0, 1280)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(704, 486)
+position = Vector2(220, 245)
+rotation = 1.5708
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_d8x6u")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1280, 720)
+z_index = -99
+motion_mirroring = Vector2(0, 1280)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(691, 257)
-scale = Vector2(0.6, 0.6)
+position = Vector2(186, 308)
+rotation = 1.5708
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_oi24y")
 
 [node name="Player" parent="." instance=ExtResource("2_0px4g")]
-position = Vector2(189, 348)
+position = Vector2(172, 585)
+scale = Vector2(3, 3)
 
 [node name="DeathZone" type="Area2D" parent="."]
 position = Vector2(-331, 390)
@@ -47,57 +49,21 @@ collision_layer = 8
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(-344, -47)
+position = Vector2(501.562, 355)
 shape = SubResource("RectangleShape2D_5sfpm")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(1042.5, -601)
+position = Vector2(197, -393.75)
 shape = SubResource("RectangleShape2D_kqac3")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(1042.5, 507.75)
+position = Vector2(798.438, -382.5)
 shape = SubResource("RectangleShape2D_kqdw6")
 
 [node name="EnemyContainer" type="Node" parent="."]
 
-[node name="Enemy" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
-position = Vector2(742, 125)
-
-[node name="Enemy2" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
-position = Vector2(823, 242)
-
-[node name="Enemy3" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
-position = Vector2(815, 518)
-
-[node name="Enemy4" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
-position = Vector2(719, 623)
-
 [node name="ObstacleContainer" type="Node" parent="."]
 
-[node name="Obstacle" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
-position = Vector2(563, 86)
-
-[node name="Obstacle2" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
-position = Vector2(1288, 507)
-
-[node name="Obstacle3" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
-position = Vector2(2065, 158)
-
-[node name="Obstacle4" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
-position = Vector2(1766, 350)
-
 [node name="EnemySpawnerContainer" type="Node" parent="."]
-
-[node name="EnemySpawner" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
-position = Vector2(969, 363)
-
-[node name="EnemySpawner2" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
-position = Vector2(1689, 128)
-
-[node name="EnemySpawner3" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
-position = Vector2(1703, 563)
-
-[node name="EnemySpawner4" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
-position = Vector2(2109, 363)
 
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
