@@ -21,4 +21,11 @@ texture = ExtResource("2_x03dw")
 position = Vector2(5.5, 0.5)
 shape = SubResource("RectangleShape2D_18sy1")
 
+[node name="GrabArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+position = Vector2(5.5, 0.5)
+shape = SubResource("RectangleShape2D_18sy1")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]

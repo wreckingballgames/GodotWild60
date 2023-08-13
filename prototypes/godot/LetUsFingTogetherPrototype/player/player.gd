@@ -130,5 +130,4 @@ func get_grabbed() -> void:
 
 
 func _on_grab_area_body_entered(body: Node2D) -> void:
-	print("grabbed")
 	is_grabbed = true

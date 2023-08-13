@@ -33,7 +33,7 @@ texture = ExtResource("2_0y776")
 [node name="GrabArea" type="Area2D" parent="."]
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+[node name="GrabCollision" type="CollisionShape2D" parent="GrabArea"]
 position = Vector2(-10.5, -4)
 shape = SubResource("RectangleShape2D_upy30")
 
