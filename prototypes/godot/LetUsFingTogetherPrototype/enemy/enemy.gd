@@ -38,6 +38,7 @@ func _on_body_entered(body: Node) -> void:
 
 func die() -> void:
 	is_dead = true
+	is_grabbing = false
 
 
 func _on_grab_area_area_entered(area: Area2D) -> void:

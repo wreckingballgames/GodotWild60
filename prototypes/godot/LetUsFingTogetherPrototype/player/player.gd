@@ -8,6 +8,8 @@ var grabbing_enemies := Array()
 @export var speed: float = 60
 @export var lives: int = 3
 @export var flick_force: float = 2500
+@export var shake_off_strength: float = 0.1
+@export var grab_strength: float = 0.01
 
 @onready var starting_position: Vector2 = global_position
 @onready var enemies := get_tree().get_nodes_in_group("Enemy")
@@ -117,10 +119,12 @@ func flick(body: Node2D) -> void:
 
 func shake_off() -> void:
 	if grabbed_meter > 0:
-		grabbed_meter -= 0.1
+		grabbed_meter -= shake_off_strength
 	else:
 		is_grabbed = false
-		# Delete enemies
+		for enemy in grabbing_enemies:
+			enemy.die()
+		grabbing_enemies.clear()
 
 
 func get_grabbed() -> void:
@@ -128,7 +132,7 @@ func get_grabbed() -> void:
 		die()
 		return
 	if is_grabbed:
-		grabbed_meter += 0.01
+		grabbed_meter += grab_strength
 
 
 func _on_grab_area_body_entered(body: Node2D) -> void:
