@@ -8,7 +8,6 @@ signal unpaused
 
 
 func _ready() -> void:
-	RenderingServer.set_default_clear_color(Color.DIM_GRAY)
 	unpause_button.grab_focus()
 
 
@@ -17,6 +16,7 @@ func _on_unpause_button_pressed() -> void:
 
 
 func _on_return_button_pressed() -> void:
+	get_tree().paused = false
 	get_tree().change_scene_to_file(title_path)
 
 

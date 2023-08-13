@@ -72,6 +72,10 @@ unique_name_in_owner = true
 process_mode = 2
 visible = false
 z_index = 100
+offset_left = 126.0
+offset_top = 264.0
+offset_right = 245.0
+offset_bottom = 365.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
