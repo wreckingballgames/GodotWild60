@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
 
+# Grab Mechanic Members
 var is_grabbed: bool = false
 var grabbed_meter: float = 0
 var grabbing_enemies := Array()
 
+# Designer Members
 @export var speed: float = 60
 @export var lives: int = 3
 @export var flick_force: float = 2500
@@ -12,7 +14,6 @@ var grabbing_enemies := Array()
 @export var grab_strength: float = 0.0060
 
 @onready var starting_position: Vector2 = global_position
-@onready var enemies := get_tree().get_nodes_in_group("Enemy")
 
 # Finger collision references
 @onready var pinky_finger_collision: CollisionShape2D = $FingerArea/PinkyFingerCollision
@@ -30,28 +31,30 @@ var grabbing_enemies := Array()
 
 
 func _physics_process(delta: float) -> void:	
-	var movement_axis := get_movement_input()
-	velocity.x = movement_axis * speed
+	var input_axis := get_movement_input()
+	velocity.x = input_axis * speed # Remember that move_and_slide() applies delta
 	
 	move_and_slide()
 	
-	# Screen bounds checking
-	var screen_size := get_viewport_rect().size
-	if global_position.x < 0:
-		global_position.x = 0
-	elif global_position.x > screen_size.x:
-		global_position.x = screen_size.x
-	
+	bounds_checking()
 	handle_flick_input()
 
 
 func _process(delta: float) -> void:
-	enemies = get_tree().get_nodes_in_group("Enemy")
 	get_grabbed()
 
 
 func get_movement_input() -> float:
 	return Input.get_axis("move_left", "move_right")
+
+
+func bounds_checking() -> void:
+	#Screen bounds checking
+	var screen_size := get_viewport_rect().size
+	if global_position.x < 0:
+		global_position.x = 0
+	elif global_position.x > screen_size.x:
+		global_position.x = screen_size.x
 
 
 func handle_flick_input() -> void:
@@ -96,6 +99,8 @@ func handle_flick_input() -> void:
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if body.get_collision_layer_value(3) and body.is_dead == true:
+		return
 	die()
 
 
@@ -124,7 +129,7 @@ func shake_off() -> void:
 	else:
 		is_grabbed = false
 		for enemy in grabbing_enemies:
-			enemy.die()
+			enemy.call_deferred("die")
 		grabbing_enemies.clear()
 
 

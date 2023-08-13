@@ -42,5 +42,5 @@ func die() -> void:
 
 
 func _on_grab_area_area_entered(area: Area2D) -> void:
-	if area.name == "GrabArea":
+	if area.name == "GrabArea" and not is_dead:
 		is_grabbing = true

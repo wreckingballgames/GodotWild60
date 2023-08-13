@@ -44,7 +44,7 @@ position = Vector2(-1.78125, -1.875)
 shape = SubResource("RectangleShape2D_upy30")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-collision_mask = 6
+collision_mask = 22
 
 [node name="HeartCollision" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-5, -4)
