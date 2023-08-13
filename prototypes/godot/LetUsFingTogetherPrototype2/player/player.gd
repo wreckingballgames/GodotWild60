@@ -8,8 +8,8 @@ var grabbing_enemies := Array()
 @export var speed: float = 60
 @export var lives: int = 3
 @export var flick_force: float = 2500
-@export var shake_off_strength: float = 0.1
-@export var grab_strength: float = 0.01
+@export var shake_off_strength: float = 0.03
+@export var grab_strength: float = 0.0060
 
 @onready var starting_position: Vector2 = global_position
 @onready var enemies := get_tree().get_nodes_in_group("Enemy")
@@ -104,7 +104,7 @@ func die() -> void:
 	if lives <= 0:
 		queue_free()
 		return
-	global_position.y = starting_position.y
+	global_position.x = starting_position.x
 
 
 func _on_finger_area_body_entered(body: Node2D) -> void:

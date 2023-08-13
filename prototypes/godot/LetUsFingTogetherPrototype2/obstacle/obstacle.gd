@@ -5,10 +5,10 @@ var is_dead: bool = false
 
 @export var starting_rotation: float = 0
 @export var rotate_speed: float = .01
-@export var scroll_speed: float = 4000
+@export var scroll_speed: float = 2000
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var scroll_vector: Vector2 = Vector2.LEFT * scroll_speed
+@onready var scroll_vector: Vector2 = Vector2.DOWN * scroll_speed
 @onready var rng := RandomNumberGenerator.new()
 
 

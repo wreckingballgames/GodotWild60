@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7lusx0xg7573"]
+[gd_scene load_steps=11 format=3 uid="uid://c7lusx0xg7573"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_23lea"]
 [ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="2_0px4g"]
 [ext_resource type="Texture2D" uid="uid://cs86jj0hqi8o6" path="res://assets/art/background.png" id="2_d8x6u"]
 [ext_resource type="Texture2D" uid="uid://00fhutuc8t84" path="res://assets/art/stars.png" id="3_oi24y"]
 [ext_resource type="PackedScene" uid="uid://b56o5lpqe5sl8" path="res://enemy/enemy.tscn" id="3_rafy1"]
+[ext_resource type="PackedScene" uid="uid://5qifcmll0aw" path="res://obstacle/obstacle.tscn" id="4_ibow5"]
+[ext_resource type="PackedScene" uid="uid://xwjrlqdyt8gi" path="res://enemy_spawner/enemy_spawner.tscn" id="5_4lyyw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sfpm"]
 size = Vector2(674.875, 61.5)
@@ -67,6 +69,18 @@ position = Vector2(272, 314)
 
 [node name="ObstacleContainer" type="Node" parent="."]
 
+[node name="Obstacle" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(267, 151)
+
+[node name="Obstacle2" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(76, 198)
+
+[node name="Obstacle3" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(193, 77)
+
 [node name="EnemySpawnerContainer" type="Node" parent="."]
+
+[node name="EnemySpawner" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(91, 385)
 
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]

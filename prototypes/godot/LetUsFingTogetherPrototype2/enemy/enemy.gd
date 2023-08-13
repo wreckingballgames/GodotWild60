@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 	if not is_dead and not is_grabbing:
 		var force_direction: Vector2 = Vector2.ZERO
 		# Look at and move toward player until enemy passes player
-		if player != null and player.global_position.x < global_position.x:
+		if player != null and player.global_position.y > global_position.y:
 			force_direction = global_position.direction_to(player.global_position)
 		
 		var force_vector: Vector2 = force_direction * force_strength
