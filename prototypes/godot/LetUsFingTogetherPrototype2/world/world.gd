@@ -9,6 +9,8 @@ var parallax_scroll: float = 0
 @onready var parallax_layer_1 := $ParallaxBackground/ParallaxLayer # Starfield background
 @onready var parallax_layer_2 := $ParallaxBackground/ParallaxLayer2 # Starfield foreground
 
+@onready var pause_menu: CenterContainer = %PauseMenu
+
 
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color.WEB_GRAY)
@@ -35,6 +37,14 @@ func pause() -> void:
 	if is_paused and Input.is_action_just_pressed("pause"):
 		get_tree().paused = false
 		is_paused = false
+		pause_menu.hide()
 	elif not is_paused and Input.is_action_just_pressed("pause"):
 		get_tree().paused = true
 		is_paused = true
+		pause_menu.show()
+
+
+func _on_pause_menu_unpaused() -> void:
+	get_tree().paused = false
+	is_paused = false
+	pause_menu.hide()

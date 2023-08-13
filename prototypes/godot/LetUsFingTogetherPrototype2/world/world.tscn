@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7lusx0xg7573"]
+[gd_scene load_steps=12 format=3 uid="uid://c7lusx0xg7573"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_23lea"]
 [ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="2_0px4g"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b56o5lpqe5sl8" path="res://enemy/enemy.tscn" id="3_rafy1"]
 [ext_resource type="PackedScene" uid="uid://5qifcmll0aw" path="res://obstacle/obstacle.tscn" id="4_ibow5"]
 [ext_resource type="PackedScene" uid="uid://xwjrlqdyt8gi" path="res://enemy_spawner/enemy_spawner.tscn" id="5_4lyyw"]
+[ext_resource type="PackedScene" uid="uid://32wxee4cd0fm" path="res://pause_menu/pause_menu.tscn" id="5_w6o7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sfpm"]
 size = Vector2(674.875, 61.5)
@@ -66,6 +67,14 @@ shape = SubResource("RectangleShape2D_kqac3")
 position = Vector2(798.438, -382.5)
 shape = SubResource("RectangleShape2D_kqdw6")
 
+[node name="PauseMenu" parent="." instance=ExtResource("5_w6o7o")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+z_index = 100
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
 [node name="EnemyContainer" type="Node" parent="."]
 process_mode = 1
 
@@ -91,3 +100,4 @@ process_mode = 1
 position = Vector2(91, 385)
 
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
+[connection signal="unpaused" from="PauseMenu" to="." method="_on_pause_menu_unpaused"]
