@@ -18,9 +18,11 @@ size = Vector2(66.625, 1426.5)
 size = Vector2(83.125, 1409)
 
 [node name="World" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_23lea")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+process_mode = 1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -100
@@ -43,9 +45,11 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_oi24y")
 
 [node name="Player" parent="." instance=ExtResource("2_0px4g")]
+process_mode = 1
 position = Vector2(172, 585)
 
 [node name="DeathZone" type="Area2D" parent="."]
+process_mode = 1
 position = Vector2(-331, 390)
 collision_layer = 8
 collision_mask = 6
@@ -63,11 +67,13 @@ position = Vector2(798.438, -382.5)
 shape = SubResource("RectangleShape2D_kqdw6")
 
 [node name="EnemyContainer" type="Node" parent="."]
+process_mode = 1
 
 [node name="Enemy" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
 position = Vector2(272, 314)
 
 [node name="ObstacleContainer" type="Node" parent="."]
+process_mode = 1
 
 [node name="Obstacle" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
 position = Vector2(267, 151)
@@ -79,6 +85,7 @@ position = Vector2(76, 198)
 position = Vector2(193, 77)
 
 [node name="EnemySpawnerContainer" type="Node" parent="."]
+process_mode = 1
 
 [node name="EnemySpawner" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
 position = Vector2(91, 385)
