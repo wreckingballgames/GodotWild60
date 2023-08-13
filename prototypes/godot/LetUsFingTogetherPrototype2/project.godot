@@ -26,6 +26,10 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
+[editor]
+
+movie_writer/movie_file="/home/raymond/GodotWild60/prototypes/godot/LetUsFingTogetherPrototype2/demos/prototype_demo.gif.avi"
+
 [input]
 
 ui_left={
