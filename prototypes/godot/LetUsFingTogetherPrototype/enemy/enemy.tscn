@@ -22,6 +22,7 @@ position = Vector2(5.5, 0.5)
 shape = SubResource("RectangleShape2D_18sy1")
 
 [node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
 position = Vector2(5.5, 0.5)

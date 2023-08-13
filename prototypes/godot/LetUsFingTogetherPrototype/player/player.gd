@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 var is_grabbed: bool = false
 var grabbed_meter: float = 0
+var grabbing_enemies := Array()
 
 @export var speed: float = 60
 @export var lives: int = 3
@@ -115,10 +116,11 @@ func flick(body: Node2D) -> void:
 
 
 func shake_off() -> void:
-	if is_grabbed and grabbed_meter != 0:
+	if grabbed_meter > 0:
 		grabbed_meter -= 0.1
-	elif grabbed_meter == 0:
+	else:
 		is_grabbed = false
+		# Delete enemies
 
 
 func get_grabbed() -> void:
@@ -131,3 +133,4 @@ func get_grabbed() -> void:
 
 func _on_grab_area_body_entered(body: Node2D) -> void:
 	is_grabbed = true
+	grabbing_enemies.append(body)

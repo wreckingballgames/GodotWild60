@@ -27,11 +27,11 @@ func _process(delta: float) -> void:
 	# Ensure player is still in the scene
 	player = get_tree().get_first_node_in_group("Player")
 	
-	if is_grabbing:
+	if is_grabbing and player != null:
 		global_position.x = player.global_position.x
 		global_position.y = player.global_position.y - 200
 
-
+  
 func _on_body_entered(body: Node) -> void:
 	die()
 
@@ -42,5 +42,4 @@ func die() -> void:
 
 func _on_grab_area_area_entered(area: Area2D) -> void:
 	if area.name == "GrabArea":
-		collision_shape_2d.disabled = true
 		is_grabbing = true
