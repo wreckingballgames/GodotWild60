@@ -8,6 +8,10 @@ var parallax_scroll: float = 0
 @onready var parallax_layer_2 := $ParallaxBackground/ParallaxLayer2 # Starfield foreground
 
 
+func _ready() -> void:
+	RenderingServer.set_default_clear_color(Color.WEB_GRAY)
+
+
 func _process(delta: float) -> void:
 	parallax_scrolling(delta)
 

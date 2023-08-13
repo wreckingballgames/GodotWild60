@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3jkepoljxjno"]
+
+[ext_resource type="Texture2D" uid="uid://cs86jj0hqi8o6" path="res://assets/art/background.png" id="1_0fu28"]
+[ext_resource type="Script" path="res://credits_screen/credits_screen.gd" id="1_p06wm"]
+
+[node name="CreditsScreen" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p06wm")
+title_path = "res://title_menu/title_menu.tscn"
+
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
+z_index = -100
+position = Vector2(96, 324)
+rotation = 1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_0fu28")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "test"
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "test"
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "test"
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "test"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test"
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test"
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test"
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "test"
+
+[node name="HBoxButtons" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ReturnButton" type="Button" parent="VBoxContainer/HBoxButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Return to Title"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/HBoxButtons"]
+layout_mode = 2
+text = "Quit Game"
+
+[connection signal="pressed" from="VBoxContainer/HBoxButtons/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxButtons/QuitButton" to="." method="_on_quit_button_pressed"]
