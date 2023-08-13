@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	player = get_tree().get_first_node_in_group("Player")
 	
 	if is_grabbing and player != null:
-		global_position.x = player.global_position.x - 25
+		global_position.x = player.global_position.x - 50
 		global_position.y = player.global_position.y
 
   

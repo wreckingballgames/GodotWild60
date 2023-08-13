@@ -104,7 +104,8 @@ func die() -> void:
 	if lives <= 0:
 		queue_free()
 		return
-	global_position.x = starting_position.x
+	global_position = starting_position
+	grabbed_meter = 0
 
 
 func _on_finger_area_body_entered(body: Node2D) -> void:
