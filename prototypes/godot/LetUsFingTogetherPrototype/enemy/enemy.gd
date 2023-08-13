@@ -28,4 +28,8 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
+	die()
+
+
+func die() -> void:
 	is_dead = true

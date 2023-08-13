@@ -38,8 +38,6 @@ position = Vector2(691, 257)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_oi24y")
 
-[node name="UI" type="CanvasLayer" parent="."]
-
 [node name="Player" parent="." instance=ExtResource("2_0px4g")]
 position = Vector2(189, 348)
 
