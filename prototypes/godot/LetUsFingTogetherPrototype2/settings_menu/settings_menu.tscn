@@ -37,14 +37,17 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnLeft"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
 text = "test"
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnLeft"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
 text = "test"
 
 [node name="Button3" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnLeft"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
 text = "test"
 
 [node name="ButtonColumnRight" type="VBoxContainer" parent="VBoxContainer/HBoxSettings"]
@@ -52,14 +55,17 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnRight"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
 text = "test"
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnRight"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
 text = "test"
 
 [node name="Button3" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnRight"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
 text = "test"
 
 [node name="HBoxNavigation" type="HBoxContainer" parent="VBoxContainer"]
@@ -69,10 +75,12 @@ alignment = 1
 [node name="ReturnButton" type="Button" parent="VBoxContainer/HBoxNavigation"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
 text = "Return to Title"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/HBoxNavigation"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
 text = "Quit Game"
 
 [connection signal="pressed" from="VBoxContainer/HBoxNavigation/ReturnButton" to="." method="_on_return_button_pressed"]
