@@ -15,6 +15,7 @@ var is_grabbing: bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	grab_player()
 	if not is_dead and not is_grabbing:
 		var force_direction: Vector2 = Vector2.ZERO
 		# Look at and move toward player until enemy passes player
@@ -29,18 +30,6 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	# Ensure player is still in the scene
 	player = get_tree().get_first_node_in_group("Player")
-	
-	if is_grabbing and player:
-		if global_position.x >= player.global_position.x:
-			global_position.x = player.global_position.x + player_grab_offset
-			rotation = PI / 2
-		else:
-			global_position.x = player.global_position.x - player_grab_offset
-			rotation = 3 * PI / 2
-		global_position.y = player.global_position.y
-		
-		if player and player.grabbed_meter <= 0:
-			die()
 
   
 func _on_body_entered(body: Node) -> void:
@@ -57,3 +46,17 @@ func die() -> void:
 func _on_grab_area_area_entered(area: Area2D) -> void:
 	if area.name == "GrabArea" and not is_dead:
 		is_grabbing = true
+
+
+func grab_player() -> void:
+	if is_grabbing and player:
+		if global_position.x >= player.global_position.x:
+			global_position.x = player.global_position.x + player_grab_offset
+			rotation = PI / 2
+		else:
+			global_position.x = player.global_position.x - player_grab_offset
+			rotation = 3 * PI / 2
+		global_position.y = player.global_position.y
+		
+		if player and player.grabbed_meter <= 0:
+			die()
