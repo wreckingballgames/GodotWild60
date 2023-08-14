@@ -10,7 +10,7 @@ extends CenterContainer
 
 func _ready() -> void:
 	MenuMusicPlayer.play(MenuMusicPlayer.last_playback_position)
-	RenderingServer.set_default_clear_color(Color.DIM_GRAY)
+#	RenderingServer.set_default_clear_color(Color.DIM_GRAY)
 	start_button.grab_focus()
 
 
