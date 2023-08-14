@@ -36,6 +36,7 @@ var grabbed_meter: float = 0
 @onready var shoot_sound_player: AudioStreamPlayer = %ShootSoundPlayer
 @onready var death_sound_player: AudioStreamPlayer = %DeathSoundPlayer
 @onready var flick_sound_player: AudioStreamPlayer = %FlickSoundPlayer
+@onready var grab_sound_player: AudioStreamPlayer = %GrabSoundPlayer
 
 
 func _physics_process(delta: float) -> void:	
@@ -168,6 +169,7 @@ func get_grabbed() -> void:
 func _on_grab_area_body_entered(body: Node2D) -> void:
 	if body.get_collision_layer_value(3):
 		is_grabbed = true
+		grab_sound_player.play()
 
 
 func debug_restart() -> void:

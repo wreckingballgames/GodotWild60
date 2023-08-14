@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ljxjvb1f4waw"]
+[gd_scene load_steps=24 format=3 uid="uid://ljxjvb1f4waw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_avqd1"]
 [ext_resource type="Texture2D" uid="uid://coxxrohed20hd" path="res://assets/art/player_sprite.png" id="2_0y776"]
@@ -8,23 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bd071oahqyr0q" path="res://assets/audio/sfx/player_death_sound.wav" id="4_xy7ys"]
 [ext_resource type="Texture2D" uid="uid://gid3wu35xkrq" path="res://assets/art/pinky_sprite.png" id="5_0y18i"]
 [ext_resource type="AudioStream" uid="uid://b1ecccn456qur" path="res://assets/audio/sfx/flick_sound.wav" id="5_u181b"]
-
-[sub_resource type="Animation" id="Animation_xjagb"]
-resource_name = "flick_pinky"
-length = 0.3
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FingerSprites/PinkyFingerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
+[ext_resource type="AudioStream" uid="uid://bov25wboikwfl" path="res://assets/audio/sfx/grab.wav" id="9_jkm2u"]
 
 [sub_resource type="Animation" id="Animation_u0o6o"]
 length = 0.001
@@ -89,14 +73,14 @@ tracks/4/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_sx14e"]
-resource_name = "flick_ring_finger"
+[sub_resource type="Animation" id="Animation_sjc2i"]
+resource_name = "flick_index_finger"
 length = 0.3
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FingerSprites/RingFingerSprite:frame")
+tracks/0/path = NodePath("FingerSprites/IndexFingerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -123,14 +107,31 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_sjc2i"]
-resource_name = "flick_index_finger"
+[sub_resource type="Animation" id="Animation_xjagb"]
+resource_name = "flick_pinky"
 length = 0.3
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FingerSprites/IndexFingerSprite:frame")
+tracks/0/path = NodePath("FingerSprites/PinkyFingerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_sx14e"]
+resource_name = "flick_ring_finger"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FingerSprites/RingFingerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -247,7 +248,7 @@ disabled = true
 
 [node name="ThumbCollision" type="CollisionShape2D" parent="FingerArea"]
 unique_name_in_owner = true
-position = Vector2(25, -24)
+position = Vector2(26, -23)
 shape = SubResource("CircleShape2D_mdsib")
 disabled = true
 
@@ -309,6 +310,10 @@ stream = ExtResource("4_xy7ys")
 [node name="FlickSoundPlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
 unique_name_in_owner = true
 stream = ExtResource("5_u181b")
+
+[node name="GrabSoundPlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
+unique_name_in_owner = true
+stream = ExtResource("9_jkm2u")
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
