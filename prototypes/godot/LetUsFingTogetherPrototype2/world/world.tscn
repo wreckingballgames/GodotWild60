@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7lusx0xg7573"]
+[gd_scene load_steps=13 format=3 uid="uid://c7lusx0xg7573"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_23lea"]
 [ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="2_0px4g"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://5qifcmll0aw" path="res://obstacle/obstacle.tscn" id="4_ibow5"]
 [ext_resource type="PackedScene" uid="uid://xwjrlqdyt8gi" path="res://enemy_spawner/enemy_spawner.tscn" id="5_4lyyw"]
 [ext_resource type="PackedScene" uid="uid://32wxee4cd0fm" path="res://pause_menu/pause_menu.tscn" id="5_w6o7o"]
+[ext_resource type="AudioStream" uid="uid://bohlv8cbp72dr" path="res://assets/audio/music/dizzy_racing_by_zane_little.mp3" id="9_logk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sfpm"]
 size = Vector2(674.875, 61.5)
@@ -102,6 +103,10 @@ process_mode = 1
 
 [node name="EnemySpawner" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
 position = Vector2(91, 385)
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_logk4")
+autoplay = true
 
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
 [connection signal="unpaused" from="PauseMenu" to="." method="_on_pause_menu_unpaused"]

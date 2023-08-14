@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ljxjvb1f4waw"]
+[gd_scene load_steps=13 format=3 uid="uid://ljxjvb1f4waw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_avqd1"]
 [ext_resource type="Texture2D" uid="uid://coxxrohed20hd" path="res://assets/art/player_sprite.png" id="2_0y776"]
 [ext_resource type="AudioStream" uid="uid://d38moul8bsi8j" path="res://assets/audio/sfx/shoot_sound.wav" id="3_cq82v"]
 [ext_resource type="AudioStream" uid="uid://bd071oahqyr0q" path="res://assets/audio/sfx/player_death_sound.wav" id="4_xy7ys"]
+[ext_resource type="AudioStream" uid="uid://b1ecccn456qur" path="res://assets/audio/sfx/flick_sound.wav" id="5_u181b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upy30"]
 size = Vector2(39.5625, 27.75)
@@ -93,13 +94,19 @@ disabled = true
 
 [node name="PinkyFingerSprite" type="Sprite2D" parent="FingerSprites"]
 
-[node name="ShootSoundPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioPlayers" type="Node" parent="."]
+
+[node name="ShootSoundPlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
 unique_name_in_owner = true
 stream = ExtResource("3_cq82v")
 
-[node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="."]
+[node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
 unique_name_in_owner = true
 stream = ExtResource("4_xy7ys")
+
+[node name="FlickSoundPlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
+unique_name_in_owner = true
+stream = ExtResource("5_u181b")
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

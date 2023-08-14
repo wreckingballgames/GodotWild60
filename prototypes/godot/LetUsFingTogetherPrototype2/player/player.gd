@@ -31,6 +31,7 @@ var grabbing_enemies := Array()
 
 @onready var shoot_sound_player: AudioStreamPlayer = %ShootSoundPlayer
 @onready var death_sound_player: AudioStreamPlayer = %DeathSoundPlayer
+@onready var flick_sound_player: AudioStreamPlayer = %FlickSoundPlayer
 
 
 func _physics_process(delta: float) -> void:	
@@ -125,6 +126,7 @@ func flick(body: Node2D) -> void:
 	# Use RigidBody2Ds for enemies and obstacles
 	var flick_vector: Vector2 = global_position.direction_to(body.global_position) * flick_force
 	body.apply_impulse(flick_vector)
+	flick_sound_player.play()
 	if body.get_collision_layer_value(3) or body.get_collision_layer_value(5):
 		body.die()
 
