@@ -5,10 +5,12 @@ var is_dead: bool = false
 var is_grabbing: bool = false
 
 @export var force_strength: float = 5000
+@export var player_grab_offset: float = 50
 
 @onready var player := get_tree().get_first_node_in_group("Player")
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var death_sound_player: AudioStreamPlayer = %DeathSoundPlayer
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,7 +31,12 @@ func _process(delta: float) -> void:
 	player = get_tree().get_first_node_in_group("Player")
 	
 	if is_grabbing and player:
-		global_position.x = player.global_position.x - 50
+		if global_position.x >= player.global_position.x:
+			global_position.x = player.global_position.x + player_grab_offset
+			rotation = PI / 2
+		else:
+			global_position.x = player.global_position.x - player_grab_offset
+			rotation = 3 * PI / 2
 		global_position.y = player.global_position.y
 		
 		if player and player.grabbed_meter <= 0:

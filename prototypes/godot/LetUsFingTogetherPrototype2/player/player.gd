@@ -4,6 +4,8 @@ extends CharacterBody2D
 var can_die: bool = true
 @export var can_use_debug_keys: bool = true
 
+var rng := RandomNumberGenerator.new()
+
 # Grab Mechanic Members
 var is_grabbed: bool = false
 var grabbed_meter: float = 0
@@ -44,6 +46,7 @@ func _physics_process(delta: float) -> void:
 	
 	bounds_checking()
 	handle_flick_input()
+	get_grabbed()
 
 
 func _process(delta: float) -> void:
@@ -52,8 +55,6 @@ func _process(delta: float) -> void:
 	debug_toggle_can_die()
 	debug_decrement_lives()
 	debug_increment_lives()
-	
-	get_grabbed()
 
 
 func get_movement_input() -> float:
