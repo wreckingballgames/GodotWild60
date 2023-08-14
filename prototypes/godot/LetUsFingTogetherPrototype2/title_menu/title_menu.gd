@@ -10,19 +10,23 @@ extends CenterContainer
 
 
 func _ready() -> void:
+	MenuMusicPlayer.play(MenuMusicPlayer.last_playback_position)
 	RenderingServer.set_default_clear_color(Color.DIM_GRAY)
 	start_button.grab_focus()
 
 
 func _on_start_button_pressed() -> void:
+	MenuMusicPlayer.stop()
 	get_tree().change_scene_to_file(level_path)
 
 
 func _on_credits_button_pressed() -> void:
+	MenuMusicPlayer.save_playback_position()
 	get_tree().change_scene_to_file(credits_path)
 
 
 func _on_settings_button_pressed() -> void:
+	MenuMusicPlayer.save_playback_position()
 	get_tree().change_scene_to_file(settings_path)
 
 

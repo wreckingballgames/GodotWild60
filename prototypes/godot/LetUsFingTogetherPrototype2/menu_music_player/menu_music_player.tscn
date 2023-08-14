@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://khsqvl42wi5a"]
+
+[ext_resource type="AudioStream" uid="uid://tcdp13ndf8w8" path="res://assets/audio/music/poker_night_by_zane_little.mp3" id="1_4bdbg"]
+[ext_resource type="Script" path="res://menu_music_player/menu_music_player.gd" id="1_i3mc2"]
+
+[node name="MenuMusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_4bdbg")
+script = ExtResource("1_i3mc2")

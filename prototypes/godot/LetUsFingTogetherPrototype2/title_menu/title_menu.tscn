@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxxihoi0vlge8"]
+[gd_scene load_steps=3 format=3 uid="uid://cxxihoi0vlge8"]
 
 [ext_resource type="Script" path="res://title_menu/title_menu.gd" id="1_tjhix"]
 [ext_resource type="Texture2D" uid="uid://cs86jj0hqi8o6" path="res://assets/art/background.png" id="2_4speo"]
-[ext_resource type="AudioStream" uid="uid://tcdp13ndf8w8" path="res://assets/audio/music/poker_night_by_zane_little.mp3" id="3_6csal"]
 
 [node name="TitleMenu" type="CenterContainer"]
 anchors_preset = 15
@@ -42,11 +41,6 @@ text = "Settings"
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit Game"
-
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("3_6csal")
-autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

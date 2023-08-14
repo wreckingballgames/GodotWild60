@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3jkepoljxjno"]
+[gd_scene load_steps=3 format=3 uid="uid://b3jkepoljxjno"]
 
 [ext_resource type="Texture2D" uid="uid://cs86jj0hqi8o6" path="res://assets/art/background.png" id="1_0fu28"]
 [ext_resource type="Script" path="res://credits_screen/credits_screen.gd" id="1_p06wm"]
-[ext_resource type="AudioStream" uid="uid://dnvdvkjlo7hyp" path="res://assets/audio/sfx/fanfare.wav" id="3_s62yf"]
 
 [node name="CreditsScreen" type="CenterContainer"]
 anchors_preset = 15
@@ -77,12 +76,6 @@ text = "Return to Title"
 [node name="QuitButton" type="Button" parent="VBoxContainer/HBoxButtons"]
 layout_mode = 2
 text = "Quit Game"
-
-[node name="FanfarePlayer" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("3_s62yf")
-volume_db = -6.0
-autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/HBoxButtons/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxButtons/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -18,6 +18,10 @@ boot_splash/bg_color=Color(0.0784314, 0.133333, 0.25098, 1)
 boot_splash/image="res://assets/branding/GWJ-Full-Logo-noBG.png"
 config/icon="res://icon.svg"
 
+[autoload]
+
+MenuMusicPlayer="*res://menu_music_player/menu_music_player.tscn"
+
 [display]
 
 window/size/viewport_width=360
