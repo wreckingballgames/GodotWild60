@@ -10,6 +10,8 @@ var parallax_scroll: float = 0
 @onready var parallax_layer_2 := $ParallaxBackground/ParallaxLayer2 # Starfield foreground
 
 @onready var pause_menu: CenterContainer = %PauseMenu
+@onready var time_remaining_label: Label = %TimeRemainingLabel
+@onready var game_timer: Timer = %GameTimer
 
 
 func _ready() -> void:
@@ -17,8 +19,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	pause()
+	handle_pause()
 	parallax_scrolling(delta)
+	time_remaining_label.text = "Arriving in " + str(game_timer.time_left)
 
 
 func parallax_scrolling(delta: float) -> void:
@@ -33,7 +36,7 @@ func _on_death_zone_body_entered(body: Node2D) -> void:
 	body.queue_free()
 
 
-func pause() -> void:
+func handle_pause() -> void:
 	if is_paused and Input.is_action_just_pressed("pause"):
 		get_tree().paused = false
 		is_paused = false
@@ -49,3 +52,7 @@ func _on_pause_menu_unpaused() -> void:
 	get_tree().paused = false
 	is_paused = false
 	pause_menu.hide()
+
+
+func _on_game_timer_timeout() -> void:
+	print("game completed")
