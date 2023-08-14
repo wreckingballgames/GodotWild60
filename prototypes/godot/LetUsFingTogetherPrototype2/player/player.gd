@@ -20,18 +20,18 @@ var grabbed_meter: float = 0
 @onready var starting_position: Vector2 = global_position
 
 # Finger collision references
-@onready var pinky_finger_collision: CollisionShape2D = $FingerArea/PinkyFingerCollision
-@onready var ring_finger_collision: CollisionShape2D = $FingerArea/RingFingerCollision
-@onready var middle_finger_collision: CollisionShape2D = $FingerArea/MiddleFingerCollision
-@onready var index_finger_collision: CollisionShape2D = $FingerArea/IndexFingerCollision
-@onready var thumb_collision: CollisionShape2D = $FingerArea/ThumbCollision
+@onready var pinky_finger_collision: CollisionShape2D = %PinkyFingerCollision
+@onready var ring_finger_collision: CollisionShape2D = %RingFingerCollision
+@onready var middle_finger_collision: CollisionShape2D = %MiddleFingerCollision
+@onready var index_finger_collision: CollisionShape2D = %IndexFingerCollision
+@onready var thumb_collision: CollisionShape2D = %ThumbCollision
 
 # Finger sprite references
-@onready var pinky_finger_sprite: Sprite2D = $FingerSprites/PinkyFingerSprite
-@onready var ring_finger_sprite: Sprite2D = $FingerSprites/RingFingerSprite
-@onready var middle_finger_sprite: Sprite2D = $FingerSprites/MiddleFingerSprite
-@onready var index_finger_sprite: Sprite2D = $FingerSprites/IndexFingerSprite
-@onready var thumb_sprite: Sprite2D = $FingerSprites/ThumbSprite
+@onready var pinky_finger_sprite: Sprite2D = %PinkyFingerSprite
+@onready var ring_finger_sprite: Sprite2D = %RingFingerSprite
+@onready var middle_finger_sprite: Sprite2D = %MiddleFingerSprite
+@onready var index_finger_sprite: Sprite2D = %IndexFingerSprite
+@onready var thumb_sprite: Sprite2D = %ThumbSprite
 
 @onready var shoot_sound_player: AudioStreamPlayer = %ShootSoundPlayer
 @onready var death_sound_player: AudioStreamPlayer = %DeathSoundPlayer
@@ -75,40 +75,50 @@ func handle_flick_input() -> void:
 	if Input.is_action_just_pressed("flick_pinky_finger"):
 		pinky_finger_collision.set_deferred("disabled", false)
 		# Animate pinky finger sprite, set at final frame
+		pinky_finger_sprite.frame = 1
 	if Input.is_action_just_pressed("flick_ring_finger"):
 		ring_finger_collision.set_deferred("disabled", false)
 		# Animate ring finger sprite, set at final frame
+		ring_finger_sprite.frame = 1
 	if Input.is_action_just_pressed("flick_middle_finger"):
 		middle_finger_collision.set_deferred("disabled", false)
 		# Animate pinky finger sprite, set at final frame
+		middle_finger_sprite.frame = 1
 	if Input.is_action_just_pressed("flick_index_finger"):
 		index_finger_collision.set_deferred("disabled", false)
 		# Animate index finger sprite, set at final frame
+		index_finger_sprite.frame = 1
 	if Input.is_action_just_pressed("flick_thumb"):
 		thumb_collision.set_deferred("disabled", false)
 		# Animate thumb sprite, set at final frame
+		thumb_sprite.frame = 1
 	
 	# Release
 	if Input.is_action_just_released("flick_pinky_finger"):
 		pinky_finger_collision.set_deferred("disabled", true)
 		shake_off()
 		# Animate pinky finger sprite in reverse, set at first frame
+		pinky_finger_sprite.frame = 0
 	if Input.is_action_just_released("flick_ring_finger"):
 		ring_finger_collision.set_deferred("disabled", true)
 		shake_off()
 		# Animate ring finger sprite in reverse, set at first frame
+		ring_finger_sprite.frame = 0
 	if Input.is_action_just_released("flick_middle_finger"):
 		middle_finger_collision.set_deferred("disabled", true)
 		shake_off()
 		# Animate pinky finger sprite in reverse, set at first frame
+		middle_finger_sprite.frame = 0
 	if Input.is_action_just_released("flick_index_finger"):
 		index_finger_collision.set_deferred("disabled", true)
 		shake_off()
 		# Animate index finger sprite in reverse, set at first frame
+		index_finger_sprite.frame = 0
 	if Input.is_action_just_released("flick_thumb"):
 		thumb_collision.set_deferred("disabled", true)
 		shake_off()
 		# Animate thumb sprite in reverse, set at first frame
+		thumb_sprite.frame = 0
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:

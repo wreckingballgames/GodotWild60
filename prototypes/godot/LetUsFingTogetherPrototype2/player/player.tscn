@@ -173,19 +173,19 @@ size = Vector2(45.7812, 27.75)
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdawd"]
 radius = 8.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mdsib"]
-radius = 6.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_yv05u"]
-radius = 6.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_clfyb"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vmcxe"]
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2nr04"]
 radius = 6.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vmcxe"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_clfyb"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yv05u"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mdsib"]
 radius = 6.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
@@ -221,66 +221,79 @@ debug_color = Color(0.85098, 0, 0.0156863, 0.419608)
 [node name="FingerArea" type="Area2D" parent="."]
 collision_mask = 22
 
-[node name="ThumbCollision" type="CollisionShape2D" parent="FingerArea"]
-position = Vector2(27, -24)
-shape = SubResource("CircleShape2D_mdsib")
-disabled = true
-
-[node name="IndexFingerCollision" type="CollisionShape2D" parent="FingerArea"]
-position = Vector2(3, -34)
-shape = SubResource("CircleShape2D_yv05u")
-disabled = true
-
-[node name="MiddleFingerCollision" type="CollisionShape2D" parent="FingerArea"]
-position = Vector2(-6, -34)
-shape = SubResource("CircleShape2D_clfyb")
-disabled = true
-
-[node name="RingFingerCollision" type="CollisionShape2D" parent="FingerArea"]
-position = Vector2(-15, -34)
-shape = SubResource("CircleShape2D_2nr04")
-disabled = true
-
 [node name="PinkyFingerCollision" type="CollisionShape2D" parent="FingerArea"]
-position = Vector2(-32, -24)
+unique_name_in_owner = true
+position = Vector2(-34, -18)
 shape = SubResource("CircleShape2D_vmcxe")
 disabled = true
 
-[node name="FingerSprites" type="Node" parent="."]
-
-[node name="ThumbSprite" type="Sprite2D" parent="FingerSprites"]
+[node name="RingFingerCollision" type="CollisionShape2D" parent="FingerArea"]
 unique_name_in_owner = true
-position = Vector2(20, -14)
+position = Vector2(-20.6518, -41.6245)
+shape = SubResource("CircleShape2D_2nr04")
+disabled = true
+
+[node name="MiddleFingerCollision" type="CollisionShape2D" parent="FingerArea"]
+unique_name_in_owner = true
+position = Vector2(-2.65178, -43.6245)
+shape = SubResource("CircleShape2D_clfyb")
+disabled = true
+
+[node name="IndexFingerCollision" type="CollisionShape2D" parent="FingerArea"]
+unique_name_in_owner = true
+position = Vector2(15.162, -41.1139)
+shape = SubResource("CircleShape2D_yv05u")
+disabled = true
+
+[node name="ThumbCollision" type="CollisionShape2D" parent="FingerArea"]
+unique_name_in_owner = true
+position = Vector2(25, -24)
+shape = SubResource("CircleShape2D_mdsib")
+disabled = true
+
+[node name="FingerSprites" type="Node2D" parent="."]
+
+[node name="PinkyFingerSprite" type="Sprite2D" parent="FingerSprites"]
+unique_name_in_owner = true
+z_index = -1
+position = Vector2(-30, -7)
 scale = Vector2(2, 2)
-texture = ExtResource("3_8nl74")
+texture = ExtResource("5_0y18i")
 hframes = 2
 
-[node name="IndexFingerSprite" type="Sprite2D" parent="FingerSprites"]
+[node name="RingFingerSprite" type="Sprite2D" parent="FingerSprites"]
 unique_name_in_owner = true
-position = Vector2(10, -30)
+z_index = -1
+position = Vector2(-17.6518, -29.6245)
+rotation = -0.223565
 scale = Vector2(2, 2)
 texture = ExtResource("4_007pq")
 hframes = 2
 
 [node name="MiddleFingerSprite" type="Sprite2D" parent="FingerSprites"]
 unique_name_in_owner = true
-position = Vector2(-3, -30)
+z_index = -1
+position = Vector2(-2.65178, -30.6245)
 scale = Vector2(2, 2)
 texture = ExtResource("4_007pq")
 hframes = 2
 
-[node name="RingFingerSprite" type="Sprite2D" parent="FingerSprites"]
+[node name="IndexFingerSprite" type="Sprite2D" parent="FingerSprites"]
 unique_name_in_owner = true
-position = Vector2(-16, -30)
+z_index = -1
+position = Vector2(12.162, -29.1139)
+rotation = 0.257719
 scale = Vector2(2, 2)
 texture = ExtResource("4_007pq")
 hframes = 2
 
-[node name="PinkyFingerSprite" type="Sprite2D" parent="FingerSprites"]
+[node name="ThumbSprite" type="Sprite2D" parent="FingerSprites"]
 unique_name_in_owner = true
-position = Vector2(-30, -7)
+z_index = -1
+position = Vector2(22, -14)
+rotation = 0.197309
 scale = Vector2(2, 2)
-texture = ExtResource("5_0y18i")
+texture = ExtResource("3_8nl74")
 hframes = 2
 
 [node name="AudioPlayers" type="Node" parent="."]

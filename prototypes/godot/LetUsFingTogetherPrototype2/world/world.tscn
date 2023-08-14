@@ -48,7 +48,7 @@ texture = ExtResource("3_oi24y")
 
 [node name="Player" parent="." instance=ExtResource("2_0px4g")]
 process_mode = 1
-position = Vector2(172, 585)
+position = Vector2(180, 565)
 
 [node name="DeathZone" type="Area2D" parent="."]
 process_mode = 1
