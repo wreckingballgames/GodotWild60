@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	# Ensure player is still in the scene
 	player = get_tree().get_first_node_in_group("Player")
 	
-	if is_grabbing and player != null:
+	if is_grabbing and player:
 		global_position.x = player.global_position.x - 50
 		global_position.y = player.global_position.y
 		

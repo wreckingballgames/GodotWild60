@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 
+var can_die: bool = true
+
 # Grab Mechanic Members
 var is_grabbed: bool = false
 var grabbed_meter: float = 0
@@ -44,6 +46,11 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
+	debug_restart()
+	debug_toggle_can_die()
+	debug_decrement_lives()
+	debug_increment_lives()
+	
 	get_grabbed()
 
 
@@ -108,13 +115,14 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 
 
 func die() -> void:
-	lives -= 1
-	death_sound_player.play()
-	if lives <= 0:
-		queue_free()
-		return
-	global_position = starting_position
-	grabbed_meter = 0
+	if can_die:
+		lives -= 1
+		death_sound_player.play()
+		if lives <= 0:
+			queue_free()
+			return
+		global_position = starting_position
+		grabbed_meter = 0
 
 
 func _on_finger_area_body_entered(body: Node2D) -> void:
@@ -146,3 +154,27 @@ func get_grabbed() -> void:
 func _on_grab_area_body_entered(body: Node2D) -> void:
 	if body.get_collision_layer_value(3):
 		is_grabbed = true
+
+
+func debug_restart() -> void:
+	if Input.is_action_just_pressed("debug_restart"):
+		get_tree().reload_current_scene()
+
+
+func debug_increment_lives() -> void:
+	if Input.is_action_just_pressed("debug_increment_lives"):
+		lives += 1
+		print(lives)
+
+
+func debug_decrement_lives() -> void:
+	if Input.is_action_just_pressed("debug_decrement_lives"):
+		lives -= 1
+		print(lives)
+
+
+func debug_toggle_can_die() -> void:
+	if Input.is_action_just_pressed("debug_toggle_can_die"):
+		can_die = (not can_die)
+		print("can_die?")
+		print(can_die)
