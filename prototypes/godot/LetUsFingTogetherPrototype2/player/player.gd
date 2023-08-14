@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 var can_die: bool = true
+@export var can_use_debug_keys: bool = true
 
 # Grab Mechanic Members
 var is_grabbed: bool = false
@@ -46,6 +47,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
+	# Debug keys
 	debug_restart()
 	debug_toggle_can_die()
 	debug_decrement_lives()
@@ -157,24 +159,24 @@ func _on_grab_area_body_entered(body: Node2D) -> void:
 
 
 func debug_restart() -> void:
-	if Input.is_action_just_pressed("debug_restart"):
+	if can_use_debug_keys and Input.is_action_just_pressed("debug_restart"):
 		get_tree().reload_current_scene()
 
 
 func debug_increment_lives() -> void:
-	if Input.is_action_just_pressed("debug_increment_lives"):
+	if can_use_debug_keys and Input.is_action_just_pressed("debug_increment_lives"):
 		lives += 1
 		print(lives)
 
 
 func debug_decrement_lives() -> void:
-	if Input.is_action_just_pressed("debug_decrement_lives"):
+	if can_use_debug_keys and Input.is_action_just_pressed("debug_decrement_lives"):
 		die()
 		print(lives)
 
 
 func debug_toggle_can_die() -> void:
-	if Input.is_action_just_pressed("debug_toggle_can_die"):
+	if can_use_debug_keys and Input.is_action_just_pressed("debug_toggle_can_die"):
 		can_die = (not can_die)
 		print("can_die?")
 		print(can_die)
