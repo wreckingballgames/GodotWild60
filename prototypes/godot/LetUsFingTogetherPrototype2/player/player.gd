@@ -16,7 +16,7 @@ var grabbed_meter: float = 0
 @export var death_grace_period: float = 3.0
 @export var flick_force: float = 2500
 @export var shake_off_strength: float = 0.1
-@export var grab_strength: float = 0.0060
+@export var grab_strength: float = 0.006
 
 @onready var starting_position: Vector2 = global_position
 @onready var death_grace_period_timer: Timer = $DeathGracePeriodTimer
