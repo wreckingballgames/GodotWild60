@@ -31,6 +31,10 @@ func _process(delta: float) -> void:
 	if is_grabbing and player != null:
 		global_position.x = player.global_position.x - 50
 		global_position.y = player.global_position.y
+		
+		await get_tree().create_timer(1).timeout
+		if player.grabbed_meter <= 0:
+			die()
 
   
 func _on_body_entered(body: Node) -> void:

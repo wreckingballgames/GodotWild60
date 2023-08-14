@@ -4,7 +4,6 @@ extends CharacterBody2D
 # Grab Mechanic Members
 var is_grabbed: bool = false
 var grabbed_meter: float = 0
-var grabbing_enemies := Array()
 
 # Designer Members
 @export var speed: float = 60
@@ -127,8 +126,6 @@ func flick(body: Node2D) -> void:
 	var flick_vector: Vector2 = global_position.direction_to(body.global_position) * flick_force
 	body.apply_impulse(flick_vector)
 	flick_sound_player.play()
-	if body.get_collision_layer_value(3) or body.get_collision_layer_value(5):
-		body.die()
 
 
 func shake_off() -> void:
@@ -136,10 +133,6 @@ func shake_off() -> void:
 		grabbed_meter -= shake_off_strength
 	else:
 		is_grabbed = false
-		for enemy in grabbing_enemies:
-			if enemy:
-				enemy.call_deferred("die")
-		grabbing_enemies.clear()
 
 
 func get_grabbed() -> void:
@@ -153,4 +146,3 @@ func get_grabbed() -> void:
 func _on_grab_area_body_entered(body: Node2D) -> void:
 	if body.get_collision_layer_value(3):
 		is_grabbed = true
-		grabbing_enemies.append(body)

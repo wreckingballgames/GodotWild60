@@ -6,7 +6,6 @@ extends CenterContainer
 @export var settings_path: String
 
 @onready var start_button: Button = %StartButton
-@onready var music_player: AudioStreamPlayer = %MusicPlayer
 
 
 func _ready() -> void:
