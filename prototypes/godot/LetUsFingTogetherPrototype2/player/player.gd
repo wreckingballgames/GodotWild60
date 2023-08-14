@@ -126,6 +126,7 @@ func die() -> void:
 			return
 		global_position = starting_position
 		grabbed_meter = 0
+		is_grabbed = false
 
 
 func _on_finger_area_body_entered(body: Node2D) -> void:

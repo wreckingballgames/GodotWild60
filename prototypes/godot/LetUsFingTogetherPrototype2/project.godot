@@ -31,7 +31,8 @@ window/stretch/mode="canvas_items"
 
 [editor]
 
-movie_writer/movie_file="/home/raymond/GodotWild60/prototypes/godot/LetUsFingTogetherPrototype2/demos/prototype_demo.gif.avi"
+movie_writer/mjpeg_quality=1.0
+movie_writer/movie_file="/home/raymond/GodotWild60/prototypes/godot/LetUsFingTogetherPrototype2/demos/prototype_demo.avi"
 
 [input]
 
