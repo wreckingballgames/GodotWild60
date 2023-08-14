@@ -49,7 +49,8 @@ func _on_grab_area_area_entered(area: Area2D) -> void:
 
 
 func grab_player() -> void:
-	if is_grabbing and player:
+	if not is_dead and is_grabbing and player:
+		player.grabbed_meter += player.grab_strength
 		if global_position.x >= player.global_position.x:
 			global_position.x = player.global_position.x + player_grab_offset
 			rotation = PI / 2

@@ -13,6 +13,7 @@ var grabbed_meter: float = 0
 # Designer Members
 @export var speed: float = 60
 @export var lives: int = 3
+@export var death_grace_period: float = 15.0 # In seconds
 @export var flick_force: float = 2500
 @export var shake_off_strength: float = 0.03
 @export var grab_strength: float = 0.0060
@@ -162,8 +163,11 @@ func get_grabbed() -> void:
 	if grabbed_meter >= 1:
 		die()
 		return
-	if is_grabbed:
-		grabbed_meter += grab_strength
+	# The enemy increments the player's grabbed_meter by grab_strength for them
+	# This is because I had a hard time preventing grabbed_meter from going up
+	# 	when an enemy is flicked after grabbing
+#	if is_grabbed:
+#		grabbed_meter += grab_strength
 
 
 func _on_grab_area_body_entered(body: Node2D) -> void:
