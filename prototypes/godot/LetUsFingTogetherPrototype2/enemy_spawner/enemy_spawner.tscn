@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://xwjrlqdyt8gi"]
+[gd_scene load_steps=5 format=3 uid="uid://xwjrlqdyt8gi"]
 
 [ext_resource type="Script" path="res://enemy_spawner/enemy_spawner.gd" id="1_yrmfv"]
 [ext_resource type="Texture2D" uid="uid://cqwsa7lgdiup0" path="res://assets/art/enemy_spawner_sprite.png" id="2_oydjr"]
+[ext_resource type="AudioStream" uid="uid://c8gd0ak3iy6h3" path="res://assets/audio/sfx/enemy_death_sound.wav" id="3_qwbhv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hoj5j"]
 size = Vector2(28, 40)
@@ -28,4 +29,9 @@ shape = SubResource("RectangleShape2D_hoj5j")
 wait_time = 4.0
 autostart = true
 
+[node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_qwbhv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

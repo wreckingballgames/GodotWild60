@@ -1,6 +1,8 @@
 extends RigidBody2D
 
 
+var is_dead: bool = false
+
 @export var scroll_speed: float = 4000
 
 @onready var player := get_tree().get_first_node_in_group("Player")
@@ -8,6 +10,7 @@ extends RigidBody2D
 @onready var enemy := preload("res://enemy/enemy.tscn")
 @onready var enemy_container := $EnemyContainer
 @onready var spawn_timer: Timer = $SpawnTimer
+@onready var death_sound_player: AudioStreamPlayer = %DeathSoundPlayer
 
 
 func _physics_process(delta: float) -> void:
@@ -27,3 +30,12 @@ func _on_spawn_timer_timeout() -> void:
 			var enemy_instance := enemy.instantiate()
 			enemy_instance.global_position = global_position
 			enemy_container.add_child(enemy_instance)
+
+
+func die() -> void:
+	death_sound_player.play()
+	is_dead = true
+
+
+func _on_body_entered(body: Node) -> void:
+	die()

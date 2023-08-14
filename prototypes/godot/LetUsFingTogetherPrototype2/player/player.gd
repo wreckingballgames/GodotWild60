@@ -125,6 +125,8 @@ func flick(body: Node2D) -> void:
 	# Use RigidBody2Ds for enemies and obstacles
 	var flick_vector: Vector2 = global_position.direction_to(body.global_position) * flick_force
 	body.apply_impulse(flick_vector)
+	if body.get_collision_layer_value(3) or body.get_collision_layer_value(5):
+		body.die()
 
 
 func shake_off() -> void:
@@ -133,7 +135,8 @@ func shake_off() -> void:
 	else:
 		is_grabbed = false
 		for enemy in grabbing_enemies:
-			enemy.call_deferred("die")
+			if enemy:
+				enemy.call_deferred("die")
 		grabbing_enemies.clear()
 
 
@@ -146,5 +149,6 @@ func get_grabbed() -> void:
 
 
 func _on_grab_area_body_entered(body: Node2D) -> void:
-	is_grabbed = true
-	grabbing_enemies.append(body)
+	if body.get_collision_layer_value(3):
+		is_grabbed = true
+		grabbing_enemies.append(body)
