@@ -29,6 +29,9 @@ var grabbing_enemies := Array()
 @onready var index_finger_sprite: Sprite2D = $FingerSprites/IndexFingerSprite
 @onready var thumb_sprite: Sprite2D = $FingerSprites/ThumbSprite
 
+@onready var shoot_sound_player: AudioStreamPlayer = %ShootSoundPlayer
+@onready var death_sound_player: AudioStreamPlayer = %DeathSoundPlayer
+
 
 func _physics_process(delta: float) -> void:	
 	var input_axis := get_movement_input()
@@ -106,6 +109,7 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 
 func die() -> void:
 	lives -= 1
+	death_sound_player.play()
 	if lives <= 0:
 		queue_free()
 		return
