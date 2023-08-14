@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7lusx0xg7573"]
+[gd_scene load_steps=12 format=3 uid="uid://c7lusx0xg7573"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_23lea"]
 [ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="2_0px4g"]
-[ext_resource type="Texture2D" uid="uid://cs86jj0hqi8o6" path="res://assets/art/background.png" id="2_d8x6u"]
-[ext_resource type="Texture2D" uid="uid://00fhutuc8t84" path="res://assets/art/stars.png" id="3_oi24y"]
+[ext_resource type="Texture2D" uid="uid://d20rk4axot4s0" path="res://assets/art/background_sprite.png" id="2_i4w72"]
 [ext_resource type="PackedScene" uid="uid://b56o5lpqe5sl8" path="res://enemy/enemy.tscn" id="3_rafy1"]
 [ext_resource type="PackedScene" uid="uid://5qifcmll0aw" path="res://obstacle/obstacle.tscn" id="4_ibow5"]
 [ext_resource type="PackedScene" uid="uid://xwjrlqdyt8gi" path="res://enemy_spawner/enemy_spawner.tscn" id="5_4lyyw"]
@@ -26,25 +25,31 @@ script = ExtResource("1_23lea")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 process_mode = 1
 
+[node name="Background" type="Sprite2D" parent="ParallaxBackground"]
+z_index = -150
+position = Vector2(180, 320)
+texture = ExtResource("2_i4w72")
+hframes = 3
+
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -100
 motion_mirroring = Vector2(0, 1280)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(220, 245)
-rotation = 1.5708
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_d8x6u")
+position = Vector2(180, 320)
+texture = ExtResource("2_i4w72")
+hframes = 3
+frame = 1
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -99
 motion_mirroring = Vector2(0, 1280)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(186, 308)
-rotation = 1.5708
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_oi24y")
+position = Vector2(180, 320)
+texture = ExtResource("2_i4w72")
+hframes = 3
+frame = 2
 
 [node name="Player" parent="." instance=ExtResource("2_0px4g")]
 process_mode = 1

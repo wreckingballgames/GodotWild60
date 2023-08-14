@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxxihoi0vlge8"]
 
 [ext_resource type="Script" path="res://title_menu/title_menu.gd" id="1_tjhix"]
-[ext_resource type="Texture2D" uid="uid://cs86jj0hqi8o6" path="res://assets/art/background.png" id="2_4speo"]
+[ext_resource type="Texture2D" uid="uid://d20rk4axot4s0" path="res://assets/art/background_sprite.png" id="2_wsaia"]
 
 [node name="TitleMenu" type="CenterContainer"]
 anchors_preset = 15
@@ -15,12 +15,17 @@ credits_path = "res://credits_screen/credits_screen.tscn"
 settings_path = "res://settings_menu/settings_menu.tscn"
 
 [node name="Background" type="Sprite2D" parent="."]
-visible = false
 z_index = -100
-position = Vector2(241, 337)
-rotation = 1.5708
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_4speo")
+position = Vector2(180, 320)
+texture = ExtResource("2_wsaia")
+hframes = 3
+
+[node name="Background2" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(180, 320)
+texture = ExtResource("2_wsaia")
+hframes = 3
+frame = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
