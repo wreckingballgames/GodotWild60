@@ -13,7 +13,7 @@ var grabbed_meter: float = 0
 # Designer Members
 @export var speed: float = 60
 @export var lives: int = 3
-@export var death_grace_period: float = 15.0
+@export var death_grace_period: float = 3.0
 @export var flick_force: float = 2500
 @export var shake_off_strength: float = 0.1
 @export var grab_strength: float = 0.0060
@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	# Debug keys
+	# Debug
 	debug_restart()
 	debug_toggle_can_die()
 	debug_decrement_lives()
@@ -157,7 +157,7 @@ func flick(body: Node2D) -> void:
 
 
 func shake_off() -> void:
-	if grabbed_meter > 0:
+	if grabbed_meter >= 0:
 		grabbed_meter -= shake_off_strength
 	else:
 		is_grabbed = false

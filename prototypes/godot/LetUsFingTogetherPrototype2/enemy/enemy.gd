@@ -59,5 +59,5 @@ func grab_player() -> void:
 			rotation = 3 * PI / 2
 		global_position.y = player.global_position.y
 		
-		if player and player.grabbed_meter <= 0:
+		if player and player.grabbed_meter < 0:
 			die()
