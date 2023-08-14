@@ -16,6 +16,7 @@ func _ready() -> void:
 
 func _on_start_button_pressed() -> void:
 	MenuMusicPlayer.stop()
+	MenuMusicPlayer.last_playback_position = 0.0
 	get_tree().change_scene_to_file(level_path)
 
 
