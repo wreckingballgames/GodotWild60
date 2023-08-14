@@ -169,7 +169,7 @@ func debug_increment_lives() -> void:
 
 func debug_decrement_lives() -> void:
 	if Input.is_action_just_pressed("debug_decrement_lives"):
-		lives -= 1
+		die()
 		print(lives)
 
 

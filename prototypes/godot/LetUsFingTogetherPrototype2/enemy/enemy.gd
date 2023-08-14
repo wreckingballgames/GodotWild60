@@ -32,8 +32,7 @@ func _process(delta: float) -> void:
 		global_position.x = player.global_position.x - 50
 		global_position.y = player.global_position.y
 		
-		await get_tree().create_timer(1).timeout
-		if player.grabbed_meter <= 0:
+		if player and player.grabbed_meter <= 0:
 			die()
 
   
