@@ -1,13 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://ljxjvb1f4waw"]
+[gd_scene load_steps=16 format=3 uid="uid://ljxjvb1f4waw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_avqd1"]
 [ext_resource type="Texture2D" uid="uid://coxxrohed20hd" path="res://assets/art/player_sprite.png" id="2_0y776"]
+[ext_resource type="Texture2D" uid="uid://ba24tfastqft8" path="res://assets/art/thumb_sprite.png" id="3_8nl74"]
 [ext_resource type="AudioStream" uid="uid://d38moul8bsi8j" path="res://assets/audio/sfx/shoot_sound.wav" id="3_cq82v"]
+[ext_resource type="Texture2D" uid="uid://ch35jqs85rd2k" path="res://assets/art/finger_sprite.png" id="4_007pq"]
 [ext_resource type="AudioStream" uid="uid://bd071oahqyr0q" path="res://assets/audio/sfx/player_death_sound.wav" id="4_xy7ys"]
+[ext_resource type="Texture2D" uid="uid://gid3wu35xkrq" path="res://assets/art/pinky_sprite.png" id="5_0y18i"]
 [ext_resource type="AudioStream" uid="uid://b1ecccn456qur" path="res://assets/audio/sfx/flick_sound.wav" id="5_u181b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upy30"]
-size = Vector2(39.5625, 27.75)
+size = Vector2(45.7812, 27.75)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rdawd"]
 radius = 8.0
@@ -35,22 +38,22 @@ script = ExtResource("1_avqd1")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="HandSprite" type="Sprite2D" parent="."]
-rotation = 4.71239
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 texture = ExtResource("2_0y776")
 
 [node name="GrabArea" type="Area2D" parent="."]
 collision_mask = 4
 
 [node name="GrabCollision" type="CollisionShape2D" parent="GrabArea"]
-position = Vector2(-1.78125, -1.875)
+visible = false
+position = Vector2(-0.890625, -2)
 shape = SubResource("RectangleShape2D_upy30")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_mask = 22
 
 [node name="HeartCollision" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-5, -4)
+position = Vector2(-4, 0)
 shape = SubResource("CircleShape2D_rdawd")
 debug_color = Color(0.85098, 0, 0.0156863, 0.419608)
 
@@ -86,18 +89,38 @@ disabled = true
 
 [node name="ThumbSprite" type="Sprite2D" parent="FingerSprites"]
 unique_name_in_owner = true
+position = Vector2(20, -14)
+scale = Vector2(2, 2)
+texture = ExtResource("3_8nl74")
+hframes = 2
 
 [node name="IndexFingerSprite" type="Sprite2D" parent="FingerSprites"]
 unique_name_in_owner = true
+position = Vector2(10, -30)
+scale = Vector2(2, 2)
+texture = ExtResource("4_007pq")
+hframes = 2
 
 [node name="MiddleFingerSprite" type="Sprite2D" parent="FingerSprites"]
 unique_name_in_owner = true
+position = Vector2(-3, -30)
+scale = Vector2(2, 2)
+texture = ExtResource("4_007pq")
+hframes = 2
 
 [node name="RingFingerSprite" type="Sprite2D" parent="FingerSprites"]
 unique_name_in_owner = true
+position = Vector2(-16, -30)
+scale = Vector2(2, 2)
+texture = ExtResource("4_007pq")
+hframes = 2
 
 [node name="PinkyFingerSprite" type="Sprite2D" parent="FingerSprites"]
 unique_name_in_owner = true
+position = Vector2(-30, -7)
+scale = Vector2(2, 2)
+texture = ExtResource("5_0y18i")
+hframes = 2
 
 [node name="AudioPlayers" type="Node" parent="."]
 
