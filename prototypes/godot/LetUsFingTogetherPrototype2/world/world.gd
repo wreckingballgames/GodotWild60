@@ -9,6 +9,8 @@ var parallax_scroll: float = 0
 @onready var parallax_layer_1 := $ParallaxBackground/ParallaxLayer # Starfield background
 @onready var parallax_layer_2 := $ParallaxBackground/ParallaxLayer2 # Starfield foreground
 
+@export var next_level_path: String
+
 @onready var pause_menu: CenterContainer = %PauseMenu
 @onready var time_remaining_label: Label = %TimeRemainingLabel
 @onready var game_timer: Timer = %GameTimer
@@ -55,4 +57,5 @@ func _on_pause_menu_unpaused() -> void:
 
 
 func _on_game_timer_timeout() -> void:
-	print("game completed")
+	if next_level_path:
+		get_tree().change_scene_to_file(next_level_path)
