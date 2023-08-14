@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvc75kxsdbkmq"]
+[gd_scene load_steps=3 format=3 uid="uid://cvc75kxsdbkmq"]
 
 [ext_resource type="Script" path="res://settings_menu/settings_menu.gd" id="1_eb84k"]
+[ext_resource type="AudioStream" uid="uid://d1kedyujsasxe" path="res://assets/audio/music/space_cadet_training_by_zane_little.mp3" id="2_nptl6"]
 
 [node name="SettingsMenu" type="CenterContainer"]
 anchors_preset = 15
@@ -60,6 +61,10 @@ text = "Return to Title"
 [node name="QuitButton" type="Button" parent="VBoxContainer/HBoxNavigation"]
 layout_mode = 2
 text = "Quit Game"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nptl6")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/HBoxNavigation/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxNavigation/QuitButton" to="." method="_on_quit_button_pressed"]

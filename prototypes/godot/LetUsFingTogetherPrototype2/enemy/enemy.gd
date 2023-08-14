@@ -8,6 +8,7 @@ var is_grabbing: bool = false
 
 @onready var player := get_tree().get_first_node_in_group("Player")
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var death_sound_player: AudioStreamPlayer = %DeathSoundPlayer
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,6 +38,8 @@ func _on_body_entered(body: Node) -> void:
 
 
 func die() -> void:
+	if not death_sound_player.is_playing():
+		death_sound_player.play()
 	is_dead = true
 	is_grabbing = false
 
