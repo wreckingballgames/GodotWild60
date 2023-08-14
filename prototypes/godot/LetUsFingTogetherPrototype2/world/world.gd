@@ -42,6 +42,7 @@ func pause() -> void:
 		get_tree().paused = true
 		is_paused = true
 		pause_menu.show()
+		pause_menu.get_node("VBoxContainer/UnpauseButton").grab_focus()
 
 
 func _on_pause_menu_unpaused() -> void:
