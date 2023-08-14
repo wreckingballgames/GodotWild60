@@ -13,12 +13,13 @@ var grabbed_meter: float = 0
 # Designer Members
 @export var speed: float = 60
 @export var lives: int = 3
-@export var death_grace_period: float = 15.0 # In seconds
+@export var death_grace_period: float = 15.0
 @export var flick_force: float = 2500
-@export var shake_off_strength: float = 0.03
+@export var shake_off_strength: float = 0.1
 @export var grab_strength: float = 0.0060
 
 @onready var starting_position: Vector2 = global_position
+@onready var death_grace_period_timer: Timer = $DeathGracePeriodTimer
 
 # Finger collision references
 @onready var pinky_finger_collision: CollisionShape2D = %PinkyFingerCollision
@@ -34,6 +35,7 @@ var grabbed_meter: float = 0
 @onready var index_finger_sprite: Sprite2D = %IndexFingerSprite
 @onready var thumb_sprite: Sprite2D = %ThumbSprite
 
+# Sound player references
 @onready var shoot_sound_player: AudioStreamPlayer = %ShootSoundPlayer
 @onready var death_sound_player: AudioStreamPlayer = %DeathSoundPlayer
 @onready var flick_sound_player: AudioStreamPlayer = %FlickSoundPlayer
@@ -136,6 +138,8 @@ func die() -> void:
 		if lives <= 0:
 			queue_free()
 			return
+		can_die = false
+		death_grace_period_timer.start(death_grace_period)
 		global_position = starting_position
 		grabbed_meter = 0
 		is_grabbed = false
@@ -157,6 +161,7 @@ func shake_off() -> void:
 		grabbed_meter -= shake_off_strength
 	else:
 		is_grabbed = false
+		grabbed_meter = 0
 
 
 func get_grabbed() -> void:
@@ -198,3 +203,7 @@ func debug_toggle_can_die() -> void:
 		can_die = (not can_die)
 		print("can_die?")
 		print(can_die)
+
+
+func _on_death_grace_period_timer_timeout() -> void:
+	can_die = true

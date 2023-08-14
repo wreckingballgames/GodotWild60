@@ -315,6 +315,9 @@ stream = ExtResource("5_u181b")
 unique_name_in_owner = true
 stream = ExtResource("9_jkm2u")
 
+[node name="DeathGracePeriodTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_entered" from="FingerArea" to="." method="_on_finger_area_body_entered"]
+[connection signal="timeout" from="DeathGracePeriodTimer" to="." method="_on_death_grace_period_timer_timeout"]
