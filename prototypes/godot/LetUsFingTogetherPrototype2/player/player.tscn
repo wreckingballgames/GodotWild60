@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ljxjvb1f4waw"]
+[gd_scene load_steps=23 format=3 uid="uid://ljxjvb1f4waw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_avqd1"]
 [ext_resource type="Texture2D" uid="uid://coxxrohed20hd" path="res://assets/art/player_sprite.png" id="2_0y776"]
@@ -8,6 +8,164 @@
 [ext_resource type="AudioStream" uid="uid://bd071oahqyr0q" path="res://assets/audio/sfx/player_death_sound.wav" id="4_xy7ys"]
 [ext_resource type="Texture2D" uid="uid://gid3wu35xkrq" path="res://assets/art/pinky_sprite.png" id="5_0y18i"]
 [ext_resource type="AudioStream" uid="uid://b1ecccn456qur" path="res://assets/audio/sfx/flick_sound.wav" id="5_u181b"]
+
+[sub_resource type="Animation" id="Animation_xjagb"]
+resource_name = "flick_pinky"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FingerSprites/PinkyFingerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_u0o6o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FingerSprites/PinkyFingerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FingerSprites/RingFingerSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FingerSprites/MiddleFingerSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FingerSprites/IndexFingerSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FingerSprites/ThumbSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_sx14e"]
+resource_name = "flick_ring_finger"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FingerSprites/RingFingerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_73vcq"]
+resource_name = "flick_middle_finger"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FingerSprites/MiddleFingerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_sjc2i"]
+resource_name = "flick_index_finger"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FingerSprites/IndexFingerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_oe1bm"]
+resource_name = "flick_thumb"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FingerSprites/ThumbSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x1i2y"]
+_data = {
+"RESET": SubResource("Animation_u0o6o"),
+"flick_index_finger": SubResource("Animation_sjc2i"),
+"flick_middle_finger": SubResource("Animation_73vcq"),
+"flick_pinky": SubResource("Animation_xjagb"),
+"flick_ring_finger": SubResource("Animation_sx14e"),
+"flick_thumb": SubResource("Animation_oe1bm")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upy30"]
 size = Vector2(45.7812, 27.75)
@@ -36,6 +194,9 @@ motion_mode = 1
 script = ExtResource("1_avqd1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x1i2y")
+}
 
 [node name="HandSprite" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
