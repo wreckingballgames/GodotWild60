@@ -33,7 +33,7 @@ hframes = 3
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -100
-motion_mirroring = Vector2(0, 1280)
+motion_mirroring = Vector2(0, 640)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(180, 320)
@@ -43,7 +43,7 @@ frame = 1
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -99
-motion_mirroring = Vector2(0, 1280)
+motion_mirroring = Vector2(0, 640)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(180, 320)
