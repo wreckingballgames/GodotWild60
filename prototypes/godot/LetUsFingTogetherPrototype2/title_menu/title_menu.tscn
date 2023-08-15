@@ -80,6 +80,12 @@ theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
 text = "Space - Thumb"
 horizontal_alignment = 1
 
+[node name="Label7" type="Label" parent="VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+text = "Mouse Buttons - Move left and right"
+horizontal_alignment = 1
+
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -100
 position = Vector2(180, 320)
