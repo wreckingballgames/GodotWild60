@@ -40,7 +40,3 @@ func _on_body_entered(body: Node) -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	collision_shape_2d.disabled = false
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()

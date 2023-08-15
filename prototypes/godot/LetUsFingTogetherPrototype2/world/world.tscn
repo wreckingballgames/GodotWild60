@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7lusx0xg7573"]
+[gd_scene load_steps=13 format=3 uid="uid://c7lusx0xg7573"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_23lea"]
 [ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="2_0px4g"]
@@ -13,10 +13,13 @@
 size = Vector2(674.875, 61.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqac3"]
-size = Vector2(66.625, 1426.5)
+size = Vector2(71.3125, 940.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqdw6"]
-size = Vector2(83.125, 1409)
+size = Vector2(83.125, 943)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubpnk"]
+size = Vector2(679, 63)
 
 [node name="World" type="Node2D"]
 process_mode = 3
@@ -66,12 +69,16 @@ position = Vector2(501.562, 355)
 shape = SubResource("RectangleShape2D_5sfpm")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(197, -393.75)
+position = Vector2(194.656, -150.75)
 shape = SubResource("RectangleShape2D_kqac3")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(798.438, -382.5)
+position = Vector2(798.438, -149.5)
 shape = SubResource("RectangleShape2D_kqdw6")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(499, -656)
+shape = SubResource("RectangleShape2D_ubpnk")
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_w6o7o")]
 unique_name_in_owner = true
