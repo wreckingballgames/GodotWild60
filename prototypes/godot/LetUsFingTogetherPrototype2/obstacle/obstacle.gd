@@ -17,8 +17,8 @@ func _ready() -> void:
 	sprite_2d.global_rotation = rng.randf_range(0, TAU)
 
 
-func _physics_process(delta: float) -> void:
-	apply_force(scroll_vector * delta)
+#func _physics_process(delta: float) -> void:
+#	apply_force(scroll_vector * delta)
 
 
 func _process(delta: float) -> void:

@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hoj5j"]
 size = Vector2(28, 40)
 
-[node name="EnemySpawner" type="RigidBody2D"]
+[node name="EnemySpawner" type="RigidBody2D" groups=["EnemySpawner"]]
 collision_layer = 16
 collision_mask = 11
 mass = 4.0

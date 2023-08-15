@@ -13,8 +13,8 @@ var is_dead: bool = false
 @onready var death_sound_player: AudioStreamPlayer = %DeathSoundPlayer
 
 
-func _physics_process(delta: float) -> void:
-	apply_force(scroll_vector * delta)
+#func _physics_process(delta: float) -> void:
+#	apply_force(scroll_vector * delta)
 
 
 func _process(delta: float) -> void:

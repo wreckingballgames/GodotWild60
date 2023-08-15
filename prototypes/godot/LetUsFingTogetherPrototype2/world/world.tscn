@@ -107,6 +107,21 @@ process_mode = 1
 [node name="Enemy" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
 position = Vector2(272, 314)
 
+[node name="Enemy2" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
+position = Vector2(276, -80)
+
+[node name="Enemy3" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
+position = Vector2(212, -84)
+
+[node name="Enemy4" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
+position = Vector2(140, -88)
+
+[node name="Enemy5" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
+position = Vector2(72, -92)
+
+[node name="Enemy6" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
+position = Vector2(72, -92)
+
 [node name="ObstacleContainer" type="Node" parent="."]
 process_mode = 1
 
@@ -118,6 +133,9 @@ position = Vector2(76, 198)
 
 [node name="Obstacle3" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
 position = Vector2(193, 77)
+
+[node name="Obstacle4" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(104, -37)
 
 [node name="EnemySpawnerContainer" type="Node" parent="."]
 process_mode = 1

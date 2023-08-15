@@ -3,6 +3,17 @@ extends Node2D
 
 var is_paused: bool = false
 
+# Scrolling members
+@onready var enemies: Array[Node] = get_tree().get_nodes_in_group("Enemy")
+@export var enemy_scroll_speed: float = 4000
+@onready var enemy_scroll_vector: Vector2 = Vector2.DOWN * enemy_scroll_speed
+@onready var obstacles: Array[Node] = get_tree().get_nodes_in_group("Obstacle")
+@export var obstacle_scroll_speed: float = 2000
+@onready var obstacle_scroll_vector: Vector2 = Vector2.DOWN * obstacle_scroll_speed
+@onready var enemy_spawners: Array[Node] = get_tree().get_nodes_in_group("EnemySpawner")
+@export var enemy_spawner_scroll_speed = 4000
+@onready var enemy_spawner_scroll_vector: Vector2 = Vector2.DOWN * enemy_spawner_scroll_speed
+
 # Parallax Members
 var parallax_scroll: float = 0
 @export var parallax_scroll_speed: float = 200
@@ -16,8 +27,14 @@ var parallax_scroll: float = 0
 @onready var game_timer: Timer = %GameTimer
 
 
-func _ready() -> void:
-	RenderingServer.set_default_clear_color(Color.WEB_GRAY)
+func _physics_process(delta: float) -> void:
+	enemies = get_tree().get_nodes_in_group("Enemy")
+	obstacles = get_tree().get_nodes_in_group("Obstacle")
+	enemy_spawners = get_tree().get_nodes_in_group("EnemySpawner")
+	scroll(delta)
+	enemies.clear()
+	obstacles.clear()
+	enemy_spawners.clear()
 
 
 func _process(delta: float) -> void:
@@ -59,3 +76,12 @@ func _on_pause_menu_unpaused() -> void:
 func _on_game_timer_timeout() -> void:
 	if next_level_path:
 		get_tree().change_scene_to_file(next_level_path)
+
+
+func scroll(delta: float) -> void:
+	for enemy in enemies:
+		enemy.apply_force(enemy_scroll_vector * delta)
+	for obstacle in obstacles:
+		obstacle.apply_force(obstacle_scroll_vector * delta)
+	for enemy_spawner in enemy_spawners:
+		enemy_spawner.apply_force(enemy_spawner_scroll_vector * delta)
