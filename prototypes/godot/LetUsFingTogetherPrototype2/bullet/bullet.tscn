@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://hi1886t2sl8g"]
+
+[node name="Bullet" type="RigidBody2D" groups=["Bullet"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

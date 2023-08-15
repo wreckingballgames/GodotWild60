@@ -184,6 +184,7 @@ reverse_scroll={
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="death_zone"
 2d_physics/layer_5="enemy_spawner"
+2d_physics/layer_6="bullet"
 
 [physics]
 
