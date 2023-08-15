@@ -32,10 +32,13 @@ var grabbed_meter: float = 0.1
 @export var grab_strength: float = 0.006
 ## Whether or not debug keys work. See Input Map
 @export var can_use_debug_keys: bool = true
+## Strengh of force to apply to bullets
+@export var shoot_force: float = 60000.0
 
 @onready var starting_position: Vector2 = global_position
 @onready var death_grace_period_timer: Timer = %DeathGracePeriodTimer
 @onready var shoot_cooldown_timer: Timer = %ShootCooldownTimer
+@onready var shoot_vector: Vector2 = Vector2.UP * shoot_force
 
 # Finger collision references
 @onready var pinky_finger_collision: CollisionShape2D = %PinkyFingerCollision
@@ -57,6 +60,8 @@ var grabbed_meter: float = 0.1
 @onready var flick_sound_player: AudioStreamPlayer = %FlickSoundPlayer
 @onready var grab_sound_player: AudioStreamPlayer = %GrabSoundPlayer
 
+@onready var bullet_scene := preload("res://bullet/bullet.tscn")
+
 
 func _physics_process(delta: float) -> void:
 	apply_velocity()
@@ -65,7 +70,7 @@ func _physics_process(delta: float) -> void:
 	
 	bounds_checking()
 	handle_flick_input()
-	shoot()
+	shoot(delta)
 	get_grabbed()
 
 
@@ -231,11 +236,15 @@ func _on_death_grace_period_timer_timeout() -> void:
 	can_die = true
 
 
-func shoot() -> void:
+func shoot(delta: float) -> void:
 	if can_shoot and Input.is_action_pressed("flick_index_finger") and Input.is_action_pressed("flick_thumb"):
 		shoot_sound_player.play()
 		shoot_cooldown_timer.start(shoot_cooldown)
 		can_shoot = false
+		var bullet = bullet_scene.instantiate()
+		add_child(bullet)
+		bullet.position = Vector2(20, -100)
+		bullet.apply_impulse(shoot_vector * delta)
 
 
 func _on_shoot_cooldown_timer_timeout() -> void:

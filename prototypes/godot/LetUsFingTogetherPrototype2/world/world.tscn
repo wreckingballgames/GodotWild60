@@ -10,13 +10,13 @@
 [ext_resource type="AudioStream" uid="uid://bohlv8cbp72dr" path="res://assets/audio/music/dizzy_racing_by_zane_little.mp3" id="9_logk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sfpm"]
-size = Vector2(674.875, 61.5)
+size = Vector2(692.438, 61.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqac3"]
-size = Vector2(71.3125, 940.5)
+size = Vector2(71.3125, 1873)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqdw6"]
-size = Vector2(83.125, 943)
+size = Vector2(83.125, 1880)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubpnk"]
 size = Vector2(679, 63)
@@ -66,19 +66,19 @@ collision_layer = 8
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(501.562, 355)
+position = Vector2(502.219, 843)
 shape = SubResource("RectangleShape2D_5sfpm")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(194.656, -150.75)
+position = Vector2(194.656, -133.5)
 shape = SubResource("RectangleShape2D_kqac3")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(798.438, -149.5)
+position = Vector2(798.438, -137)
 shape = SubResource("RectangleShape2D_kqdw6")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(499, -656)
+position = Vector2(499, -1117)
 shape = SubResource("RectangleShape2D_ubpnk")
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_w6o7o")]
