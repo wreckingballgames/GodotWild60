@@ -14,6 +14,10 @@ var is_grabbing: bool = false
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 
+func _ready() -> void:
+	collision_shape_2d.disabled = true
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	grab_player()
@@ -62,3 +66,11 @@ func grab_player() -> void:
 		
 		if player and player.grabbed_meter < 0:
 			die()
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	collision_shape_2d.disabled = false
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()

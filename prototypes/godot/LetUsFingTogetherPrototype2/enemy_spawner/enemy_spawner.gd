@@ -9,6 +9,11 @@ var is_dead: bool = false
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var death_sound_player: AudioStreamPlayer = %DeathSoundPlayer
 @onready var screen_size: Vector2 = get_viewport_rect().size
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+
+
+func _ready() -> void:
+	collision_shape_2d.disabled = true
 
 
 func _process(delta: float) -> void:
@@ -31,3 +36,11 @@ func die() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	die()
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	collision_shape_2d.disabled = false
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()
