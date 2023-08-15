@@ -248,7 +248,7 @@ disabled = true
 
 [node name="ThumbCollision" type="CollisionShape2D" parent="FingerArea"]
 unique_name_in_owner = true
-position = Vector2(26, -23)
+position = Vector2(39, -3)
 shape = SubResource("CircleShape2D_mdsib")
 disabled = true
 
@@ -291,8 +291,8 @@ hframes = 2
 [node name="ThumbSprite" type="Sprite2D" parent="FingerSprites"]
 unique_name_in_owner = true
 z_index = -1
-position = Vector2(22, -14)
-rotation = 0.197309
+position = Vector2(29, -4)
+rotation = 1.57012
 scale = Vector2(2, 2)
 texture = ExtResource("3_8nl74")
 hframes = 2
