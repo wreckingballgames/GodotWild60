@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 
 var can_die: bool = true
-@export var can_use_debug_keys: bool = true
+var can_shoot: bool = true
 
 var rng := RandomNumberGenerator.new()
 
@@ -15,12 +15,15 @@ var grabbed_meter: float = 0.1
 @export var speed: float = 60
 @export var lives: int = 3
 @export var death_grace_period: float = 3.0
+@export var shoot_cooldown: float = 3.0
 @export var flick_force: float = 2500
 @export var shake_off_strength: float = 0.05
 @export var grab_strength: float = 0.006
+@export var can_use_debug_keys: bool = true
 
 @onready var starting_position: Vector2 = global_position
-@onready var death_grace_period_timer: Timer = $DeathGracePeriodTimer
+@onready var death_grace_period_timer: Timer = %DeathGracePeriodTimer
+@onready var shoot_cooldown_timer: Timer = %ShootCooldownTimer
 
 # Finger collision references
 @onready var pinky_finger_collision: CollisionShape2D = %PinkyFingerCollision
@@ -51,6 +54,7 @@ func _physics_process(delta: float) -> void:
 	
 	bounds_checking()
 	handle_flick_input()
+	shoot()
 	get_grabbed()
 
 
@@ -208,3 +212,14 @@ func debug_toggle_can_die() -> void:
 
 func _on_death_grace_period_timer_timeout() -> void:
 	can_die = true
+
+
+func shoot() -> void:
+	if can_shoot and Input.is_action_pressed("flick_index_finger") and Input.is_action_pressed("flick_thumb"):
+		shoot_sound_player.play()
+		shoot_cooldown_timer.start(shoot_cooldown)
+		can_shoot = false
+
+
+func _on_shoot_cooldown_timer_timeout() -> void:
+	can_shoot = true
