@@ -14,6 +14,72 @@ level_path = "res://world/world.tscn"
 credits_path = "res://credits_screen/credits_screen.tscn"
 settings_path = "res://settings_menu/settings_menu.tscn"
 
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer3"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+text = "Start Game"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+text = "Credits"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+text = "Quit Game"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+text = "Controls:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+text = "Q - Pinky"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+text = "W - Ring"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+text = "E - Middle"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+text = "R - Index"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+text = "Space - Thumb"
+horizontal_alignment = 1
+
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -100
 position = Vector2(180, 320)
@@ -27,31 +93,7 @@ texture = ExtResource("2_wsaia")
 hframes = 3
 frame = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="StartButton" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
-text = "Start Game"
-
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
-text = "Credits"
-
-[node name="SettingsButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
-text = "Settings"
-
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
-text = "Quit Game"
-
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer3/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer3/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer3/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer3/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
