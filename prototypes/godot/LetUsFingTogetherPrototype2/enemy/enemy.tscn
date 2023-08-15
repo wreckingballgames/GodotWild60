@@ -33,6 +33,7 @@ shape = SubResource("RectangleShape2D_18sy1")
 [node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_4v16m")
+volume_db = -12.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]

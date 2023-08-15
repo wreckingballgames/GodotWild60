@@ -302,18 +302,22 @@ hframes = 2
 [node name="ShootSoundPlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
 unique_name_in_owner = true
 stream = ExtResource("3_cq82v")
+volume_db = -12.0
 
 [node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
 unique_name_in_owner = true
 stream = ExtResource("4_xy7ys")
+volume_db = -12.0
 
 [node name="FlickSoundPlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
 unique_name_in_owner = true
 stream = ExtResource("5_u181b")
+volume_db = -12.0
 
 [node name="GrabSoundPlayer" type="AudioStreamPlayer" parent="AudioPlayers"]
 unique_name_in_owner = true
 stream = ExtResource("9_jkm2u")
+volume_db = -12.0
 
 [node name="DeathGracePeriodTimer" type="Timer" parent="."]
 
