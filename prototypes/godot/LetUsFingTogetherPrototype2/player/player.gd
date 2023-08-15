@@ -12,6 +12,7 @@ var is_grabbed: bool = false
 var grabbed_meter: float = 0.1
 
 # Designer Members
+
 ## Horizontal movement speed
 @export var speed: float = 60
 ## Number of lives
@@ -55,8 +56,7 @@ var grabbed_meter: float = 0.1
 
 
 func _physics_process(delta: float) -> void:	
-	var input_axis := get_movement_input()
-	velocity.x = input_axis * speed # Remember that move_and_slide() applies delta
+	apply_velocity()
 	
 	move_and_slide()
 	
@@ -76,6 +76,11 @@ func _process(delta: float) -> void:
 
 func get_movement_input() -> float:
 	return Input.get_axis("move_left", "move_right")
+
+
+func apply_velocity() -> void:
+	var input_axis := get_movement_input()
+	velocity.x = input_axis * speed # Remember that move_and_slide() applies delta
 
 
 func bounds_checking() -> void:
