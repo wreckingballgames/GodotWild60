@@ -12,13 +12,21 @@ var is_grabbed: bool = false
 var grabbed_meter: float = 0.1
 
 # Designer Members
+## Horizontal movement speed
 @export var speed: float = 60
+## Number of lives
 @export var lives: int = 3
+## Duration of invincibility period between deaths
 @export var death_grace_period: float = 3.0
+## Duration before being able to shoot again after shooting
 @export var shoot_cooldown: float = 3.0
+## Force applied to bodies by flicking
 @export var flick_force: float = 2500
+## Amount grabbed_meter is reduced by each time a finger is flicked
 @export var shake_off_strength: float = 0.05
+## Amount grabbed_meter is increased per frame per enemy grabbing player
 @export var grab_strength: float = 0.006
+## Whether or not debug keys work. See Input Map
 @export var can_use_debug_keys: bool = true
 
 @onready var starting_position: Vector2 = global_position
