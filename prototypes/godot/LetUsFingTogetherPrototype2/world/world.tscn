@@ -136,6 +136,30 @@ position = Vector2(289, -369)
 [node name="Obstacle6" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
 position = Vector2(238, -465)
 
+[node name="Obstacle7" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(94, -839)
+
+[node name="Obstacle8" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(313, -1154)
+
+[node name="Obstacle9" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(78, -1448)
+
+[node name="Obstacle10" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(126, -1811)
+
+[node name="Obstacle11" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(313, -1816)
+
+[node name="Obstacle12" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(207, -1937)
+
+[node name="Obstacle13" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(66, -2008)
+
+[node name="Obstacle14" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(343, -2023)
+
 [node name="EnemySpawnerContainer" type="Node" parent="."]
 process_mode = 1
 
@@ -156,6 +180,21 @@ position = Vector2(113, -373)
 
 [node name="EnemySpawner6" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
 position = Vector2(300, -635)
+
+[node name="EnemySpawner7" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(231, -987)
+
+[node name="EnemySpawner8" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(215, -1366)
+
+[node name="EnemySpawner9" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(103, -1654)
+
+[node name="EnemySpawner10" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(349, -1654)
+
+[node name="EnemySpawner11" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(203, -2274)
 
 [node name="ReverseScrollCooldownTimer" type="Timer" parent="."]
 wait_time = 5.0
