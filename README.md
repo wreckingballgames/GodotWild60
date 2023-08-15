@@ -3,8 +3,8 @@ My project for Godot Wild Jam 60. The brainstorming folder is an Obsidian vault.
 
 I will be sharing devlogs of my process on my [YouTube channel](https://www.youtube.com/channel/UCkmUS6Mn76aGRC-NcJzFr-Q).
 
-The game will be available on my [itch.io page](https://wreckingballgames.itch.io/).
+The game will be available on my [itch.io page](https://wreckingballgames.itch.io/) and under the [Godot Wild Jam](https://itch.io/jam/godot-wild-jam-60).
 
 FOR COLLABORATORS:
 
-I am using Godot 4.1.1 on Linux. I plan to use the Compatibility renderer and export native builds of the final game for all platforms. Apparently Godot 4 does not do web export correctly so this will be necessary to submit properly.
+I am using Godot 4.1.1 on Linux. I plan to use the Compatibility renderer and export native builds of the final game for all platforms along with the web version. (Godot 4 apparently does not support Mac with its web builds and Godot Wild requires the game to work on all platforms.)
