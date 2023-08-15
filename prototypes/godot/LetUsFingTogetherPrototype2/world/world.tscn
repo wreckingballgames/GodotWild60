@@ -100,7 +100,7 @@ autoplay = true
 
 [node name="GameTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 20.0
+wait_time = 120.0
 one_shot = true
 autostart = true
 
@@ -157,6 +157,11 @@ position = Vector2(113, -373)
 [node name="EnemySpawner6" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
 position = Vector2(300, -635)
 
+[node name="ReverseScrollCooldownTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="scroll_reversed" from="Player" to="." method="_on_player_scroll_reversed"]
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
 [connection signal="unpaused" from="PauseMenu" to="." method="_on_pause_menu_unpaused"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

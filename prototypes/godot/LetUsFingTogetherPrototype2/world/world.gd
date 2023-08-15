@@ -82,3 +82,10 @@ func scroll(delta: float) -> void:
 		obstacle.apply_force(obstacle_scroll_vector * delta)
 	for enemy_spawner in enemy_spawners:
 		enemy_spawner.apply_force(enemy_spawner_scroll_vector * delta)
+
+
+func _on_player_scroll_reversed() -> void:
+	enemy_scroll_vector *= -1
+	obstacle_scroll_vector *= -1
+	enemy_spawner_scroll_vector *= -1
+	parallax_scroll_speed *= -1

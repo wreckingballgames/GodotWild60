@@ -2,6 +2,9 @@ class_name Player
 extends CharacterBody2D
 
 
+signal scroll_reversed
+
+
 var can_die: bool = true
 var can_shoot: bool = true
 
@@ -55,7 +58,7 @@ var grabbed_meter: float = 0.1
 @onready var grab_sound_player: AudioStreamPlayer = %GrabSoundPlayer
 
 
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
 	apply_velocity()
 	
 	move_and_slide()
@@ -67,6 +70,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
+	reverse_scroll()
 	# Debug
 	debug_restart()
 	debug_toggle_can_die()
@@ -236,3 +240,8 @@ func shoot() -> void:
 
 func _on_shoot_cooldown_timer_timeout() -> void:
 	can_shoot = true
+
+
+func reverse_scroll() -> void:
+	if Input.is_action_just_pressed("reverse_scroll"):
+		scroll_reversed.emit()
