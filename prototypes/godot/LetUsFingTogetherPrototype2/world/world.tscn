@@ -107,21 +107,6 @@ process_mode = 1
 [node name="Enemy" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
 position = Vector2(272, 314)
 
-[node name="Enemy2" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
-position = Vector2(276, -80)
-
-[node name="Enemy3" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
-position = Vector2(212, -84)
-
-[node name="Enemy4" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
-position = Vector2(140, -88)
-
-[node name="Enemy5" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
-position = Vector2(72, -92)
-
-[node name="Enemy6" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
-position = Vector2(72, -92)
-
 [node name="ObstacleContainer" type="Node" parent="."]
 process_mode = 1
 
@@ -135,13 +120,34 @@ position = Vector2(76, 198)
 position = Vector2(193, 77)
 
 [node name="Obstacle4" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
-position = Vector2(104, -37)
+position = Vector2(114, -183)
+
+[node name="Obstacle5" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(289, -369)
+
+[node name="Obstacle6" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+position = Vector2(238, -465)
 
 [node name="EnemySpawnerContainer" type="Node" parent="."]
 process_mode = 1
 
 [node name="EnemySpawner" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
 position = Vector2(91, 385)
+
+[node name="EnemySpawner2" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(283, 46)
+
+[node name="EnemySpawner3" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(79, 40)
+
+[node name="EnemySpawner4" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(294, -141)
+
+[node name="EnemySpawner5" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(113, -373)
+
+[node name="EnemySpawner6" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+position = Vector2(300, -635)
 
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
 [connection signal="unpaused" from="PauseMenu" to="." method="_on_pause_menu_unpaused"]

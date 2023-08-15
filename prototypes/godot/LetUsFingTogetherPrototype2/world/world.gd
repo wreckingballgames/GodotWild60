@@ -5,13 +5,13 @@ var is_paused: bool = false
 
 # Scrolling members
 @onready var enemies: Array[Node] = get_tree().get_nodes_in_group("Enemy")
-@export var enemy_scroll_speed: float = 4000
+@export var enemy_scroll_speed: float = 2000
 @onready var enemy_scroll_vector: Vector2 = Vector2.DOWN * enemy_scroll_speed
 @onready var obstacles: Array[Node] = get_tree().get_nodes_in_group("Obstacle")
 @export var obstacle_scroll_speed: float = 2000
 @onready var obstacle_scroll_vector: Vector2 = Vector2.DOWN * obstacle_scroll_speed
 @onready var enemy_spawners: Array[Node] = get_tree().get_nodes_in_group("EnemySpawner")
-@export var enemy_spawner_scroll_speed = 4000
+@export var enemy_spawner_scroll_speed = 2000
 @onready var enemy_spawner_scroll_vector: Vector2 = Vector2.DOWN * enemy_spawner_scroll_speed
 
 # Parallax Members
@@ -32,9 +32,6 @@ func _physics_process(delta: float) -> void:
 	obstacles = get_tree().get_nodes_in_group("Obstacle")
 	enemy_spawners = get_tree().get_nodes_in_group("EnemySpawner")
 	scroll(delta)
-	enemies.clear()
-	obstacles.clear()
-	enemy_spawners.clear()
 
 
 func _process(delta: float) -> void:
