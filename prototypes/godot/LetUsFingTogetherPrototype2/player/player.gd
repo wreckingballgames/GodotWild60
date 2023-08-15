@@ -9,7 +9,7 @@ var rng := RandomNumberGenerator.new()
 
 # Grab Mechanic Members
 var is_grabbed: bool = false
-var grabbed_meter: float = 0
+var grabbed_meter: float = 0.1
 
 # Designer Members
 @export var speed: float = 60
@@ -162,7 +162,7 @@ func shake_off() -> void:
 		grabbed_meter -= shake_off_strength
 	else:
 		is_grabbed = false
-		grabbed_meter = 0
+		grabbed_meter = 0.1
 
 
 func get_grabbed() -> void:

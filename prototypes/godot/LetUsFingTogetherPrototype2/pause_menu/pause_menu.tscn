@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://32wxee4cd0fm"]
+[gd_scene load_steps=3 format=3 uid="uid://32wxee4cd0fm"]
 
 [ext_resource type="Script" path="res://pause_menu/pause_menu.gd" id="1_36ub8"]
+[ext_resource type="Theme" uid="uid://bf61vonsbfr84" path="res://assets/default_theme.tres" id="2_fw7pl"]
 
 [node name="PauseMenu" type="CenterContainer"]
 anchors_preset = 15
@@ -17,17 +18,19 @@ layout_mode = 2
 [node name="UnpauseButton" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+theme = ExtResource("2_fw7pl")
 text = "Unpause"
 
 [node name="ReturnButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+theme = ExtResource("2_fw7pl")
 text = "Return to Title"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+theme = ExtResource("2_fw7pl")
 text = "Quit Game"
 
 [connection signal="pressed" from="VBoxContainer/UnpauseButton" to="." method="_on_unpause_button_pressed"]

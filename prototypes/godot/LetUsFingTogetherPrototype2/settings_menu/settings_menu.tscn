@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvc75kxsdbkmq"]
+[gd_scene load_steps=4 format=3 uid="uid://cvc75kxsdbkmq"]
 
 [ext_resource type="Script" path="res://settings_menu/settings_menu.gd" id="1_eb84k"]
 [ext_resource type="Texture2D" uid="uid://d20rk4axot4s0" path="res://assets/art/background_sprite.png" id="2_t8qmo"]
+[ext_resource type="Theme" uid="uid://bf61vonsbfr84" path="res://assets/default_theme.tres" id="3_547q3"]
 
 [node name="SettingsMenu" type="CenterContainer"]
 anchors_preset = 15
@@ -37,17 +38,17 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnLeft"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+theme = ExtResource("3_547q3")
 text = "test"
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnLeft"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+theme = ExtResource("3_547q3")
 text = "test"
 
 [node name="Button3" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnLeft"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+theme = ExtResource("3_547q3")
 text = "test"
 
 [node name="ButtonColumnRight" type="VBoxContainer" parent="VBoxContainer/HBoxSettings"]
@@ -55,17 +56,17 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnRight"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+theme = ExtResource("3_547q3")
 text = "test"
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnRight"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+theme = ExtResource("3_547q3")
 text = "test"
 
 [node name="Button3" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnRight"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+theme = ExtResource("3_547q3")
 text = "test"
 
 [node name="HBoxNavigation" type="HBoxContainer" parent="VBoxContainer"]
@@ -75,12 +76,12 @@ alignment = 1
 [node name="ReturnButton" type="Button" parent="VBoxContainer/HBoxNavigation"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+theme = ExtResource("3_547q3")
 text = "Return to Title"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/HBoxNavigation"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.956863, 1, 0, 1)
+theme = ExtResource("3_547q3")
 text = "Quit Game"
 
 [connection signal="pressed" from="VBoxContainer/HBoxNavigation/ReturnButton" to="." method="_on_return_button_pressed"]
