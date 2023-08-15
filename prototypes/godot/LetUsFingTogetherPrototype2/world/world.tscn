@@ -24,6 +24,7 @@ size = Vector2(679, 63)
 [node name="World" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_23lea")
+next_level_path = "res://end_screen/end_screen.tscn"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 process_mode = 1
@@ -99,7 +100,7 @@ autoplay = true
 
 [node name="GameTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 180.0
+wait_time = 20.0
 one_shot = true
 autostart = true
 
