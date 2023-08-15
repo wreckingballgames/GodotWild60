@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 
@@ -15,7 +16,7 @@ var grabbed_meter: float = 0
 @export var lives: int = 3
 @export var death_grace_period: float = 3.0
 @export var flick_force: float = 2500
-@export var shake_off_strength: float = 0.1
+@export var shake_off_strength: float = 0.05
 @export var grab_strength: float = 0.006
 
 @onready var starting_position: Vector2 = global_position
@@ -126,7 +127,7 @@ func handle_flick_input() -> void:
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	if body.get_collision_layer_value(3) and body.is_dead == true:
+	if body is Enemy and body.is_dead:
 		return
 	die()
 
@@ -176,7 +177,7 @@ func get_grabbed() -> void:
 
 
 func _on_grab_area_body_entered(body: Node2D) -> void:
-	if body.get_collision_layer_value(3):
+	if body is Enemy:
 		is_grabbed = true
 		grab_sound_player.play()
 
