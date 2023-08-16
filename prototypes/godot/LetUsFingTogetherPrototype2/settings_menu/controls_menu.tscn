@@ -71,7 +71,7 @@ horizontal_alignment = 1
 [node name="MovementControls" type="Label" parent="VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_pk6fg")
-text = "Mouse Buttons - Move left and right"
+text = "Movement - Mouse Cursor"
 horizontal_alignment = 1
 
 [node name="HBoxNavigation" type="HBoxContainer" parent="VBoxContainer"]
