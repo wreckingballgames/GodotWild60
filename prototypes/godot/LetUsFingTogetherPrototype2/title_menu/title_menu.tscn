@@ -13,7 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_tjhix")
 level_path = "res://world/world.tscn"
 credits_path = "res://credits_screen/credits_screen.tscn"
-settings_path = "res://settings_menu/settings_menu.tscn"
+controls_path = "res://settings_menu/controls_menu.tscn"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -33,11 +33,11 @@ layout_mode = 2
 theme = ExtResource("2_ux3lo")
 text = "Credits"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer3/VBoxContainer"]
+[node name="ControlsButton" type="Button" parent="VBoxContainer3/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_ux3lo")
-text = "Settings"
+text = "Controls"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer3/VBoxContainer"]
 unique_name_in_owner = true
@@ -105,5 +105,5 @@ frame = 1
 
 [connection signal="pressed" from="VBoxContainer3/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer3/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="VBoxContainer3/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer3/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="VBoxContainer3/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -3,7 +3,7 @@ extends CenterContainer
 
 @export var level_path: String
 @export var credits_path: String
-@export var settings_path: String
+@export var controls_path: String
 
 @onready var start_button: Button = %StartButton
 
@@ -25,10 +25,10 @@ func _on_credits_button_pressed() -> void:
 	get_tree().change_scene_to_file(credits_path)
 
 
-func _on_settings_button_pressed() -> void:
-	MenuMusicPlayer.save_playback_position()
-	get_tree().change_scene_to_file(settings_path)
-
-
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_controls_button_pressed() -> void:
+	MenuMusicPlayer.save_playback_position()
+	get_tree().change_scene_to_file(controls_path)

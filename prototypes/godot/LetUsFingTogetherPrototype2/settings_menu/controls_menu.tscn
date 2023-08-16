@@ -1,28 +1,28 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvc75kxsdbkmq"]
 
-[ext_resource type="Script" path="res://settings_menu/settings_menu.gd" id="1_eb84k"]
-[ext_resource type="Texture2D" uid="uid://d20rk4axot4s0" path="res://assets/art/background_sprite.png" id="2_t8qmo"]
-[ext_resource type="Theme" uid="uid://bf61vonsbfr84" path="res://assets/default_theme.tres" id="3_547q3"]
+[ext_resource type="Script" path="res://settings_menu/controls_menu.gd" id="1_op6gu"]
+[ext_resource type="Texture2D" uid="uid://d20rk4axot4s0" path="res://assets/art/background_sprite.png" id="2_sd0ir"]
+[ext_resource type="Theme" uid="uid://bf61vonsbfr84" path="res://assets/default_theme.tres" id="3_pk6fg"]
 
-[node name="SettingsMenu" type="CenterContainer"]
+[node name="ControlsMenu" type="CenterContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_eb84k")
+script = ExtResource("1_op6gu")
 title_path = "res://title_menu/title_menu.tscn"
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -100
 position = Vector2(180, 320)
-texture = ExtResource("2_t8qmo")
+texture = ExtResource("2_sd0ir")
 hframes = 3
 
 [node name="Background2" type="Sprite2D" parent="."]
 z_index = -100
 position = Vector2(180, 320)
-texture = ExtResource("2_t8qmo")
+texture = ExtResource("2_sd0ir")
 hframes = 3
 frame = 1
 
@@ -38,17 +38,17 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnLeft"]
 layout_mode = 2
-theme = ExtResource("3_547q3")
+theme = ExtResource("3_pk6fg")
 text = "test"
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnLeft"]
 layout_mode = 2
-theme = ExtResource("3_547q3")
+theme = ExtResource("3_pk6fg")
 text = "test"
 
 [node name="Button3" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnLeft"]
 layout_mode = 2
-theme = ExtResource("3_547q3")
+theme = ExtResource("3_pk6fg")
 text = "test"
 
 [node name="ButtonColumnRight" type="VBoxContainer" parent="VBoxContainer/HBoxSettings"]
@@ -56,17 +56,17 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnRight"]
 layout_mode = 2
-theme = ExtResource("3_547q3")
+theme = ExtResource("3_pk6fg")
 text = "test"
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnRight"]
 layout_mode = 2
-theme = ExtResource("3_547q3")
+theme = ExtResource("3_pk6fg")
 text = "test"
 
 [node name="Button3" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnRight"]
 layout_mode = 2
-theme = ExtResource("3_547q3")
+theme = ExtResource("3_pk6fg")
 text = "test"
 
 [node name="HBoxNavigation" type="HBoxContainer" parent="VBoxContainer"]
@@ -76,12 +76,12 @@ alignment = 1
 [node name="ReturnButton" type="Button" parent="VBoxContainer/HBoxNavigation"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("3_547q3")
+theme = ExtResource("3_pk6fg")
 text = "Return to Title"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/HBoxNavigation"]
 layout_mode = 2
-theme = ExtResource("3_547q3")
+theme = ExtResource("3_pk6fg")
 text = "Quit Game"
 
 [connection signal="pressed" from="VBoxContainer/HBoxNavigation/ReturnButton" to="." method="_on_return_button_pressed"]
