@@ -36,6 +36,8 @@ var grabbed_meter: float = 0.1
 @export var shoot_force: float = 60000.0
 
 @onready var starting_position: Vector2 = global_position
+@onready var mouse_position: Vector2 = get_global_mouse_position()
+@onready var to_mouse_vector: Vector2 = global_position.direction_to(mouse_position) * speed
 @onready var death_grace_period_timer: Timer = %DeathGracePeriodTimer
 @onready var shoot_cooldown_timer: Timer = %ShootCooldownTimer
 @onready var shoot_vector: Vector2 = Vector2.UP * shoot_force
@@ -64,6 +66,7 @@ var grabbed_meter: float = 0.1
 
 
 func _physics_process(delta: float) -> void:
+	to_mouse_vector = get_to_mouse_vector()
 	apply_velocity()
 	
 	move_and_slide()
@@ -88,8 +91,11 @@ func get_movement_input() -> float:
 
 
 func apply_velocity() -> void:
-	var input_axis := get_movement_input()
-	velocity.x = input_axis * speed # Remember that move_and_slide() applies delta
+#	var input_axis := get_movement_input()
+#	if input_axis != 0:
+#		velocity.x = input_axis * speed # Remember that move_and_slide() applies delta
+#	else:
+	velocity.x = to_mouse_vector.x
 
 
 func bounds_checking() -> void:
@@ -254,3 +260,8 @@ func _on_shoot_cooldown_timer_timeout() -> void:
 func reverse_scroll() -> void:
 	if Input.is_action_just_pressed("reverse_scroll"):
 		scroll_reversed.emit()
+
+
+func get_to_mouse_vector() -> Vector2:
+	mouse_position = get_global_mouse_position()
+	return global_position.direction_to(mouse_position) * speed
