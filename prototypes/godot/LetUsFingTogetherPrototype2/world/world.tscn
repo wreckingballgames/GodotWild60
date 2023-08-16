@@ -25,6 +25,7 @@ size = Vector2(502, 63)
 process_mode = 3
 script = ExtResource("1_23lea")
 next_level_path = "res://end_screen/end_screen.tscn"
+metadata/_edit_vertical_guides_ = [-303.0, 655.0]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 process_mode = 1
@@ -70,11 +71,11 @@ position = Vector2(513, 967)
 shape = SubResource("RectangleShape2D_5sfpm")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(294, -75.5)
+position = Vector2(-18, -75)
 shape = SubResource("RectangleShape2D_kqac3")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(725, -75.5)
+position = Vector2(1028, -75.5)
 shape = SubResource("RectangleShape2D_kqdw6")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="DeathZone"]
