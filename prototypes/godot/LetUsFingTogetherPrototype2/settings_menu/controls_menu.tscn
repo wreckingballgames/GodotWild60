@@ -29,45 +29,50 @@ frame = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="HBoxSettings" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="ButtonColumnLeft" type="VBoxContainer" parent="VBoxContainer/HBoxSettings"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnLeft"]
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_pk6fg")
-text = "test"
+text = "Controls:"
+horizontal_alignment = 1
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnLeft"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_pk6fg")
-text = "test"
+text = "Q - Pinky"
+horizontal_alignment = 1
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnLeft"]
+[node name="Label4" type="Label" parent="VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_pk6fg")
-text = "test"
+text = "W - Ring"
+horizontal_alignment = 1
 
-[node name="ButtonColumnRight" type="VBoxContainer" parent="VBoxContainer/HBoxSettings"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnRight"]
+[node name="Label5" type="Label" parent="VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_pk6fg")
-text = "test"
+text = "E - Middle"
+horizontal_alignment = 1
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnRight"]
+[node name="Label6" type="Label" parent="VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_pk6fg")
-text = "test"
+text = "R - Index"
+horizontal_alignment = 1
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxSettings/ButtonColumnRight"]
+[node name="Label7" type="Label" parent="VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_pk6fg")
-text = "test"
+text = "Space - Thumb"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_pk6fg")
+text = "Mouse Buttons - Move left and right"
+horizontal_alignment = 1
 
 [node name="HBoxNavigation" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
