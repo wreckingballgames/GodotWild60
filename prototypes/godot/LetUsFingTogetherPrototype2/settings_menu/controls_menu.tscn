@@ -68,10 +68,22 @@ theme = ExtResource("3_pk6fg")
 text = "Space - Thumb"
 horizontal_alignment = 1
 
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_pk6fg")
+text = "Middle click to reverse"
+horizontal_alignment = 1
+
 [node name="MovementControls" type="Label" parent="VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_pk6fg")
 text = "Movement - Mouse Cursor"
+horizontal_alignment = 1
+
+[node name="ShootControls" type="Label" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_pk6fg")
+text = "Make a finger gun to shoot"
 horizontal_alignment = 1
 
 [node name="HBoxNavigation" type="HBoxContainer" parent="VBoxContainer"]
