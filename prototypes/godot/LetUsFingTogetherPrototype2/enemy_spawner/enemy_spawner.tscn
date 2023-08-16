@@ -1,27 +1,80 @@
-[gd_scene load_steps=5 format=3 uid="uid://xwjrlqdyt8gi"]
+[gd_scene load_steps=10 format=3 uid="uid://xwjrlqdyt8gi"]
 
 [ext_resource type="Script" path="res://enemy_spawner/enemy_spawner.gd" id="1_yrmfv"]
 [ext_resource type="Texture2D" uid="uid://cqwsa7lgdiup0" path="res://assets/art/enemy_spawner_sprite.png" id="2_oydjr"]
+[ext_resource type="Texture2D" uid="uid://dfuh6qhvd5cs1" path="res://assets/art/explosion_sprite.png" id="3_a6a3w"]
 [ext_resource type="AudioStream" uid="uid://c8gd0ak3iy6h3" path="res://assets/audio/sfx/enemy_death_sound.wav" id="3_qwbhv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hoj5j"]
 size = Vector2(28, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krvu7"]
+size = Vector2(28, 40)
+
+[sub_resource type="Animation" id="Animation_bsost"]
+resource_name = "die"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExplosionSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_2go47"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExplosionSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k8xgu"]
+_data = {
+"RESET": SubResource("Animation_2go47"),
+"die": SubResource("Animation_bsost")
+}
+
 [node name="EnemySpawner" type="RigidBody2D" groups=["EnemySpawner"]]
 collision_layer = 16
-collision_mask = 11
+collision_mask = 59
 mass = 4.0
 max_contacts_reported = 4
 contact_monitor = true
 can_sleep = false
 script = ExtResource("1_yrmfv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ShipSprite" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
 texture = ExtResource("2_oydjr")
 
+[node name="ExplosionSprite" type="Sprite2D" parent="."]
+position = Vector2(-2, -2)
+scale = Vector2(2.87593, 2.87593)
+texture = ExtResource("3_a6a3w")
+hframes = 4
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hoj5j")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_krvu7")
+debug_color = Color(1, 0, 0.0156863, 0.419608)
 
 [node name="EnemyContainer" type="Node" parent="."]
 
@@ -35,7 +88,15 @@ stream = ExtResource("3_qwbhv")
 volume_db = -12.0
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -10)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_k8xgu")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

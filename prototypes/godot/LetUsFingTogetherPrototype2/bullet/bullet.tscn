@@ -1,14 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://hi1886t2sl8g"]
+[gd_scene load_steps=4 format=3 uid="uid://hi1886t2sl8g"]
 
+[ext_resource type="Script" path="res://bullet/bullet.gd" id="1_d4wsg"]
 [ext_resource type="Texture2D" uid="uid://bcbea4gsutvfy" path="res://assets/art/bullet_sprite.png" id="1_en2d8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xvg4f"]
 radius = 4.12311
 
 [node name="Bullet" type="RigidBody2D" groups=["Bullet"]]
+z_index = 100
+collision_layer = 32
+collision_mask = 30
+max_contacts_reported = 4
+contact_monitor = true
+lock_rotation = true
+script = ExtResource("1_d4wsg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BulletSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_en2d8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xvg4f")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

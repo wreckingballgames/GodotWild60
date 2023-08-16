@@ -20,21 +20,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	player = get_tree().get_first_node_in_group("Player")
 	grab_player()
 	if not is_dead and not is_grabbing:
 		var force_direction: Vector2 = Vector2.ZERO
 		# Look at and move toward player until enemy passes player
-		if player != null and player.global_position.y > global_position.y:
+		if player and player.global_position.y > global_position.y:
 			force_direction = global_position.direction_to(player.global_position)
 		
 		var force_vector: Vector2 = force_direction * force_strength
 
 		apply_force(force_vector * delta)
-
-
-func _process(delta: float) -> void:
-	# Ensure player is still in the scene
-	player = get_tree().get_first_node_in_group("Player")
 
   
 func _on_body_entered(body: Node) -> void:
@@ -42,13 +38,15 @@ func _on_body_entered(body: Node) -> void:
 
 
 func die() -> void:
-	if not death_sound_player.is_playing():
+	if not is_dead:
 		death_sound_player.play()
-	is_dead = true
-	is_grabbing = false
+		is_dead = true
+		is_grabbing = false
 
 
-func _on_grab_area_area_entered(area: Area2D) -> void:
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.name == "FingerArea" and not is_dead:
+		die()
 	if area.name == "GrabArea" and not is_dead:
 		is_grabbing = true
 
