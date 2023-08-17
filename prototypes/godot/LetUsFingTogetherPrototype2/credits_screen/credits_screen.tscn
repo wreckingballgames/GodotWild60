@@ -19,7 +19,7 @@ position = Vector2(180, 320)
 texture = ExtResource("2_k333m")
 hframes = 3
 
-[node name="Background2" type="Sprite2D" parent="."]
+[node name="Stars" type="Sprite2D" parent="."]
 z_index = -100
 position = Vector2(180, 320)
 texture = ExtResource("2_k333m")

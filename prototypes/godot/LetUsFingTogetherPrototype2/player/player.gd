@@ -172,7 +172,6 @@ func die() -> void:
 		lives -= 1
 		death_sound_player.play()
 		if lives <= 0:
-			queue_free()
 			return
 		can_die = false
 		death_grace_period_timer.start(death_grace_period)
