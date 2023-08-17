@@ -26,7 +26,7 @@ var parallax_scroll: float = 0
 @onready var parallax_layer_1 := $ParallaxBackground/ParallaxLayer # Starfield background
 @onready var parallax_layer_2 := $ParallaxBackground/ParallaxLayer2 # Starfield foreground
 
-@export var next_level_path: String
+@export var next_level: PackedScene
 
 @onready var pause_menu: CenterContainer = %PauseMenu
 @onready var time_remaining_label: Label = %TimeRemainingLabel
@@ -45,7 +45,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	lives = player.lives
 	lives_label.text = str(lives)
 	handle_pause()
 	parallax_scrolling(delta)
@@ -83,8 +82,8 @@ func _on_pause_menu_unpaused() -> void:
 
 
 func _on_game_timer_timeout() -> void:
-	if next_level_path:
-		get_tree().change_scene_to_file(next_level_path)
+	if next_level:
+		get_tree().change_scene_to_packed(next_level)
 
 
 func scroll(delta: float) -> void:
@@ -103,3 +102,11 @@ func _on_player_scroll_reversed() -> void:
 	obstacle_scroll_vector *= -1
 	enemy_spawner_scroll_vector *= -1
 	parallax_scroll_speed *= -1
+
+
+func _on_player_lost_life() -> void:
+	lives -= 1
+
+
+func _on_player_gained_life() -> void:
+	lives += 1

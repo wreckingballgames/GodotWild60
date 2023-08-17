@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 
 signal scroll_reversed
+signal lost_life
+signal gained_life
 
 
 var can_die: bool = true
@@ -84,6 +86,7 @@ func _process(delta: float) -> void:
 	# Debug
 	debug_restart()
 	debug_toggle_can_die()
+	debug_die()
 	debug_decrement_lives()
 	debug_increment_lives()
 
@@ -169,6 +172,7 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 func die() -> void:
 	if can_die:
 		lives -= 1
+		lost_life.emit()
 		death_sound_player.play()
 		if lives <= 0:
 			queue_free()
@@ -216,10 +220,10 @@ func _on_grab_area_body_entered(body: Node2D) -> void:
 		grab_sound_player.play()
 	elif body.name.contains("Life"):
 		body.queue_free()
+		gained_life.emit()
 		lives += 1
 	elif body.name.contains("Fuel"):
 		pass
-	print(body.name)
 
 
 func debug_restart() -> void:
@@ -227,15 +231,24 @@ func debug_restart() -> void:
 		get_tree().reload_current_scene()
 
 
+func debug_die() -> void:
+	if Input.is_action_just_pressed("debug_die"):
+		die()
+
+
 func debug_increment_lives() -> void:
 	if can_use_debug_keys and Input.is_action_just_pressed("debug_increment_lives"):
+		gained_life.emit()
 		lives += 1
 		print(lives)
 
 
 func debug_decrement_lives() -> void:
 	if can_use_debug_keys and Input.is_action_just_pressed("debug_decrement_lives"):
-		die()
+		lost_life.emit()
+		lives -= 1
+		if lives <= 0:
+			queue_free()
 		print(lives)
 
 
@@ -280,10 +293,3 @@ func reverse_scroll() -> void:
 func get_to_mouse_vector() -> Vector2:
 	mouse_position = get_global_mouse_position()
 	return global_position.direction_to(mouse_position) * speed
-
-
-func _on_grab_area_area_entered(area: Area2D) -> void:
-	if area.name == "LifePickup":
-		lives += 1
-	if area.name == "FuelPickup":
-		pass
