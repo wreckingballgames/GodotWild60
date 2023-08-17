@@ -31,6 +31,9 @@ var parallax_scroll: float = 0
 @onready var pause_menu: CenterContainer = %PauseMenu
 @onready var time_remaining_label: Label = %TimeRemainingLabel
 @onready var game_timer: Timer = %GameTimer
+@onready var lives_label: Label = %LivesLabel
+@onready var player: CharacterBody2D = %Player
+@onready var lives: int = player.lives
 
 
 func _physics_process(delta: float) -> void:
@@ -42,6 +45,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
+	lives = player.lives
+	lives_label.text = str(lives)
 	handle_pause()
 	parallax_scrolling(delta)
 	time_remaining_label.text = "Arriving in " + str(game_timer.time_left)
