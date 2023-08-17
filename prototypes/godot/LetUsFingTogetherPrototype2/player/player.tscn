@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://ljxjvb1f4waw"]
+[gd_scene load_steps=26 format=3 uid="uid://ljxjvb1f4waw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_avqd1"]
 [ext_resource type="Texture2D" uid="uid://coxxrohed20hd" path="res://assets/art/player_sprite.png" id="2_0y776"]
 [ext_resource type="Texture2D" uid="uid://ba24tfastqft8" path="res://assets/art/thumb_sprite.png" id="3_8nl74"]
+[ext_resource type="Texture2D" uid="uid://bohus6gn0vc28" path="res://assets/art/rocket_exhaust_sprite.png" id="3_anjfy"]
 [ext_resource type="AudioStream" uid="uid://d38moul8bsi8j" path="res://assets/audio/sfx/shoot_sound.wav" id="3_cq82v"]
 [ext_resource type="Texture2D" uid="uid://ch35jqs85rd2k" path="res://assets/art/finger_sprite.png" id="4_007pq"]
 [ext_resource type="AudioStream" uid="uid://bd071oahqyr0q" path="res://assets/audio/sfx/player_death_sound.wav" id="4_xy7ys"]
@@ -67,6 +68,18 @@ tracks/4/path = NodePath("FingerSprites/ThumbSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RocketExhaustSprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -158,6 +171,23 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_qu7uo"]
+resource_name = "rocket"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RocketExhaustSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x1i2y"]
 _data = {
 "RESET": SubResource("Animation_u0o6o"),
@@ -165,7 +195,8 @@ _data = {
 "flick_middle_finger": SubResource("Animation_73vcq"),
 "flick_pinky": SubResource("Animation_xjagb"),
 "flick_ring_finger": SubResource("Animation_sx14e"),
-"flick_thumb": SubResource("Animation_oe1bm")
+"flick_thumb": SubResource("Animation_oe1bm"),
+"rocket": SubResource("Animation_qu7uo")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upy30"]
@@ -195,6 +226,7 @@ motion_mode = 1
 script = ExtResource("1_avqd1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "rocket"
 libraries = {
 "": SubResource("AnimationLibrary_x1i2y")
 }
@@ -202,6 +234,13 @@ libraries = {
 [node name="HandSprite" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = ExtResource("2_0y776")
+
+[node name="RocketExhaustSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1, 28)
+scale = Vector2(2, 2)
+texture = ExtResource("3_anjfy")
+hframes = 3
 
 [node name="GrabArea" type="Area2D" parent="."]
 collision_mask = 4

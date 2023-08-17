@@ -63,6 +63,8 @@ var grabbed_meter: float = 0.1
 @onready var grab_sound_player: AudioStreamPlayer = %GrabSoundPlayer
 
 @onready var bullet_scene := preload("res://bullet/bullet.tscn")
+@onready var rocket_exhaust_sprite: Sprite2D = %RocketExhaustSprite
+@onready var rocket_exhaust_is_visible: bool = true
 
 
 func _physics_process(delta: float) -> void:
@@ -174,7 +176,7 @@ func die() -> void:
 		can_die = false
 		death_grace_period_timer.start(death_grace_period)
 		global_position = starting_position
-		grabbed_meter = 0
+		grabbed_meter = 0.1
 		is_grabbed = false
 
 
@@ -260,6 +262,13 @@ func _on_shoot_cooldown_timer_timeout() -> void:
 func reverse_scroll() -> void:
 	if Input.is_action_just_pressed("reverse_scroll"):
 		scroll_reversed.emit()
+		
+		if rocket_exhaust_is_visible:
+			rocket_exhaust_sprite.hide()
+			rocket_exhaust_is_visible = false
+		else:
+			rocket_exhaust_sprite.show()
+			rocket_exhaust_is_visible = true
 
 
 func get_to_mouse_vector() -> Vector2:
