@@ -46,10 +46,11 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
+	player = get_tree().get_first_node_in_group("Player")
 	if player:
 		lives = player.lives
 		lives_label.text = str(lives)
-	if lives <= 0:
+	else:
 		get_tree().change_scene_to_packed(game_over_screen)
 	handle_pause()
 	parallax_scrolling(delta)
