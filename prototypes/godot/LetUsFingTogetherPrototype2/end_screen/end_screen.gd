@@ -11,6 +11,7 @@ var rank: String
 @onready var mech_head: Sprite2D = %MechHead
 @onready var mech_body: Sprite2D = %MechBody
 @onready var rank_label: Label = %RankLabel
+@onready var next_level: PackedScene = preload("res://title_menu/title_menu.tscn")
 
 @onready var pinky_pressed: bool = false
 @onready var ring_pressed: bool = false
@@ -36,6 +37,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	rank_label.text = "Rank: " + rank
 	rank_label.show()
 	await get_tree().create_timer(3).timeout
+	get_tree().change_scene_to_packed(next_level)
 
 
 func check_inputs() -> void:
