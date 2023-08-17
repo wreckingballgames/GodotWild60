@@ -1,7 +1,100 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4rfah7r8jkiw"]
+[gd_scene load_steps=12 format=3 uid="uid://c4rfah7r8jkiw"]
 
 [ext_resource type="Theme" uid="uid://bf61vonsbfr84" path="res://assets/default_theme.tres" id="1_63wmn"]
 [ext_resource type="Texture2D" uid="uid://d20rk4axot4s0" path="res://assets/art/background_sprite.png" id="1_be36h"]
+[ext_resource type="Script" path="res://end_screen/end_screen.gd" id="1_gwjhf"]
+[ext_resource type="Texture2D" uid="uid://b4e3o8vt03i6c" path="res://assets/art/mech_head_sprite.png" id="3_p7mvv"]
+[ext_resource type="Texture2D" uid="uid://bpp4gi0rjumbs" path="res://assets/art/mech_body_sprite.png" id="4_epcj1"]
+[ext_resource type="AudioStream" uid="uid://c8gd0ak3iy6h3" path="res://assets/audio/sfx/enemy_death_sound.wav" id="6_2pi2f"]
+[ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="7_8ww8j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v610c"]
+radius = 87.0
+
+[sub_resource type="Animation" id="Animation_gwplx"]
+resource_name = "death"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MechHead:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MechBody:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_2er4l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MechHead:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MechBody:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c2fg8"]
+_data = {
+"RESET": SubResource("Animation_2er4l"),
+"death": SubResource("Animation_gwplx")
+}
 
 [node name="EndScreen" type="CenterContainer"]
 anchors_preset = 15
@@ -9,25 +102,70 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gwjhf")
 
 [node name="Background" type="Sprite2D" parent="."]
+z_index = -80
 position = Vector2(180, 320)
 texture = ExtResource("1_be36h")
 hframes = 3
 
 [node name="StarBackground" type="Sprite2D" parent="."]
+z_index = -80
 position = Vector2(180, 320)
 texture = ExtResource("1_be36h")
 hframes = 3
 frame = 1
 
 [node name="StarForeground" type="Sprite2D" parent="."]
+z_index = -80
 position = Vector2(180, 320)
 texture = ExtResource("1_be36h")
 hframes = 3
 frame = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="VictoryLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme = ExtResource("1_63wmn")
 text = "You are a winner!"
+
+[node name="MechHead" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = -80
+position = Vector2(179, 180)
+scale = Vector2(4, 4)
+texture = ExtResource("3_p7mvv")
+hframes = 3
+
+[node name="MechBody" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = -80
+position = Vector2(179, 446)
+scale = Vector2(6, 6)
+texture = ExtResource("4_epcj1")
+hframes = 2
+
+[node name="WinArea" type="Area2D" parent="."]
+position = Vector2(179, 193)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
+shape = SubResource("CircleShape2D_v610c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_c2fg8")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2pi2f")
+volume_db = -12.0
+
+[node name="Player" parent="." instance=ExtResource("7_8ww8j")]
+unique_name_in_owner = true
+position = Vector2(181, 690)
+
+[connection signal="area_entered" from="WinArea" to="." method="_on_win_area_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
