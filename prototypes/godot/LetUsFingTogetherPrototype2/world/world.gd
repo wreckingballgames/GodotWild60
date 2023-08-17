@@ -32,7 +32,7 @@ var parallax_scroll: float = 0
 @onready var time_remaining_label: Label = %TimeRemainingLabel
 @onready var game_timer: Timer = %GameTimer
 @onready var lives_label: Label = %LivesLabel
-@onready var player: CharacterBody2D = %Player
+@onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 @onready var lives: int = player.lives
 
 
@@ -45,7 +45,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	lives_label.text = str(lives)
+	if player:
+		lives = player.lives
+		lives_label.text = str(lives)
 	handle_pause()
 	parallax_scrolling(delta)
 	time_remaining_label.text = "Arriving in: " + str(floorf(game_timer.time_left))
@@ -102,11 +104,3 @@ func _on_player_scroll_reversed() -> void:
 	obstacle_scroll_vector *= -1
 	enemy_spawner_scroll_vector *= -1
 	parallax_scroll_speed *= -1
-
-
-func _on_player_lost_life() -> void:
-	lives -= 1
-
-
-func _on_player_gained_life() -> void:
-	lives += 1

@@ -3,8 +3,6 @@ extends CharacterBody2D
 
 
 signal scroll_reversed
-signal lost_life
-signal gained_life
 
 
 var can_die: bool = true
@@ -172,7 +170,6 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 func die() -> void:
 	if can_die:
 		lives -= 1
-		lost_life.emit()
 		death_sound_player.play()
 		if lives <= 0:
 			queue_free()
@@ -220,7 +217,6 @@ func _on_grab_area_body_entered(body: Node2D) -> void:
 		grab_sound_player.play()
 	elif body.name.contains("Life"):
 		body.queue_free()
-		gained_life.emit()
 		lives += 1
 	elif body.name.contains("Fuel"):
 		pass
@@ -238,14 +234,12 @@ func debug_die() -> void:
 
 func debug_increment_lives() -> void:
 	if can_use_debug_keys and Input.is_action_just_pressed("debug_increment_lives"):
-		gained_life.emit()
 		lives += 1
 		print(lives)
 
 
 func debug_decrement_lives() -> void:
 	if can_use_debug_keys and Input.is_action_just_pressed("debug_decrement_lives"):
-		lost_life.emit()
 		lives -= 1
 		if lives <= 0:
 			queue_free()

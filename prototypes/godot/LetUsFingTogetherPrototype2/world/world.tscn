@@ -234,8 +234,6 @@ position = Vector2(211, 431)
 wait_time = 5.0
 one_shot = true
 
-[connection signal="gained_life" from="Player" to="." method="_on_player_gained_life"]
-[connection signal="lost_life" from="Player" to="." method="_on_player_lost_life"]
 [connection signal="scroll_reversed" from="Player" to="." method="_on_player_scroll_reversed"]
 [connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
 [connection signal="unpaused" from="PauseMenu" to="." method="_on_pause_menu_unpaused"]
