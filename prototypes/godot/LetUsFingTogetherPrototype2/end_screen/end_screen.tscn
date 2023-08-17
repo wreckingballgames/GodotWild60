@@ -124,17 +124,6 @@ texture = ExtResource("1_be36h")
 hframes = 3
 frame = 2
 
-[node name="VictoryLabel" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-theme = ExtResource("1_63wmn")
-text = "You are a winner!"
-
-[node name="RankLabel" type="Label" parent="."]
-unique_name_in_owner = true
-layout_mode = 2
-
 [node name="MechHead" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 z_index = -80
@@ -150,6 +139,27 @@ position = Vector2(179, 446)
 scale = Vector2(6, 6)
 texture = ExtResource("4_epcj1")
 hframes = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VictoryLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+layout_mode = 2
+theme = ExtResource("1_63wmn")
+text = "You are a winner!"
+horizontal_alignment = 1
+
+[node name="RankLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+layout_mode = 2
+theme = ExtResource("1_63wmn")
+text = "test"
+horizontal_alignment = 1
 
 [node name="WinArea" type="Area2D" parent="."]
 position = Vector2(179, 193)

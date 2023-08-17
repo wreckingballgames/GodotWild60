@@ -1,6 +1,8 @@
 extends CenterContainer
 
 
+var rank: String
+
 @export var scroll_speed: float = 2.0
 
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
@@ -23,12 +25,17 @@ func _process(delta: float) -> void:
 
 func _on_win_area_area_entered(area: Area2D) -> void:
 	animation_player.play("death")
+	check_inputs()
+	rank = check_rank()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	mech_head.hide()
 	mech_body.hide()
 	victory_label.show()
+	rank_label.text = "Rank: " + rank
+	rank_label.show()
+	await get_tree().create_timer(3).timeout
 
 
 func check_inputs() -> void:
@@ -42,3 +49,10 @@ func check_inputs() -> void:
 		index_pressed = true
 	if Input.is_action_pressed("flick_thumb"):
 		thumb_pressed = true
+
+
+func check_rank() -> String:
+	if middle_pressed:
+		return "F U"
+	else:
+		return "S"
