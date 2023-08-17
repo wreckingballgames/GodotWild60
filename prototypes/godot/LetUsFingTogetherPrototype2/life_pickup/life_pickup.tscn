@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dduq27xddn70q"]
+
+[ext_resource type="Texture2D" uid="uid://dcy0m3s06g6d8" path="res://assets/art/life_pickup.png" id="1_n365c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pvbqu"]
+radius = 3.0
+
+[node name="LifePickup" type="Area2D" groups=["Pickup"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n365c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pvbqu")

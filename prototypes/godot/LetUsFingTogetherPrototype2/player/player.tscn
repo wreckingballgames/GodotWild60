@@ -246,7 +246,6 @@ hframes = 3
 collision_mask = 4
 
 [node name="GrabCollision" type="CollisionShape2D" parent="GrabArea"]
-visible = false
 position = Vector2(-0.890625, -2)
 shape = SubResource("RectangleShape2D_upy30")
 
