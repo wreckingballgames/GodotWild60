@@ -7,12 +7,18 @@ var is_paused: bool = false
 @onready var enemies: Array[Node] = get_tree().get_nodes_in_group("Enemy")
 @export var enemy_scroll_speed: float = 2000
 @onready var enemy_scroll_vector: Vector2 = Vector2.DOWN * enemy_scroll_speed
+
 @onready var obstacles: Array[Node] = get_tree().get_nodes_in_group("Obstacle")
 @export var obstacle_scroll_speed: float = 2000
 @onready var obstacle_scroll_vector: Vector2 = Vector2.DOWN * obstacle_scroll_speed
+
 @onready var enemy_spawners: Array[Node] = get_tree().get_nodes_in_group("EnemySpawner")
 @export var enemy_spawner_scroll_speed = 2000
 @onready var enemy_spawner_scroll_vector: Vector2 = Vector2.DOWN * enemy_spawner_scroll_speed
+
+@onready var pickups: Array[Node] = get_tree().get_nodes_in_group("Pickup")
+@export var pickup_scroll_speed = 2000
+@onready var pickup_scroll_vector: Vector2 = Vector2.DOWN * pickup_scroll_speed
 
 # Parallax Members
 var parallax_scroll: float = 0
@@ -31,6 +37,7 @@ func _physics_process(delta: float) -> void:
 	enemies = get_tree().get_nodes_in_group("Enemy")
 	obstacles = get_tree().get_nodes_in_group("Obstacle")
 	enemy_spawners = get_tree().get_nodes_in_group("EnemySpawner")
+	pickups = get_tree().get_nodes_in_group("Pickup")
 	scroll(delta)
 
 
@@ -82,6 +89,8 @@ func scroll(delta: float) -> void:
 		obstacle.apply_force(obstacle_scroll_vector * delta)
 	for enemy_spawner in enemy_spawners:
 		enemy_spawner.apply_force(enemy_spawner_scroll_vector * delta)
+	for pickup in pickups:
+		pickup.apply_force(pickup_scroll_vector * delta)
 
 
 func _on_player_scroll_reversed() -> void:

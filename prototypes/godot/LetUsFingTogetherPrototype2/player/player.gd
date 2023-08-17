@@ -214,6 +214,12 @@ func _on_grab_area_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		is_grabbed = true
 		grab_sound_player.play()
+	elif body.name.contains("Life"):
+		body.queue_free()
+		lives += 1
+	elif body.name.contains("Fuel"):
+		pass
+	print(body.name)
 
 
 func debug_restart() -> void:
@@ -274,3 +280,10 @@ func reverse_scroll() -> void:
 func get_to_mouse_vector() -> Vector2:
 	mouse_position = get_global_mouse_position()
 	return global_position.direction_to(mouse_position) * speed
+
+
+func _on_grab_area_area_entered(area: Area2D) -> void:
+	if area.name == "LifePickup":
+		lives += 1
+	if area.name == "FuelPickup":
+		pass

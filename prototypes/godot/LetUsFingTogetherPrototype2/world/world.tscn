@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7lusx0xg7573"]
+[gd_scene load_steps=14 format=3 uid="uid://c7lusx0xg7573"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_23lea"]
 [ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="2_0px4g"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://5qifcmll0aw" path="res://obstacle/obstacle.tscn" id="4_ibow5"]
 [ext_resource type="PackedScene" uid="uid://xwjrlqdyt8gi" path="res://enemy_spawner/enemy_spawner.tscn" id="5_4lyyw"]
 [ext_resource type="PackedScene" uid="uid://32wxee4cd0fm" path="res://pause_menu/pause_menu.tscn" id="5_w6o7o"]
+[ext_resource type="PackedScene" uid="uid://dduq27xddn70q" path="res://life_pickup/life_pickup.tscn" id="9_2hbjp"]
 [ext_resource type="AudioStream" uid="uid://bohlv8cbp72dr" path="res://assets/audio/music/dizzy_racing_by_zane_little.mp3" id="9_logk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sfpm"]
@@ -110,92 +111,105 @@ unique_name_in_owner = true
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="EnemyContainer" type="Node" parent="."]
+[node name="Enemies" type="Node" parent="."]
 process_mode = 1
 
-[node name="Enemy" parent="EnemyContainer" instance=ExtResource("3_rafy1")]
+[node name="Enemy" parent="Enemies" instance=ExtResource("3_rafy1")]
 position = Vector2(272, 314)
 
-[node name="ObstacleContainer" type="Node" parent="."]
+[node name="Obstacles" type="Node" parent="."]
 process_mode = 1
 
-[node name="Obstacle" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+[node name="Obstacle" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(267, 151)
 
-[node name="Obstacle2" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+[node name="Obstacle2" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(76, 198)
 
-[node name="Obstacle3" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+[node name="Obstacle3" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(193, 77)
 
-[node name="Obstacle4" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+[node name="Obstacle4" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(114, -183)
 
-[node name="Obstacle5" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+[node name="Obstacle5" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(289, -369)
 
-[node name="Obstacle6" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+[node name="Obstacle6" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(238, -465)
 
-[node name="Obstacle7" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+[node name="Obstacle7" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(94, -839)
 
-[node name="Obstacle8" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+[node name="Obstacle8" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(313, -1154)
 
-[node name="Obstacle9" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+[node name="Obstacle9" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(78, -1448)
 
-[node name="Obstacle10" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+[node name="Obstacle10" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(126, -1811)
 
-[node name="Obstacle11" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+[node name="Obstacle11" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(313, -1816)
 
-[node name="Obstacle12" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+[node name="Obstacle12" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(207, -1937)
 
-[node name="Obstacle13" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+[node name="Obstacle13" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(66, -2008)
 
-[node name="Obstacle14" parent="ObstacleContainer" instance=ExtResource("4_ibow5")]
+[node name="Obstacle14" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(343, -2023)
 
-[node name="EnemySpawnerContainer" type="Node" parent="."]
+[node name="EnemySpawners" type="Node" parent="."]
 process_mode = 1
 
-[node name="EnemySpawner" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+[node name="EnemySpawner" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(91, 385)
 
-[node name="EnemySpawner2" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+[node name="EnemySpawner2" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(283, 46)
 
-[node name="EnemySpawner3" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+[node name="EnemySpawner3" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(79, 40)
 
-[node name="EnemySpawner4" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+[node name="EnemySpawner4" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(294, -141)
 
-[node name="EnemySpawner5" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+[node name="EnemySpawner5" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(113, -373)
 
-[node name="EnemySpawner6" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+[node name="EnemySpawner6" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(300, -635)
 
-[node name="EnemySpawner7" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+[node name="EnemySpawner7" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(231, -987)
 
-[node name="EnemySpawner8" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+[node name="EnemySpawner8" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(215, -1366)
 
-[node name="EnemySpawner9" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+[node name="EnemySpawner9" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(103, -1654)
 
-[node name="EnemySpawner10" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+[node name="EnemySpawner10" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(349, -1654)
 
-[node name="EnemySpawner11" parent="EnemySpawnerContainer" instance=ExtResource("5_4lyyw")]
+[node name="EnemySpawner11" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(203, -2274)
+
+[node name="LifePickups" type="Node" parent="."]
+
+[node name="LifePickup" parent="LifePickups" instance=ExtResource("9_2hbjp")]
+position = Vector2(180, 484)
+
+[node name="LifePickup2" parent="LifePickups" instance=ExtResource("9_2hbjp")]
+position = Vector2(193, 456)
+
+[node name="LifePickup3" parent="LifePickups" instance=ExtResource("9_2hbjp")]
+position = Vector2(211, 431)
+
+[node name="FuelPickups" type="Node" parent="."]
 
 [node name="ReverseScrollCooldownTimer" type="Timer" parent="."]
 wait_time = 5.0
