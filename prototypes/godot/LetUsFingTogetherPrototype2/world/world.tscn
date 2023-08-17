@@ -91,7 +91,7 @@ offset_bottom = 40.0
 alignment = 1
 
 [node name="LifePickupIcon" type="Sprite2D" parent="UI"]
-position = Vector2(160, 19)
+position = Vector2(102, 19)
 scale = Vector2(2, 2)
 texture = ExtResource("4_b1ng0")
 
@@ -100,6 +100,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "3"
 horizontal_alignment = 1
+
+[node name="TimeRemainingLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Arriving in: null"
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_w6o7o")]
 unique_name_in_owner = true
@@ -123,11 +128,6 @@ unique_name_in_owner = true
 wait_time = 120.0
 one_shot = true
 autostart = true
-
-[node name="TimeRemainingLabel" type="Label" parent="."]
-unique_name_in_owner = true
-offset_right = 40.0
-offset_bottom = 23.0
 
 [node name="Enemies" type="Node" parent="."]
 process_mode = 1

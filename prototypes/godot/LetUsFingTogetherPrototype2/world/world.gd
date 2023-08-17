@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 	lives_label.text = str(lives)
 	handle_pause()
 	parallax_scrolling(delta)
-	time_remaining_label.text = "Arriving in " + str(game_timer.time_left)
+	time_remaining_label.text = "Arriving in: " + str(floorf(game_timer.time_left))
 
 
 func parallax_scrolling(delta: float) -> void:
