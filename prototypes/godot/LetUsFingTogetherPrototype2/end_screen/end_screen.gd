@@ -8,7 +8,13 @@ extends CenterContainer
 @onready var victory_label: Label = %VictoryLabel
 @onready var mech_head: Sprite2D = %MechHead
 @onready var mech_body: Sprite2D = %MechBody
+@onready var rank_label: Label = %RankLabel
 
+@onready var pinky_pressed: bool = false
+@onready var ring_pressed: bool = false
+@onready var middle_pressed: bool = false
+@onready var index_pressed: bool = false
+@onready var thumb_pressed: bool = false
 
 
 func _process(delta: float) -> void:
@@ -23,3 +29,16 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	mech_head.hide()
 	mech_body.hide()
 	victory_label.show()
+
+
+func check_inputs() -> void:
+	if Input.is_action_pressed("flick_pinky_finger"):
+		pinky_pressed = true
+	if Input.is_action_pressed("flick_ring_finger"):
+		ring_pressed = true
+	if Input.is_action_pressed("flick_middle_finger"):
+		middle_pressed = true
+	if Input.is_action_pressed("flick_index_finger"):
+		index_pressed = true
+	if Input.is_action_pressed("flick_thumb"):
+		thumb_pressed = true
