@@ -228,10 +228,11 @@ func _on_grab_area_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		is_grabbed = true
 		grab_sound_player.play()
-	elif body.name.contains("Life"):
+	elif body is LifePickup:
 		body.queue_free()
 		lives += 1
-	elif body.name.contains("Fuel"):
+	elif body is FuelPickup:
+		body.queue_free()
 		fuel += fuel_restore_amount
 
 

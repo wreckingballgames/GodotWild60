@@ -1,0 +1,2 @@
+class_name LifePickup
+extends RigidBody2D
