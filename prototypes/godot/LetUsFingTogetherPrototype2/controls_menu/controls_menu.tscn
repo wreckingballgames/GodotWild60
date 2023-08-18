@@ -68,6 +68,12 @@ theme = ExtResource("3_13d4i")
 text = "Space - Thumb"
 horizontal_alignment = 1
 
+[node name="ShakeOffControls" type="Label" parent="VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_13d4i")
+text = "Mash finger buttons when grabbed!"
+horizontal_alignment = 1
+
 [node name="ReverseControls" type="Label" parent="VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_13d4i")
