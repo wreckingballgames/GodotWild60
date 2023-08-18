@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b2uxegaohw230" path="res://fuel_pickup/fuel_pickup.tscn" id="13_4o0lo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sfpm"]
-size = Vector2(504, 61.5)
+size = Vector2(1096, 67.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqac3"]
 size = Vector2(71.3125, 2009)
@@ -23,7 +23,7 @@ size = Vector2(71.3125, 2009)
 size = Vector2(64, 2009)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubpnk"]
-size = Vector2(502, 63)
+size = Vector2(1103, 63)
 
 [node name="World" type="Node2D"]
 process_mode = 3
@@ -116,7 +116,7 @@ collision_layer = 8
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(513, 967)
+position = Vector2(502, 970.125)
 shape = SubResource("RectangleShape2D_5sfpm")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZone"]
@@ -128,7 +128,7 @@ position = Vector2(1028, -75.5)
 shape = SubResource("RectangleShape2D_kqdw6")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(509, -1117)
+position = Vector2(498.5, -1117)
 shape = SubResource("RectangleShape2D_ubpnk")
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_w6o7o")]
