@@ -6,7 +6,7 @@ var is_dead: bool = false
 var is_grabbing: bool = false
 
 @export var force_strength: float = 5000
-@export var player_grab_offset: float = 50
+@export var player_grab_offset: float = 40
 
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
