@@ -225,6 +225,7 @@ collision_layer = 0
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_avqd1")
+can_use_debug_keys = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "rocket"
