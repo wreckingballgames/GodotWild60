@@ -1,8 +1,17 @@
-[gd_scene format=3 uid="uid://b2uxegaohw230"]
+[gd_scene load_steps=3 format=3 uid="uid://b2uxegaohw230"]
 
-[node name="FuelPickup" type="RigidBody2D"]
+[ext_resource type="Texture2D" uid="uid://cljlif5ssokg6" path="res://assets/art/fuel_pickup.png" id="1_2e68j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8h3he"]
+
+[node name="FuelPickup" type="RigidBody2D" groups=["Pickup"]]
 collision_layer = 64
+lock_rotation = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_2e68j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_8h3he")

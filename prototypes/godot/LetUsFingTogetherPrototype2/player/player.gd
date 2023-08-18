@@ -20,6 +20,9 @@ var grabbed_meter: float = 0.1
 @export var speed: float = 60
 ## Number of lives
 @export var lives: int = 3
+## Total fuel
+@export var total_fuel: float = 30.0
+@onready var fuel: float = total_fuel
 ## Duration of invincibility period between deaths
 @export var death_grace_period: float = 3.0
 ## Duration before being able to shoot again after shooting
