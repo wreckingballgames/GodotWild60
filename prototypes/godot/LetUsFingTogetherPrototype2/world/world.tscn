@@ -160,6 +160,21 @@ process_mode = 1
 [node name="Obstacle" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(303, 181)
 
+[node name="Obstacle3" parent="Obstacles" instance=ExtResource("4_ibow5")]
+position = Vector2(168, 881)
+
+[node name="Obstacle15" parent="Obstacles" instance=ExtResource("4_ibow5")]
+position = Vector2(61, 1117)
+
+[node name="Obstacle16" parent="Obstacles" instance=ExtResource("4_ibow5")]
+position = Vector2(148, 1265)
+
+[node name="Obstacle17" parent="Obstacles" instance=ExtResource("4_ibow5")]
+position = Vector2(101, 1534)
+
+[node name="Obstacle18" parent="Obstacles" instance=ExtResource("4_ibow5")]
+position = Vector2(262, 1729)
+
 [node name="Obstacle2" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(55, 177)
 
@@ -201,6 +216,21 @@ process_mode = 1
 
 [node name="EnemySpawner" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(91, 385)
+
+[node name="EnemySpawner13" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
+position = Vector2(178, 768)
+
+[node name="EnemySpawner14" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
+position = Vector2(286, 882)
+
+[node name="EnemySpawner15" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
+position = Vector2(71, 889)
+
+[node name="EnemySpawner16" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
+position = Vector2(58, 1353)
+
+[node name="EnemySpawner17" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
+position = Vector2(260, 1622)
 
 [node name="EnemySpawner12" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(273, 313)
