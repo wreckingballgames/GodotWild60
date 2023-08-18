@@ -21,7 +21,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	player = get_tree().get_first_node_in_group("Player")
-	grab_player()
+	grab_player(delta)
 	if not is_dead and not is_grabbing:
 		var force_direction: Vector2 = Vector2.ZERO
 		# Look at and move toward player until enemy passes player
@@ -47,9 +47,9 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		is_grabbing = true
 
 
-func grab_player() -> void:
+func grab_player(delta: float) -> void:
 	if not is_dead and is_grabbing and player:
-		player.grabbed_meter += player.grab_strength # Can I move this back to Player now that grabbed_meter zeros out properly?
+		player.grabbed_meter += player.grab_strength * delta # Can I move this back to Player now that grabbed_meter zeros out properly?
 		if global_position.x >= player.global_position.x:
 			global_position.x = player.global_position.x + player_grab_offset
 			rotation = PI / 2
