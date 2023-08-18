@@ -38,9 +38,9 @@ var grabbed_meter: float = 0.1
 ## Force applied to bodies by flicking
 @export var flick_force: float = 2500
 ## Amount grabbed_meter is reduced by each time a finger is flicked
-@export var shake_off_strength: float = 0.05
+@export var shake_off_strength: float = .1
 ## Amount grabbed_meter is increased per frame per enemy grabbing player
-@export var grab_strength: float = 0.006
+@export var grab_strength: float = 0.2
 ## Whether or not debug keys work. See Input Map
 @export var can_use_debug_keys: bool = true
 ## Strengh of force to apply to bullets
