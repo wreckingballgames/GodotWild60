@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 		get_tree().change_scene_to_packed(game_over_screen)
 	handle_pause()
 	parallax_scrolling(delta)
-	time_remaining_label.text = "Arriving in: " + str(floorf(game_timer.time_left))
+	time_remaining_label.text = "Survive for: " + str(floorf(game_timer.time_left))
 
 
 func parallax_scrolling(delta: float) -> void:

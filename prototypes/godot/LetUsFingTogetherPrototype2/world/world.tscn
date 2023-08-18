@@ -102,7 +102,7 @@ theme = ExtResource("5_x5oyi")
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("5_x5oyi")
-text = "Arriving in: null"
+text = "Survive for: null"
 
 [node name="Player" parent="." instance=ExtResource("2_0px4g")]
 unique_name_in_owner = true
