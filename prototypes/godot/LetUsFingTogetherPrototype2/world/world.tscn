@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7lusx0xg7573"]
+[gd_scene load_steps=18 format=3 uid="uid://c7lusx0xg7573"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_23lea"]
 [ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="2_0px4g"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://32wxee4cd0fm" path="res://pause_menu/pause_menu.tscn" id="5_w6o7o"]
 [ext_resource type="Theme" uid="uid://bf61vonsbfr84" path="res://assets/default_theme.tres" id="5_x5oyi"]
 [ext_resource type="AudioStream" uid="uid://bohlv8cbp72dr" path="res://assets/audio/music/dizzy_racing_by_zane_little.mp3" id="9_logk4"]
+[ext_resource type="PackedScene" uid="uid://dduq27xddn70q" path="res://life_pickup/life_pickup.tscn" id="12_j2k04"]
+[ext_resource type="PackedScene" uid="uid://b2uxegaohw230" path="res://fuel_pickup/fuel_pickup.tscn" id="13_4o0lo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sfpm"]
 size = Vector2(504, 61.5)
@@ -59,33 +61,6 @@ texture = ExtResource("2_i4w72")
 hframes = 3
 frame = 2
 
-[node name="Player" parent="." instance=ExtResource("2_0px4g")]
-unique_name_in_owner = true
-process_mode = 1
-position = Vector2(180, 565)
-
-[node name="DeathZone" type="Area2D" parent="."]
-process_mode = 1
-position = Vector2(-331, 390)
-collision_layer = 8
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(513, 967)
-shape = SubResource("RectangleShape2D_5sfpm")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(-18, -75)
-shape = SubResource("RectangleShape2D_kqac3")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(1028, -75.5)
-shape = SubResource("RectangleShape2D_kqdw6")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(509, -1117)
-shape = SubResource("RectangleShape2D_ubpnk")
-
 [node name="UI" type="HBoxContainer" parent="."]
 z_index = 150
 offset_right = 360.0
@@ -129,6 +104,33 @@ unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("5_x5oyi")
 text = "Arriving in: null"
+
+[node name="Player" parent="." instance=ExtResource("2_0px4g")]
+unique_name_in_owner = true
+process_mode = 1
+position = Vector2(180, 565)
+
+[node name="DeathZone" type="Area2D" parent="."]
+process_mode = 1
+position = Vector2(-331, 390)
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(513, 967)
+shape = SubResource("RectangleShape2D_5sfpm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(-18, -75)
+shape = SubResource("RectangleShape2D_kqac3")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(1028, -75.5)
+shape = SubResource("RectangleShape2D_kqdw6")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(509, -1117)
+shape = SubResource("RectangleShape2D_ubpnk")
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_w6o7o")]
 unique_name_in_owner = true
@@ -239,7 +241,28 @@ position = Vector2(203, -2274)
 
 [node name="LifePickups" type="Node" parent="."]
 
+[node name="LifePickup" parent="LifePickups" instance=ExtResource("12_j2k04")]
+position = Vector2(179, -26)
+
+[node name="LifePickup2" parent="LifePickups" instance=ExtResource("12_j2k04")]
+position = Vector2(196, -620)
+
+[node name="LifePickup3" parent="LifePickups" instance=ExtResource("12_j2k04")]
+position = Vector2(207, -2001)
+
 [node name="FuelPickups" type="Node" parent="."]
+
+[node name="FuelPickup" parent="FuelPickups" instance=ExtResource("13_4o0lo")]
+position = Vector2(177, 173)
+
+[node name="FuelPickup2" parent="FuelPickups" instance=ExtResource("13_4o0lo")]
+position = Vector2(268, -303)
+
+[node name="FuelPickup3" parent="FuelPickups" instance=ExtResource("13_4o0lo")]
+position = Vector2(313, -1228)
+
+[node name="FuelPickup4" parent="FuelPickups" instance=ExtResource("13_4o0lo")]
+position = Vector2(220, -1864)
 
 [node name="ReverseScrollCooldownTimer" type="Timer" parent="."]
 wait_time = 5.0
