@@ -50,7 +50,7 @@ _data = {
 
 [node name="EnemySpawner" type="RigidBody2D" groups=["EnemySpawner"]]
 collision_layer = 16
-collision_mask = 41
+collision_mask = 63
 mass = 4.0
 max_contacts_reported = 4
 contact_monitor = true

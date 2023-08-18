@@ -34,9 +34,6 @@ func _on_spawn_timer_timeout() -> void:
 
 func die() -> void:
 	if not is_dead:
-		set_collision_mask_value(2, true)
-		set_collision_mask_value(3, true)
-		set_collision_mask_value(5, true)
 		death_sound_player.play()
 		explosion_sprite.show()
 		animation_player.play("die")

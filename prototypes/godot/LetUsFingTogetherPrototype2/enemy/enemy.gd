@@ -35,9 +35,6 @@ func _physics_process(delta: float) -> void:
 
 func die() -> void:
 	if not is_dead:
-		set_collision_mask_value(2, true)
-		set_collision_mask_value(3, true)
-		set_collision_mask_value(5, true)
 		death_sound_player.play()
 		is_dead = true
 		is_grabbing = false
