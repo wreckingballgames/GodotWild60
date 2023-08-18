@@ -29,62 +29,73 @@ frame = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-alignment = 1
+theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label6" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_2ejes")
 text = "Made for Godot Wild Jam #60"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_2ejes")
 text = "Game by Raymond McDonald"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_2ejes")
 text = "Design by Celosia Prox"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_2ejes")
 text = "Financed by Juan Zubieta"
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_2ejes")
 text = "We are Wrecking Ball Games"
 horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label5" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_2ejes")
+text = "This game includes public domain 
+sounds and music"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_2ejes")
 text = "Music by Zane Little"
 horizontal_alignment = 1
 
-[node name="HBoxButtons" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="ReturnButton" type="Button" parent="VBoxContainer/HBoxButtons"]
+[node name="HBoxButtons" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="ReturnButton" type="Button" parent="VBoxContainer/MarginContainer2/HBoxButtons"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_2ejes")
 text = "Return to Title"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer/HBoxButtons"]
+[node name="QuitButton" type="Button" parent="VBoxContainer/MarginContainer2/HBoxButtons"]
 layout_mode = 2
 theme = ExtResource("3_2ejes")
 text = "Quit Game"
 
-[connection signal="pressed" from="VBoxContainer/HBoxButtons/ReturnButton" to="." method="_on_return_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxButtons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxButtons/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxButtons/QuitButton" to="." method="_on_quit_button_pressed"]
