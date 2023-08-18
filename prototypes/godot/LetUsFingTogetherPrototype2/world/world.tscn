@@ -264,6 +264,18 @@ position = Vector2(313, -1228)
 [node name="FuelPickup4" parent="FuelPickups" instance=ExtResource("13_4o0lo")]
 position = Vector2(220, -1864)
 
+[node name="FuelPickup5" parent="FuelPickups" instance=ExtResource("13_4o0lo")]
+position = Vector2(112, -456)
+
+[node name="FuelPickup6" parent="FuelPickups" instance=ExtResource("13_4o0lo")]
+position = Vector2(181, -175)
+
+[node name="FuelPickup7" parent="FuelPickups" instance=ExtResource("13_4o0lo")]
+position = Vector2(106, -1033)
+
+[node name="FuelPickup8" parent="FuelPickups" instance=ExtResource("13_4o0lo")]
+position = Vector2(223, -1660)
+
 [node name="ReverseScrollCooldownTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
