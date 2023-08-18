@@ -3,7 +3,7 @@ extends CenterContainer
 
 @export var level: PackedScene = load("res://intro_screen/intro_screen.tscn")
 @export var credits: PackedScene = preload("res://credits_screen/credits_screen.tscn")
-@export var controls: PackedScene = preload("res://settings_menu/controls_menu.tscn")
+@export var controls: PackedScene = preload("res://controls_menu/controls_menu.tscn")
 
 @onready var start_button: Button = %StartButton
 
