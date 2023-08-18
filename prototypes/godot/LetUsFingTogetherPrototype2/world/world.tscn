@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://c7lusx0xg7573"]
+[gd_scene load_steps=17 format=3 uid="uid://c7lusx0xg7573"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_23lea"]
 [ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="2_0px4g"]
 [ext_resource type="Texture2D" uid="uid://d20rk4axot4s0" path="res://assets/art/background_sprite.png" id="2_i4w72"]
 [ext_resource type="PackedScene" uid="uid://c4rfah7r8jkiw" path="res://end_screen/end_screen.tscn" id="2_ku1bn"]
-[ext_resource type="PackedScene" uid="uid://b56o5lpqe5sl8" path="res://enemy/enemy.tscn" id="3_rafy1"]
 [ext_resource type="Texture2D" uid="uid://dcy0m3s06g6d8" path="res://assets/art/life_pickup.png" id="4_b1ng0"]
 [ext_resource type="PackedScene" uid="uid://5qifcmll0aw" path="res://obstacle/obstacle.tscn" id="4_ibow5"]
 [ext_resource type="PackedScene" uid="uid://xwjrlqdyt8gi" path="res://enemy_spawner/enemy_spawner.tscn" id="5_4lyyw"]
@@ -155,12 +154,6 @@ wait_time = 60.0
 one_shot = true
 autostart = true
 
-[node name="Enemies" type="Node" parent="."]
-process_mode = 1
-
-[node name="Enemy" parent="Enemies" instance=ExtResource("3_rafy1")]
-position = Vector2(272, 314)
-
 [node name="Obstacles" type="Node" parent="."]
 process_mode = 1
 
@@ -208,6 +201,9 @@ process_mode = 1
 
 [node name="EnemySpawner" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(91, 385)
+
+[node name="EnemySpawner12" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
+position = Vector2(273, 313)
 
 [node name="EnemySpawner2" parent="EnemySpawners" instance=ExtResource("5_4lyyw")]
 position = Vector2(283, 46)
