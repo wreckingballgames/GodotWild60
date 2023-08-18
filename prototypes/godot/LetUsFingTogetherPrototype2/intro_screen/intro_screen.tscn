@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c57avw5gvb6n6"]
+
+[ext_resource type="Script" path="res://intro_screen/intro_screen.gd" id="1_oxq1f"]
+
+[node name="IntroScreen" type="CenterContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_oxq1f")
