@@ -32,13 +32,12 @@ func _physics_process(delta: float) -> void:
 
 		apply_force(force_vector * delta)
 
-  
-func _on_body_entered(body: Node) -> void:
-	die()
-
 
 func die() -> void:
 	if not is_dead:
+		set_collision_mask_value(2, true)
+		set_collision_mask_value(3, true)
+		set_collision_mask_value(5, true)
 		death_sound_player.play()
 		is_dead = true
 		is_grabbing = false
@@ -62,7 +61,7 @@ func grab_player() -> void:
 			rotation = 3 * PI / 2
 		global_position.y = player.global_position.y
 		
-		if player and player.grabbed_meter < 0:
+		if player and player.grabbed_meter <= 0:
 			die()
 
 
