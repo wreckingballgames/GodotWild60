@@ -11,9 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tjhix")
-level_path = "res://world/world.tscn"
-credits_path = "res://credits_screen/credits_screen.tscn"
-controls_path = "res://settings_menu/controls_menu.tscn"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="."]
 layout_mode = 2
