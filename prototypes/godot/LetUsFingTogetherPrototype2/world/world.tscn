@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c7lusx0xg7573"]
+[gd_scene load_steps=16 format=3 uid="uid://c7lusx0xg7573"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_23lea"]
 [ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="2_0px4g"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://5qifcmll0aw" path="res://obstacle/obstacle.tscn" id="4_ibow5"]
 [ext_resource type="PackedScene" uid="uid://xwjrlqdyt8gi" path="res://enemy_spawner/enemy_spawner.tscn" id="5_4lyyw"]
 [ext_resource type="PackedScene" uid="uid://32wxee4cd0fm" path="res://pause_menu/pause_menu.tscn" id="5_w6o7o"]
+[ext_resource type="Theme" uid="uid://bf61vonsbfr84" path="res://assets/default_theme.tres" id="5_x5oyi"]
 [ext_resource type="AudioStream" uid="uid://bohlv8cbp72dr" path="res://assets/audio/music/dizzy_racing_by_zane_little.mp3" id="9_logk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sfpm"]
@@ -86,24 +87,47 @@ position = Vector2(509, -1117)
 shape = SubResource("RectangleShape2D_ubpnk")
 
 [node name="UI" type="HBoxContainer" parent="."]
+z_index = 150
 offset_right = 360.0
 offset_bottom = 40.0
 alignment = 1
 
-[node name="LifePickupIcon" type="Sprite2D" parent="UI"]
-position = Vector2(102, 19)
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 2
+theme = ExtResource("5_x5oyi")
+theme_override_constants/margin_right = 20
+
+[node name="LifePickupIcon" type="Sprite2D" parent="UI/MarginContainer"]
+position = Vector2(-10, 19)
 scale = Vector2(2, 2)
 texture = ExtResource("4_b1ng0")
 
-[node name="LivesLabel" type="Label" parent="UI"]
+[node name="LivesLabel" type="Label" parent="UI/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("5_x5oyi")
 text = "3"
 horizontal_alignment = 1
 
-[node name="TimeRemainingLabel" type="Label" parent="UI"]
+[node name="MarginContainer2" type="MarginContainer" parent="UI"]
+layout_mode = 2
+theme = ExtResource("5_x5oyi")
+theme_override_constants/margin_right = 20
+
+[node name="FuelLabel" type="Label" parent="UI/MarginContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("5_x5oyi")
+text = "Fuel left: null"
+
+[node name="MarginContainer3" type="MarginContainer" parent="UI"]
+layout_mode = 2
+theme = ExtResource("5_x5oyi")
+
+[node name="TimeRemainingLabel" type="Label" parent="UI/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("5_x5oyi")
 text = "Arriving in: null"
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_w6o7o")]

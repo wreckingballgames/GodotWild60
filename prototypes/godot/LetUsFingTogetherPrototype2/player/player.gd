@@ -289,6 +289,7 @@ func _on_shoot_cooldown_timer_timeout() -> void:
 func reverse_scroll() -> void:
 	if Input.is_action_just_pressed("reverse_scroll"):
 		scroll_reversed.emit()
+		fuel -= shoot_fuel_cost
 		
 		if rocket_exhaust_is_visible:
 			rocket_exhaust_sprite.hide()

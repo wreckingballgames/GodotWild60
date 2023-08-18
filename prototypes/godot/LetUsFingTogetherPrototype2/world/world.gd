@@ -11,7 +11,7 @@ var is_paused: bool = false
 @onready var game_timer: Timer = %GameTimer
 @onready var lives_label: Label = %LivesLabel
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
-@onready var lives: int = player.lives
+@onready var fuel_label: Label = %FuelLabel
 
 # Scrolling members
 @onready var enemies: Array[Node] = get_tree().get_nodes_in_group("Enemy")
@@ -48,8 +48,8 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	player = get_tree().get_first_node_in_group("Player")
 	if player:
-		lives = player.lives
-		lives_label.text = str(lives)
+		lives_label.text = str(player.lives)
+		fuel_label.text = "Fuel left: " + str(floor(player.fuel))
 	else:
 		get_tree().change_scene_to_packed(game_over_screen)
 	handle_pause()
