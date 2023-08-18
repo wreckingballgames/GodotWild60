@@ -23,6 +23,14 @@ var grabbed_meter: float = 0.1
 ## Total fuel
 @export var total_fuel: float = 30.0
 @onready var fuel: float = total_fuel
+## Amount of fuel restored by fuel pickups
+@export var fuel_restore_amount: float = 5.0
+## Amount of fuel loss each second
+@export var fuel_tick: float = 1.0
+## Amount of fuel spent by shooting finger gun
+@export var shoot_fuel_cost: float = 1.5
+## Amount of fuel spent by reversing scroll
+@export var reverse_fuel_cost: float = 3.0
 ## Duration of invincibility period between deaths
 @export var death_grace_period: float = 3.0
 ## Duration before being able to shoot again after shooting
@@ -84,6 +92,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	reverse_scroll()
+	drain_fuel(delta)
 	# Debug
 	debug_restart()
 	debug_toggle_can_die()
@@ -269,6 +278,7 @@ func shoot(delta: float) -> void:
 		add_child(bullet)
 		bullet.position = Vector2(20, -100)
 		bullet.apply_impulse(shoot_vector * delta)
+		fuel -= shoot_fuel_cost
 
 
 func _on_shoot_cooldown_timer_timeout() -> void:
@@ -290,3 +300,8 @@ func reverse_scroll() -> void:
 func get_to_mouse_vector() -> Vector2:
 	mouse_position = get_global_mouse_position()
 	return global_position.direction_to(mouse_position) * speed
+
+
+func drain_fuel(delta: float) -> void:
+	fuel -= fuel_tick * delta
+	print(fuel)
