@@ -56,5 +56,7 @@ func check_inputs() -> void:
 func check_rank() -> String:
 	if middle_pressed:
 		return "F U"
+	elif ring_pressed and index_pressed and thumb_pressed:
+		return "Rockstar"
 	else:
 		return "S"
