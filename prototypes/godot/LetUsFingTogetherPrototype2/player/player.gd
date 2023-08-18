@@ -232,7 +232,7 @@ func _on_grab_area_body_entered(body: Node2D) -> void:
 		body.queue_free()
 		lives += 1
 	elif body.name.contains("Fuel"):
-		pass
+		fuel += fuel_restore_amount
 
 
 func debug_restart() -> void:
