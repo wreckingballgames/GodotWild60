@@ -29,83 +29,90 @@ frame = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="ControlsLabel" type="Label" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ControlsLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_13d4i")
 text = "Controls:"
 horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="PinkyControls" type="Label" parent="VBoxContainer/VBoxContainer2"]
+[node name="PinkyControls" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_13d4i")
 text = "Q - Pinky"
 horizontal_alignment = 1
 
-[node name="RingControls" type="Label" parent="VBoxContainer/VBoxContainer2"]
+[node name="RingControls" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_13d4i")
 text = "W - Ring"
 horizontal_alignment = 1
 
-[node name="MiddleControls" type="Label" parent="VBoxContainer/VBoxContainer2"]
+[node name="MiddleControls" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_13d4i")
 text = "E - Middle"
 horizontal_alignment = 1
 
-[node name="IndexControls" type="Label" parent="VBoxContainer/VBoxContainer2"]
+[node name="IndexControls" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_13d4i")
 text = "R - Index"
 horizontal_alignment = 1
 
-[node name="ThumbControls" type="Label" parent="VBoxContainer/VBoxContainer2"]
+[node name="ThumbControls" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_13d4i")
 text = "Space - Thumb"
 horizontal_alignment = 1
 
-[node name="ShakeOffControls" type="Label" parent="VBoxContainer/VBoxContainer2"]
+[node name="ShakeOffControls" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_13d4i")
 text = "Mash finger buttons when grabbed!"
 horizontal_alignment = 1
 
-[node name="ReverseControls" type="Label" parent="VBoxContainer/VBoxContainer2"]
+[node name="ReverseControls" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_13d4i")
 text = "Middle click to reverse (uses fuel)"
 horizontal_alignment = 1
 
-[node name="ShootControls" type="Label" parent="VBoxContainer/VBoxContainer2"]
+[node name="ShootControls" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_13d4i")
 text = "Make a finger gun to shoot (uses fuel)"
 horizontal_alignment = 1
 
-[node name="MovementControls" type="Label" parent="VBoxContainer/VBoxContainer2"]
+[node name="MovementControls" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("3_13d4i")
 text = "Movement - Mouse Cursor"
 horizontal_alignment = 1
 
-[node name="HBoxNavigation" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxNavigation" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
 alignment = 1
 
-[node name="ReturnButton" type="Button" parent="VBoxContainer/HBoxNavigation"]
+[node name="ReturnButton" type="Button" parent="VBoxContainer/MarginContainer2/HBoxNavigation"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_13d4i")
 text = "Return to Title"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer/HBoxNavigation"]
+[node name="QuitButton" type="Button" parent="VBoxContainer/MarginContainer2/HBoxNavigation"]
 layout_mode = 2
 theme = ExtResource("3_13d4i")
 text = "Quit Game"
 
-[connection signal="pressed" from="VBoxContainer/HBoxNavigation/ReturnButton" to="." method="_on_return_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxNavigation/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxNavigation/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxNavigation/QuitButton" to="." method="_on_quit_button_pressed"]
