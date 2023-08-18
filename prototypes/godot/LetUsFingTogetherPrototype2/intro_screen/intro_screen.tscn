@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c57avw5gvb6n6"]
+[gd_scene load_steps=6 format=3 uid="uid://c57avw5gvb6n6"]
 
 [ext_resource type="Script" path="res://intro_screen/intro_screen.gd" id="1_oxq1f"]
 [ext_resource type="Theme" uid="uid://bf61vonsbfr84" path="res://assets/default_theme.tres" id="2_2o87e"]
 [ext_resource type="Texture2D" uid="uid://dh27eja6cf1a4" path="res://icon.svg" id="3_nehxa"]
 [ext_resource type="Texture2D" uid="uid://d20rk4axot4s0" path="res://assets/art/background_sprite.png" id="3_ygbds"]
+[ext_resource type="AudioStream" uid="uid://d1kedyujsasxe" path="res://assets/audio/music/space_cadet_training_by_zane_little.mp3" id="5_shh6k"]
 
 [node name="IntroScreen" type="CenterContainer"]
 anchors_preset = 15
@@ -42,3 +43,8 @@ You know the rest of your team
 can't do it without you.
 It's time for..."
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_shh6k")
+volume_db = -12.0
+autoplay = true
