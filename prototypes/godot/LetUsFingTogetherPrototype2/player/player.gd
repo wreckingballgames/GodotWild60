@@ -93,6 +93,8 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	reverse_scroll()
 	drain_fuel(delta)
+	if fuel > total_fuel:
+		fuel = total_fuel
 	# Debug
 	debug_restart()
 	debug_toggle_can_die()
@@ -309,4 +311,3 @@ func drain_fuel(delta: float) -> void:
 	fuel -= fuel_tick * delta
 	if fuel <= 0:
 		die()
-	print(fuel)
