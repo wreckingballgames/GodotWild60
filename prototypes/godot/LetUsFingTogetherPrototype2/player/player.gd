@@ -189,6 +189,7 @@ func die() -> void:
 		can_die = false
 		death_grace_period_timer.start(death_grace_period)
 		global_position = starting_position
+		fuel = total_fuel
 		grabbed_meter = 0.1
 		is_grabbed = false
 
@@ -304,4 +305,6 @@ func get_to_mouse_vector() -> Vector2:
 
 func drain_fuel(delta: float) -> void:
 	fuel -= fuel_tick * delta
+	if fuel <= 0:
+		die()
 	print(fuel)
