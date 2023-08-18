@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b2uxegaohw230"]
+
+[node name="FuelPickup" type="RigidBody2D"]
+collision_layer = 64
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
