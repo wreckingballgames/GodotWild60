@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7lusx0xg7573"]
+[gd_scene load_steps=15 format=3 uid="uid://c7lusx0xg7573"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_23lea"]
 [ext_resource type="PackedScene" uid="uid://ljxjvb1f4waw" path="res://player/player.tscn" id="2_0px4g"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://5qifcmll0aw" path="res://obstacle/obstacle.tscn" id="4_ibow5"]
 [ext_resource type="PackedScene" uid="uid://xwjrlqdyt8gi" path="res://enemy_spawner/enemy_spawner.tscn" id="5_4lyyw"]
 [ext_resource type="PackedScene" uid="uid://32wxee4cd0fm" path="res://pause_menu/pause_menu.tscn" id="5_w6o7o"]
-[ext_resource type="PackedScene" uid="uid://dduq27xddn70q" path="res://life_pickup/life_pickup.tscn" id="9_2hbjp"]
 [ext_resource type="AudioStream" uid="uid://bohlv8cbp72dr" path="res://assets/audio/music/dizzy_racing_by_zane_little.mp3" id="9_logk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sfpm"]
@@ -140,22 +139,19 @@ position = Vector2(272, 314)
 process_mode = 1
 
 [node name="Obstacle" parent="Obstacles" instance=ExtResource("4_ibow5")]
-position = Vector2(267, 151)
+position = Vector2(303, 181)
 
 [node name="Obstacle2" parent="Obstacles" instance=ExtResource("4_ibow5")]
-position = Vector2(76, 198)
-
-[node name="Obstacle3" parent="Obstacles" instance=ExtResource("4_ibow5")]
-position = Vector2(193, 77)
+position = Vector2(55, 177)
 
 [node name="Obstacle4" parent="Obstacles" instance=ExtResource("4_ibow5")]
-position = Vector2(114, -183)
+position = Vector2(228, -246)
 
 [node name="Obstacle5" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(289, -369)
 
 [node name="Obstacle6" parent="Obstacles" instance=ExtResource("4_ibow5")]
-position = Vector2(238, -465)
+position = Vector2(196, -558)
 
 [node name="Obstacle7" parent="Obstacles" instance=ExtResource("4_ibow5")]
 position = Vector2(94, -839)
@@ -218,15 +214,6 @@ position = Vector2(349, -1654)
 position = Vector2(203, -2274)
 
 [node name="LifePickups" type="Node" parent="."]
-
-[node name="LifePickup" parent="LifePickups" instance=ExtResource("9_2hbjp")]
-position = Vector2(180, 484)
-
-[node name="LifePickup2" parent="LifePickups" instance=ExtResource("9_2hbjp")]
-position = Vector2(193, 456)
-
-[node name="LifePickup3" parent="LifePickups" instance=ExtResource("9_2hbjp")]
-position = Vector2(211, 431)
 
 [node name="FuelPickups" type="Node" parent="."]
 

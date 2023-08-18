@@ -47,3 +47,7 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.name == "FingerArea" and not is_dead:
 		die()
+
+
+func _on_body_entered(body: Node) -> void:
+	die()
