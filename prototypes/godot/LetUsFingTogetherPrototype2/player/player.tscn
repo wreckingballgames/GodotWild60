@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ljxjvb1f4waw"]
+[gd_scene load_steps=27 format=3 uid="uid://ljxjvb1f4waw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_avqd1"]
 [ext_resource type="Texture2D" uid="uid://coxxrohed20hd" path="res://assets/art/player_sprite.png" id="2_0y776"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://gid3wu35xkrq" path="res://assets/art/pinky_sprite.png" id="5_0y18i"]
 [ext_resource type="AudioStream" uid="uid://b1ecccn456qur" path="res://assets/audio/sfx/flick_sound.wav" id="5_u181b"]
 [ext_resource type="AudioStream" uid="uid://bov25wboikwfl" path="res://assets/audio/sfx/grab.wav" id="9_jkm2u"]
+[ext_resource type="PackedScene" uid="uid://cpkbx8qjmjvgd" path="res://touch_screen_interface/touch_screen_interface.tscn" id="11_21yfe"]
 
 [sub_resource type="Animation" id="Animation_u0o6o"]
 length = 0.001
@@ -365,6 +366,18 @@ unique_name_in_owner = true
 
 [node name="ShootCooldownTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+
+[node name="TouchScreenInterface" parent="." instance=ExtResource("11_21yfe")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -157.0
+offset_top = -587.0
+offset_right = -157.0
+offset_bottom = -587.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

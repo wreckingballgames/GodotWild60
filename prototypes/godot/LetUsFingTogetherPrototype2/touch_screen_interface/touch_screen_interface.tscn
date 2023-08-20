@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpkbx8qjmjvgd"]
+
+[ext_resource type="Texture2D" uid="uid://bcbea4gsutvfy" path="res://assets/art/bullet_sprite.png" id="1_qvwhb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ekmtj"]
+
+[node name="TouchScreenInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PinkyButton" type="TouchScreenButton" parent="."]
+position = Vector2(98, 549)
+texture_normal = ExtResource("1_qvwhb")
+texture_pressed = ExtResource("1_qvwhb")
+shape = SubResource("CircleShape2D_ekmtj")
+action = "flick_pinky_finger"
+
+[node name="RingButton" type="TouchScreenButton" parent="."]
+position = Vector2(122, 535)
+texture_normal = ExtResource("1_qvwhb")
+texture_pressed = ExtResource("1_qvwhb")
+shape = SubResource("CircleShape2D_ekmtj")
+action = "flick_ring_finger"
+
+[node name="MiddleButton" type="TouchScreenButton" parent="."]
+position = Vector2(151, 533)
+texture_normal = ExtResource("1_qvwhb")
+texture_pressed = ExtResource("1_qvwhb")
+shape = SubResource("CircleShape2D_ekmtj")
+action = "flick_pinky_finger"
+
+[node name="IndexButton" type="TouchScreenButton" parent="."]
+position = Vector2(181, 533)
+texture_normal = ExtResource("1_qvwhb")
+texture_pressed = ExtResource("1_qvwhb")
+shape = SubResource("CircleShape2D_ekmtj")
+action = "flick_pinky_finger"
+
+[node name="ThumbButton" type="TouchScreenButton" parent="."]
+position = Vector2(209, 563)
+texture_normal = ExtResource("1_qvwhb")
+texture_pressed = ExtResource("1_qvwhb")
+shape = SubResource("CircleShape2D_ekmtj")
+action = "flick_pinky_finger"
+
+[node name="LeftButton" type="TouchScreenButton" parent="."]
+position = Vector2(136, 611)
+texture_normal = ExtResource("1_qvwhb")
+texture_pressed = ExtResource("1_qvwhb")
+shape = SubResource("CircleShape2D_ekmtj")
+action = "flick_pinky_finger"
+
+[node name="RightButton" type="TouchScreenButton" parent="."]
+position = Vector2(173, 611)
+texture_normal = ExtResource("1_qvwhb")
+texture_pressed = ExtResource("1_qvwhb")
+shape = SubResource("CircleShape2D_ekmtj")
+action = "flick_pinky_finger"
