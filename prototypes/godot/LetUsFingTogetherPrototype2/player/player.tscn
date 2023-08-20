@@ -368,7 +368,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="TouchScreenInterface" parent="." instance=ExtResource("11_21yfe")]
-visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0

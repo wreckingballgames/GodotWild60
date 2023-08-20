@@ -13,10 +13,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PinkyButton" type="TouchScreenButton" parent="."]
-position = Vector2(98, 549)
+position = Vector2(93, 561)
 texture_normal = ExtResource("1_qvwhb")
 texture_pressed = ExtResource("1_qvwhb")
 shape = SubResource("CircleShape2D_ekmtj")
+passby_press = true
 action = "flick_pinky_finger"
 
 [node name="RingButton" type="TouchScreenButton" parent="."]
@@ -24,39 +25,45 @@ position = Vector2(122, 535)
 texture_normal = ExtResource("1_qvwhb")
 texture_pressed = ExtResource("1_qvwhb")
 shape = SubResource("CircleShape2D_ekmtj")
+passby_press = true
 action = "flick_ring_finger"
 
 [node name="MiddleButton" type="TouchScreenButton" parent="."]
-position = Vector2(151, 533)
+position = Vector2(151, 519)
 texture_normal = ExtResource("1_qvwhb")
 texture_pressed = ExtResource("1_qvwhb")
 shape = SubResource("CircleShape2D_ekmtj")
-action = "flick_pinky_finger"
+passby_press = true
+action = "flick_middle_finger"
 
 [node name="IndexButton" type="TouchScreenButton" parent="."]
 position = Vector2(181, 533)
 texture_normal = ExtResource("1_qvwhb")
 texture_pressed = ExtResource("1_qvwhb")
 shape = SubResource("CircleShape2D_ekmtj")
-action = "flick_pinky_finger"
+passby_press = true
+action = "flick_index_finger"
 
 [node name="ThumbButton" type="TouchScreenButton" parent="."]
 position = Vector2(209, 563)
 texture_normal = ExtResource("1_qvwhb")
 texture_pressed = ExtResource("1_qvwhb")
 shape = SubResource("CircleShape2D_ekmtj")
-action = "flick_pinky_finger"
+passby_press = true
+action = "flick_thumb"
 
 [node name="LeftButton" type="TouchScreenButton" parent="."]
 position = Vector2(136, 611)
 texture_normal = ExtResource("1_qvwhb")
 texture_pressed = ExtResource("1_qvwhb")
 shape = SubResource("CircleShape2D_ekmtj")
-action = "flick_pinky_finger"
+passby_press = true
+action = "Move_left"
 
 [node name="RightButton" type="TouchScreenButton" parent="."]
 position = Vector2(173, 611)
 texture_normal = ExtResource("1_qvwhb")
 texture_pressed = ExtResource("1_qvwhb")
 shape = SubResource("CircleShape2D_ekmtj")
-action = "flick_pinky_finger"
+passby_press = true
+action = "move_right"
