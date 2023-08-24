@@ -29,6 +29,10 @@ window/size/viewport_width=360
 window/size/viewport_height=640
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="LetUsFingTogetherPrototype2"
+
 [editor]
 
 movie_writer/mjpeg_quality=1.0

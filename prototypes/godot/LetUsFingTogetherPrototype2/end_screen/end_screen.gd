@@ -26,7 +26,6 @@ func _process(delta: float) -> void:
 
 func _on_win_area_area_entered(area: Area2D) -> void:
 	animation_player.play("death")
-	check_inputs()
 	rank = check_rank()
 
 
@@ -40,23 +39,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	get_tree().change_scene_to_packed(next_level)
 
 
-func check_inputs() -> void:
-	if Input.is_action_pressed("flick_pinky_finger"):
-		pinky_pressed = true
-	if Input.is_action_pressed("flick_ring_finger"):
-		ring_pressed = true
-	if Input.is_action_pressed("flick_middle_finger"):
-		middle_pressed = true
-	if Input.is_action_pressed("flick_index_finger"):
-		index_pressed = true
-	if Input.is_action_pressed("flick_thumb"):
-		thumb_pressed = true
-
-
 func check_rank() -> String:
-	if middle_pressed:
+	if Input.is_action_pressed("flick_middle_finger"):
 		return "F U"
-	elif ring_pressed and index_pressed and thumb_pressed:
+	elif Input.is_action_pressed("flick_ring_finger") and Input.is_action_pressed("flick_index_finger") and Input.is_action_pressed("flick_thumb"):
 		return "Rockstar"
 	else:
 		return "S"
